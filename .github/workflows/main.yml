@@ -30,12 +30,19 @@ jobs:
       - name: Install npm packages
         run: npm install
 
+      - name: Create env file
+        run: |
+          touch .env.production
+          echo VUE_APP_BACKEND_URL=${{ secrets.VUE_APP_BACKEND_URL }} >> .env.production
+          echo VUE_APP_GOOGLE_ANALYTICS_KEY=${{ secrets.VUE_APP_GOOGLE_ANALYTICS_KEY }} >> .env.production
+          cat .env.production
+
       # - name: Test
       #   run: npm run test:unit
 
       - name: Build application
         run: npm run build
-        
+
       - uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}

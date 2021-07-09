@@ -5,5 +5,17 @@ import router from "./router";
 import store from "./store";
 import "./css/index.css";
 import VantageUi from "vantage-ui";
+import VueGtag from "vue-gtag";
 
-createApp(App).use(store).use(router).use(VantageUi).mount("#app");
+createApp(App)
+  .use(store)
+  .use(router)
+  .use(VantageUi)
+  .use(
+    VueGtag,
+    {
+      config: { id: process.env.VUE_APP_GOOGLE_ANALYTICS_KEY },
+    },
+    router
+  )
+  .mount("#app");
