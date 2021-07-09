@@ -30,8 +30,8 @@ jobs:
       - name: Install npm packages
         run: npm install
 
-      - name: Test
-        run: npm run test:unit
+      # - name: Test
+      #   run: npm run test:unit
 
       - name: Build application
         run: npm run build
