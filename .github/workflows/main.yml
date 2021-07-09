@@ -46,3 +46,8 @@ jobs:
         run: |
           aws s3 sync ./dist s3://weareauto
 
+      - name: Invalidate Cloudfront Distribution
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id ${{ AWS_CLOUDFRONT_DISTRIBUTION }} \
+            --paths "/*"
