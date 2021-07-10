@@ -77,6 +77,7 @@
                   v-for="item in navigation"
                   :key="item.name"
                   :to="{ name: item.route }"
+                  @click="sidebarOpen = false"
                   :class="[
                     $route.matched.some(({ name }) => name === item.route)
                       ? 'bg-gray-900 text-white'
