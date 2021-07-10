@@ -72,31 +72,57 @@
                 </div>
               </div>
               <nav class="mt-2 px-2 space-y-1">
-                <router-link
-                  tag="a"
-                  v-for="item in navigation"
-                  :key="item.name"
-                  :to="{ name: item.route }"
-                  @click="sidebarOpen = false"
-                  :class="[
-                    $route.matched.some(({ name }) => name === item.route)
-                      ? 'bg-gray-900 text-white'
-                      : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                    'group flex items-center px-2 py-2 text-base font-medium rounded-md',
-                  ]"
-                >
-                  <component
-                    :is="item.icon"
+                <template v-for="item in navigation" :key="item.name">
+                  <router-link
+                    v-if="!item.coming_soon"
+                    tag="a"
+                    :to="{ name: item.route }"
+                    @click="sidebarOpen = false"
                     :class="[
                       $route.matched.some(({ name }) => name === item.route)
-                        ? 'text-gray-300'
-                        : 'text-gray-400 group-hover:text-gray-300',
-                      'mr-4 flex-shrink-0 h-6 w-6',
+                        ? 'bg-gray-900 text-white'
+                        : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                      'group flex items-center px-2 py-2 text-base font-medium rounded-md',
                     ]"
-                    aria-hidden="true"
-                  />
-                  {{ item.name }}
-                </router-link>
+                  >
+                    <component
+                      :is="item.icon"
+                      :class="[
+                        $route.matched.some(({ name }) => name === item.route)
+                          ? 'text-gray-300'
+                          : 'text-gray-400 group-hover:text-gray-300',
+                        'mr-4 flex-shrink-0 h-6 w-6',
+                      ]"
+                      aria-hidden="true"
+                    />
+                    {{ item.name }}
+                  </router-link>
+
+                  <div
+                    v-if="item.coming_soon"
+                    :class="[
+                      $route.matched.some(({ name }) => name === item.route)
+                        ? 'bg-gray-900 text-white'
+                        : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                      'group flex items-center px-2 py-2 text-sm font-medium rounded-md',
+                    ]"
+                  >
+                    <component
+                      :is="item.icon"
+                      :class="[
+                        $route.matched.some(({ name }) => name === item.route)
+                          ? 'text-gray-300'
+                          : 'text-gray-400 group-hover:text-gray-300',
+                        'mr-4 flex-shrink-0 h-6 w-6',
+                      ]"
+                      aria-hidden="true"
+                    />
+                    <div class="pr-4">
+                      {{ item.name }}
+                    </div>
+                    <v-badge> Coming Soon </v-badge>
+                  </div>
+                </template>
               </nav>
             </div>
             <div class="flex-shrink-0 flex bg-gray-700 p-4">
@@ -150,30 +176,56 @@
               </div>
             </div>
             <nav class="flex-1 px-2 bg-gray-800 space-y-1 py-2">
-              <router-link
-                tag="a"
-                v-for="item in navigation"
-                :key="item.name"
-                :to="{ name: item.route }"
-                :class="[
-                  $route.matched.some(({ name }) => name === item.route)
-                    ? 'bg-gray-900 text-white'
-                    : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                  'group flex items-center px-2 py-2 text-sm font-medium rounded-md',
-                ]"
-              >
-                <component
-                  :is="item.icon"
+              <template v-for="item in navigation" :key="item.name">
+                <router-link
+                  v-if="!item.coming_soon"
+                  tag="a"
+                  :to="{ name: item.route }"
                   :class="[
                     $route.matched.some(({ name }) => name === item.route)
-                      ? 'text-gray-300'
-                      : 'text-gray-400 group-hover:text-gray-300',
-                    'mr-3 flex-shrink-0 h-6 w-6',
+                      ? 'bg-gray-900 text-white'
+                      : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                    'group flex items-center px-2 py-2 text-sm font-medium rounded-md',
                   ]"
-                  aria-hidden="true"
-                />
-                {{ item.name }}
-              </router-link>
+                >
+                  <component
+                    :is="item.icon"
+                    :class="[
+                      $route.matched.some(({ name }) => name === item.route)
+                        ? 'text-gray-300'
+                        : 'text-gray-400 group-hover:text-gray-300',
+                      'mr-3 flex-shrink-0 h-6 w-6',
+                    ]"
+                    aria-hidden="true"
+                  />
+                  {{ item.name }}
+                </router-link>
+
+                <div
+                  v-if="item.coming_soon"
+                  :class="[
+                    $route.matched.some(({ name }) => name === item.route)
+                      ? 'bg-gray-900 text-white'
+                      : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                    'group flex items-center px-2 py-2 text-sm font-medium rounded-md',
+                  ]"
+                >
+                  <component
+                    :is="item.icon"
+                    :class="[
+                      $route.matched.some(({ name }) => name === item.route)
+                        ? 'text-gray-300'
+                        : 'text-gray-400 group-hover:text-gray-300',
+                      'mr-3 flex-shrink-0 h-6 w-6',
+                    ]"
+                    aria-hidden="true"
+                  />
+                  <div class="pr-4">
+                    {{ item.name }}
+                  </div>
+                  <v-badge> Coming Soon </v-badge>
+                </div>
+              </template>
             </nav>
           </div>
           <div class="flex-shrink-0 flex bg-gray-700 p-4">
@@ -300,25 +352,25 @@ const navigation = [
     name: "Home",
     route: "home.index",
     icon: shallowRef(garage),
-    current: true,
-  },
-  {
-    name: "Fantasy",
-    route: "fantasy.index",
-    icon: shallowRef(trophy),
-    current: true,
+    coming_soon: false,
   },
   {
     name: "Podcast",
     route: "podcasts.index",
     icon: shallowRef(waveform),
-    current: false,
+    coming_soon: false,
   },
   {
     name: "Races",
     route: "races.index",
     icon: shallowRef(flag),
-    current: false,
+    coming_soon: true,
+  },
+  {
+    name: "Fantasy",
+    route: "fantasy.index",
+    icon: shallowRef(trophy),
+    coming_soon: true,
   },
 ];
 
