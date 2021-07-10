@@ -10,10 +10,22 @@
         <div class="flex-1 space-y-4">
           <div class="w-4/12 h-3 rounded bg-blue-300 mx-auto"></div>
           <div class="w-full h-1 rounded bg-gray-300"></div>
-          <div class="flex justify-around">
-            <div class="bg-gray-200 shadow rounded-full h-11 w-11"></div>
-            <div class="bg-gray-400 shadow rounded-full h-11 w-11"></div>
-            <div class="bg-gray-200 shadow rounded-full h-11 w-11"></div>
+          <div class="grid grid-cols-5 items-center">
+            <div class="flex justify-around">
+              <div class="w-1/4 h-1 rounded bg-gray-300"></div>
+            </div>
+            <div></div>
+            <div class="flex justify-around">
+              <div class="bg-gray-200 shadow rounded-full h-11 w-11"></div>
+              <div class="bg-gray-400 shadow rounded-full h-11 w-11"></div>
+              <div class="bg-gray-200 shadow rounded-full h-11 w-11"></div>
+            </div>
+            <div class="flex justify-around">
+              <div class="w-1/2 h-2 rounded bg-blue-300"></div>
+            </div>
+            <div class="flex justify-around">
+              <div class="w-1/4 h-1 rounded bg-gray-300"></div>
+            </div>
           </div>
         </div>
       </div>

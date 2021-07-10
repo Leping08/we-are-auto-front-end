@@ -2,7 +2,7 @@
   <div class="p-6">
     <div class="flex justify-between items-center">
       <div class="text-xl font-bold text-gray-900 sm:text-2xl sm:truncate">
-        Podcast
+        We Are Auto Show
       </div>
       <div class="flex text-gray-600 space-x-2">
         <a
