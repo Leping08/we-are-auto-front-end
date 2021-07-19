@@ -32,6 +32,12 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "races.index" */ "../views/races/index.vue"),
   },
+  {
+    path: "/races/:id(\\d+)",
+    name: "races.show",
+    component: () =>
+      import(/* webpackChunkName: "races.index" */ "../views/races/show.vue"),
+  },
 ];
 
 const router = createRouter({
