@@ -1,6 +1,7 @@
 <template>
   <div>
     <div
+      v-if="percentage <= 99"
       class="
         h-10
         w-10
@@ -42,14 +43,32 @@
         </div>
       </div>
     </div>
+    <div
+      v-else
+      class="
+        h-10
+        w-10
+        rounded-full
+        bg-green-500
+        relative
+        flex
+        items-center
+        justify-around
+        shadow-md
+      "
+    >
+      <check class="text-white h-6 w-6" />
+    </div>
   </div>
 </template>
 
 <script>
 import play from "@/assets/icons/play.vue";
+import check from "@/assets/icons/check.vue";
 export default {
   components: {
     play,
+    check,
   },
   props: {
     percentage: {

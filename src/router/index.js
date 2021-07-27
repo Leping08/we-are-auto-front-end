@@ -36,7 +36,12 @@ const routes = [
     path: "/races/:id(\\d+)",
     name: "races.show",
     component: () =>
-      import(/* webpackChunkName: "races.index" */ "../views/races/show.vue"),
+      import(/* webpackChunkName: "races.show" */ "../views/races/show.vue"),
+  },
+  {
+    path: "/:pathMatch(.*)*",
+    name: "404",
+    component: () => import(/* webpackChunkName: "404" */ "../views/404.vue"),
   },
 ];
 

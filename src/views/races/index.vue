@@ -18,7 +18,7 @@
                 font-extrabold
                 text-gray-900
                 tracking-tight
-                sm:text-3xl
+                sm:text-4xl
               "
             >
               It's like Netflix for gearheads
@@ -210,41 +210,8 @@
                   <play-progress :percentage="35" />
                 </div>
 
-                <div
-                  class="
-                    absolute
-                    left-0
-                    bottom-0
-                    bg-white
-                    -my-6
-                    ml-4
-                    rounded-full
-                    pr-4
-                    shadow-lg
-                  "
-                >
-                  <div class="flex items-center">
-                    <div class="flex-shrink-0">
-                      <div class="p-1">
-                        <span class="sr-only">{{ race.series.name }}</span>
-                        <img
-                          class="h-10 w-10 rounded-full shadow"
-                          src="https://play-lh.googleusercontent.com/Q9d2U43Q5LUGzSYaRqJjwbay9Azqthsk4LDgPartOwnI7u2Vyd3nZpaU4vE9QKDpsg"
-                          alt=""
-                        />
-                      </div>
-                    </div>
-                    <div class="ml-3">
-                      <div class="text-sm font-medium text-gray-900">
-                        <div class="font-bold text-gray-800">
-                          {{ race.series.name }}
-                        </div>
-                      </div>
-                      <div class="flex space-x-1 text-sm text-gray-400">
-                        <span>{{ race.season.name }}</span>
-                      </div>
-                    </div>
-                  </div>
+                <div class="absolute left-0 bottom-0 -my-6 ml-6">
+                  <series-pill :series="race.series" :year="race.season.name" />
                 </div>
               </div>
               <div class="flex-1 bg-white p-6 flex flex-col justify-between">
@@ -312,6 +279,7 @@
 </template>
 
 <script>
+import { shallowRef } from "vue";
 import Race from "@/api/races";
 import flag from "@/assets/icons/flag-checkered.vue";
 import clockStart from "@/assets/icons/clock-start.vue";
@@ -320,12 +288,14 @@ import formatListBulleted from "@/assets/icons/format-list-bulleted.vue";
 import arrow from "@/assets/icons/arrow-right.vue";
 import play from "@/assets/icons/play.vue";
 import playProgress from "@/components/playProgress.vue";
+import seriesPill from "@/components/series/pill.vue";
 export default {
   components: {
     flag,
     arrow,
     play,
     playProgress,
+    seriesPill,
   },
   data() {
     return {
@@ -337,21 +307,21 @@ export default {
           name: "Jump to start",
           description:
             "Jump directly to the start of the race skipping all of the pre race ceremonies.",
-          icon: clockStart,
+          icon: shallowRef(clockStart),
         },
         {
           id: 2,
           name: "Progress",
           description:
             "Done watching a race? Check it off to keep track all the races you have watched for a season.",
-          icon: checkboxMarkedCircleOutline,
+          icon: shallowRef(checkboxMarkedCircleOutline),
         },
         {
           id: 3,
           name: "Seasons",
           description:
             "Watch the races through a full season just like it happened live.",
-          icon: formatListBulleted,
+          icon: shallowRef(formatListBulleted),
         },
       ],
     };
@@ -363,12 +333,10 @@ export default {
     async getLatestRaces() {
       try {
         this.loadingLatestRaces = true;
-        const response = await new Race().latest(3);
-        this.races = response.data;
+        ({ data: this.races } = await new Race().latest(3));
+        this.loadingLatestRaces = false;
       } catch (error) {
         console.log(error);
-      } finally {
-        this.loadingLatestRaces = false;
       }
     },
   },
