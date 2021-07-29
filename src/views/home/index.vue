@@ -146,7 +146,7 @@
 <script>
 export default {
   components: {},
-  setup() {
+  data() {
     return {
       test: "",
     };

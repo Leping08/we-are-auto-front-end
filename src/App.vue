@@ -230,7 +230,29 @@
           </div>
           <div class="flex-shrink-0 flex bg-gray-700 p-4">
             <a href="#" class="flex-shrink-0 w-full group block">
-              <div class="flex items-center">
+              <div class="flex items-center" v-if="user">
+                <div>
+                  <img
+                    class="inline-block h-10 w-10 rounded-full"
+                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                    alt=""
+                  />
+                </div>
+                <div class="ml-3">
+                  <p class="text-sm font-medium text-white">{{ user.name }}</p>
+                  <p
+                    class="
+                      text-xs
+                      font-medium
+                      text-gray-300
+                      group-hover:text-gray-200
+                    "
+                  >
+                    View profile
+                  </p>
+                </div>
+              </div>
+              <div class="flex items-center" v-else>
                 <div>
                   <img
                     class="inline-block h-10 w-10 rounded-full"
@@ -331,7 +353,7 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapActions, mapState } from "vuex";
 import { shallowRef } from "vue";
 import {
   Dialog,
@@ -394,6 +416,15 @@ export default {
     ...mapState("podcast", {
       showPodcast: (state) => state.showPodcastFooter,
     }),
+    ...mapState("user", {
+      user: (state) => state.user,
+    }),
+  },
+  methods: {
+    ...mapActions("user", ["setUser"]),
+  },
+  created() {
+    this.setUser();
   },
 };
 </script>

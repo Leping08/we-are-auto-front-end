@@ -39,6 +39,20 @@ const routes = [
       import(/* webpackChunkName: "races.show" */ "../views/races/show.vue"),
   },
   {
+    path: "/login",
+    name: "auth.login",
+    component: () =>
+      import(/* webpackChunkName: "auth.login" */ "../views/auth/login.vue"),
+  },
+  {
+    path: "/register",
+    name: "auth.register",
+    component: () =>
+      import(
+        /* webpackChunkName: "auth.register" */ "../views/auth/register.vue"
+      ),
+  },
+  {
     path: "/:pathMatch(.*)*",
     name: "404",
     component: () => import(/* webpackChunkName: "404" */ "../views/404.vue"),
