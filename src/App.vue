@@ -1,6 +1,9 @@
 <!-- This example requires Tailwind CSS v2.0+ -->
 <template>
-  <div class="h-screen flex overflow-hidden bg-gray-100">
+  <div
+    class="h-screen flex overflow-hidden bg-gray-100"
+    v-if="!$route.meta.disable_nav"
+  >
     <TransitionRoot as="template" :show="sidebarOpen">
       <Dialog
         as="div"
@@ -349,6 +352,9 @@
         </div>
       </main>
     </div>
+  </div>
+  <div v-if="$route.meta.disable_nav">
+    <router-view />
   </div>
 </template>
 

@@ -5,7 +5,7 @@ const routes = [
     path: "/",
     name: "home.index",
     component: () =>
-      import(/* webpackChunkName: "home.index" */ "../views/home/index.vue"),
+      import(/* webpackChunkName: "home.index" */ "@/views/home/index.vue"),
   },
   {
     path: "/podcasts",
@@ -15,7 +15,7 @@ const routes = [
     },
     component: () =>
       import(
-        /* webpackChunkName: "podcast.index" */ "../views/podcasts/index.vue"
+        /* webpackChunkName: "podcast.index" */ "@/views/podcasts/index.vue"
       ),
   },
   {
@@ -23,39 +23,48 @@ const routes = [
     name: "fantasy.index",
     component: () =>
       import(
-        /* webpackChunkName: "fantasy.index" */ "../views/fantasy/index.vue"
+        /* webpackChunkName: "fantasy.index" */ "@/views/fantasy/index.vue"
       ),
   },
   {
     path: "/races",
     name: "races.index",
     component: () =>
-      import(/* webpackChunkName: "races.index" */ "../views/races/index.vue"),
+      import(/* webpackChunkName: "races.index" */ "@/views/races/index.vue"),
   },
   {
     path: "/races/:id(\\d+)",
     name: "races.show",
     component: () =>
-      import(/* webpackChunkName: "races.show" */ "../views/races/show.vue"),
+      import(/* webpackChunkName: "races.show" */ "@/views/races/show.vue"),
   },
   {
     path: "/login",
     name: "auth.login",
     component: () =>
-      import(/* webpackChunkName: "auth.login" */ "../views/auth/login.vue"),
+      import(/* webpackChunkName: "auth.login" */ "@/views/auth/login.vue"),
   },
   {
     path: "/register",
     name: "auth.register",
     component: () =>
       import(
-        /* webpackChunkName: "auth.register" */ "../views/auth/register.vue"
+        /* webpackChunkName: "auth.register" */ "@/views/auth/register.vue"
       ),
+  },
+  {
+    path: "/obs",
+    name: "obs",
+    meta: {
+      disable_nav: true,
+    },
+    component: () =>
+      import(/* webpackChunkName: "auth.register" */ "@/views/obs/index.vue"),
   },
   {
     path: "/:pathMatch(.*)*",
     name: "404",
-    component: () => import(/* webpackChunkName: "404" */ "../views/404.vue"),
+    component: () => import(/* webpackChunkName: "404" */ "@/views/404.vue"),
   },
 ];
 

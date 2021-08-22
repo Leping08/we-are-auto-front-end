@@ -1,11 +1,10 @@
-import axios from "axios";
-
-axios.defaults.baseURL = `${process.env.VUE_APP_BACKEND_URL}/api`;
+import axios from "@/api/index.js";
+import authApi from "@/api/auth/index.js";
 
 export default class Model {
-  constructor(model) {
+  constructor(model, auth) {
     this.model = model;
-    this.axios = axios;
+    auth ? (this.axios = axios) : (this.axios = authApi);
   }
 
   async index() {

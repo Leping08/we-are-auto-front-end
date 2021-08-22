@@ -1,11 +1,12 @@
-import axios from "axios";
+import axios from "@/api/index.js";
 import store from "@/store/index";
 import router from "@/router/index";
 
-axios.defaults.baseURL = `${process.env.VUE_APP_BACKEND_URL}/api`;
 const token = localStorage.getItem("access_token") || null;
 axios.defaults.headers.common = {
   Authorization: `Bearer ${token}`,
+  "content-type": "application/json",
+  accept: "application/json",
 };
 
 axios.interceptors.response.use(

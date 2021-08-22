@@ -67,6 +67,8 @@
         :key="podcast"
       >
         <v-card
+          border
+          padding
           @click="startPodcast(podcasts?.rss?.channel?.item?.length - index)"
           class="my-4 cursor-pointer"
         >
@@ -137,6 +139,7 @@
 import { mapMutations } from "vuex";
 import { all } from "@/api/podcast/index.js";
 import playCircleOutline from "@/assets/icons/play-circle-outline.vue";
+
 import applePodcast from "@/assets/icons/apple-podcast.vue";
 import googlePodcast from "@/assets/icons/google-podcast.vue";
 import spotify from "@/assets/icons/spotify.vue";

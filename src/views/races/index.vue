@@ -207,7 +207,7 @@
                   alt=""
                 />
                 <div class="absolute right-0 bottom-0 -my-5 mr-6">
-                  <play-progress :percentage="35" />
+                  <play-progress :race="race" />
                 </div>
 
                 <div class="absolute left-0 bottom-0 -my-6 ml-6">
@@ -280,7 +280,7 @@
 
 <script>
 import { shallowRef } from "vue";
-import Race from "@/api/races";
+import Race from "@/api/models/races";
 import flag from "@/assets/icons/flag-checkered.vue";
 import clockStart from "@/assets/icons/clock-start.vue";
 import checkboxMarkedCircleOutline from "@/assets/icons/checkbox-marked-circle-outline.vue";

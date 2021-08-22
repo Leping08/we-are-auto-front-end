@@ -1,4 +1,4 @@
-import Model from "@/api/model.js";
+import Model from "@/api/models/base-model.js";
 
 export default class Race extends Model {
   constructor() {

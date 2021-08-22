@@ -30,11 +30,11 @@
           </div>
           <div>
             <v-button
-              :color="inputsAreValid ? 'blue' : 'gray'"
+              color="blue"
               size="md"
               rounded="rounded-lg"
               shadow="shadow"
-              :class="[inputsAreValid ? 'cursor-pinter' : 'cursor-not-allowed']"
+              :disabled="!inputsAreValid"
               @click="attemptLogin"
             >
               Submit
@@ -47,18 +47,24 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 export default {
   data() {
     return {
       email: "",
+      emailValidated: true,
       password: "",
+      passwordValidated: true,
     };
   },
   computed: {
+    ...mapGetters("user", ["isAuthenticated"]),
     inputsAreValid() {
       return this.email && this.password;
     },
+  },
+  created() {
+    this.isAuthenticated ? this.$router.push({ name: "races.index" }) : "";
   },
   methods: {
     ...mapActions("user", ["login", "setUser", "setToken"]),
