@@ -2,29 +2,63 @@
   <div class="p-6">
     <div class="flex justify-between items-center">
       <div class="text-xl font-bold text-gray-900 sm:text-2xl sm:truncate">
-        We Are Auto Show
-      </div>
-      <div class="flex text-gray-600 space-x-2">
-        <a
-          href="https://podcasts.apple.com/us/podcast/we-are-auto/id1557884758?i=1000527608218"
-          target="_blank"
-        >
-          <apple-podcast class="h-6 w-6" />
-        </a>
-        <a
-          href="https://podcasts.google.com/feed/aHR0cHM6Ly93ZWFyZWF1dG8ubGlic3luLmNvbS9yc3M"
-          target="_blank"
-        >
-          <google-podcast class="h-6 w-6" />
-        </a>
-        <a
-          href="https://open.spotify.com/show/1ePLe4BB9nUGBWGVfpx14q?si=D_FQ3Ap-S-iKfaSetQML1g&dl_branch=1"
-          target="_blank"
-        >
-          <spotify class="h-6 w-6" />
-        </a>
+        The We Are Auto Show
       </div>
     </div>
+
+    <div>
+      A weekly show covering auto news, racing news, car spots, interviews and
+      just plain old car banter.
+    </div>
+    <div>Listen anywhere any time.</div>
+    <div class="flex justify-around relative">
+      <!-- <div class="bg-white rounded-lg shadow-sm mx-8">
+        <img src="@/assets/images/profile/derek.png" >
+      </div> -->
+      <div class="bg-white rounded-lg shadow-md p-10">
+        <div
+          class="shadow-lg h-64 w-64 rounded-full bg-gray-50 overflow-hidden"
+        >
+          <img
+            class="object-cover h-full"
+            src="@/assets/images/profile/derek.png"
+            alt=""
+          />
+        </div>
+      </div>
+      <div class="bg-white rounded-lg shadow-md p-10">
+        <div
+          class="shadow-lg h-64 w-64 rounded-full bg-gray-50 overflow-hidden"
+        >
+          <img
+            class="object-cover h-full"
+            src="@/assets/images/profile/mike.png"
+            alt=""
+          />
+        </div>
+      </div>
+    </div>
+    <div class="flex text-gray-600 space-x-2">
+      <a
+        href="https://podcasts.apple.com/us/podcast/we-are-auto/id1557884758?i=1000527608218"
+        target="_blank"
+      >
+        <apple-podcast class="h-14 w-14 p-2" />
+      </a>
+      <a
+        href="https://podcasts.google.com/feed/aHR0cHM6Ly93ZWFyZWF1dG8ubGlic3luLmNvbS9yc3M"
+        target="_blank"
+      >
+        <google-podcast class="h-14 w-14 p-2" />
+      </a>
+      <a
+        href="https://open.spotify.com/show/1ePLe4BB9nUGBWGVfpx14q?si=D_FQ3Ap-S-iKfaSetQML1g&dl_branch=1"
+        target="_blank"
+      >
+        <spotify class="h-14 w-14" />
+      </a>
+    </div>
+
     <div v-if="loading">
       <template v-for="index in 5" :key="index">
         <div
