@@ -11,13 +11,27 @@
       just plain old car banter.
     </div>
     <div>Listen anywhere any time.</div>
-    <div class="flex justify-around relative">
-      <!-- <div class="bg-white rounded-lg shadow-sm mx-8">
-        <img src="@/assets/images/profile/derek.png" >
-      </div> -->
-      <div class="bg-white rounded-lg shadow-md p-10">
+    <div
+      class="
+        grid grid-cols-2
+        gap-4
+        bg-gradient-to-r
+        from-blue-400
+        to-blue-600
+        p-2
+      "
+    >
+      <div class="p-10">
         <div
-          class="shadow-lg h-64 w-64 rounded-full bg-gray-50 overflow-hidden"
+          class="
+            shadow-lg
+            h-64
+            w-64
+            rounded-full
+            bg-white
+            overflow-hidden
+            mx-auto
+          "
         >
           <img
             class="object-cover h-full"
@@ -25,16 +39,36 @@
             alt=""
           />
         </div>
+        <div class="text-center text-blue-50 text-2xl p-2">Derek</div>
+        <div class="text-blue-100">
+          Aliquet adipiscing lectus praesent cras sed quis lectus egestas erat.
+          Bibendum curabitur eget habitant feugiat nec faucibus eu lorem
+          suscipit. Vitae vitae tempor enim eget lacus nulla leo.
+        </div>
       </div>
-      <div class="bg-white rounded-lg shadow-md p-10">
+      <div class="p-10">
         <div
-          class="shadow-lg h-64 w-64 rounded-full bg-gray-50 overflow-hidden"
+          class="
+            shadow-lg
+            h-64
+            w-64
+            rounded-full
+            bg-white
+            overflow-hidden
+            mx-auto
+          "
         >
           <img
             class="object-cover h-full"
             src="@/assets/images/profile/mike.png"
             alt=""
           />
+        </div>
+        <div class="text-center text-blue-50 text-2xl p-2">Micheal</div>
+        <div class="text-blue-100">
+          Aliquet adipiscing lectus praesent cras sed quis lectus egestas erat.
+          Bibendum curabitur eget habitant feugiat nec faucibus eu lorem
+          suscipit. Vitae vitae tempor enim eget lacus nulla leo.
         </div>
       </div>
     </div>
