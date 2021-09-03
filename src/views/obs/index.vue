@@ -6,7 +6,16 @@
       :options="options"
     />
     <div class="flex justify-around items-center h-screen">
-      <div class="relative w-2/5 rounded-lg border-2 border-blue-500">
+      <div
+        class="
+          relative
+          w-2/5
+          bg-gradient-to-br
+          from-blue-500
+          via-indigo-500
+          to-blue-600
+        "
+      >
         <div
           class="
             bg-blue-500
@@ -16,27 +25,26 @@
             -mt-46
             rounded-t-lg
             ml-4
-            border-t-2 border-r-2 border-l-2 border-blue-500
+            bg-gradient-to-r
+            from-blue-600
+            to-blue-400
             text-lg text-white
           "
         >
           Michael
         </div>
-        <div class="aspect-ratio-16/9"></div>
-        <div
-          class="
-            absolute
-            left-0
-            top-0
-            w-full
-            h-full
-            object-cover
-            bg-gray-300
-            rounded-md
-          "
-        />
+        <div class="aspect-w-16 aspect-h-9"></div>
       </div>
-      <div class="relative w-2/5 rounded-lg border-2 border-blue-500">
+      <div
+        class="
+          relative
+          w-2/5
+          bg-gradient-to-br
+          from-blue-500
+          via-indigo-500
+          to-blue-600
+        "
+      >
         <div
           class="
             bg-blue-500
@@ -46,62 +54,54 @@
             -mt-46
             rounded-t-lg
             ml-4
-            border-t-2 border-r-2 border-l-2 border-blue-500
+            bg-gradient-to-br
+            from-blue-600
+            via-indigo-500
+            to-blue-400
+            border-t-2 border-l-2 border-r-2 border-white
             text-lg text-white
           "
         >
           Derek
         </div>
-        <div class="aspect-ratio-16/9"></div>
-        <div
-          class="
-            absolute
-            left-0
-            top-0
-            w-full
-            h-full
-            object-cover
-            bg-gray-300
-            rounded-md
-          "
-        />
+        <div class="aspect-w-16 aspect-h-9"></div>
       </div>
-      <div
-        class="
-          w-1/5
-          bg-white
-          p-2
-          absolute
-          top-0
-          left-0
-          border-b-2 border-r-2 border-blue-500
-          rounded-br-lg
-        "
-      >
-        <div class="flex items-center">
-          <div>
-            <img
-              class="h-20 w-auto"
-              src="@/assets/logos/waa-logo-dark.svg"
-              alt="We Are Auto"
-            />
-          </div>
-          <div>
-            <div class="text-4xl text-gray-700">We Are Auto</div>
-            <div class="text-gray-500">
-              For <span class="text-blue-600">Enthusiasts</span> By
-              <span class="text-blue-600">Enthusiasts</span>
-            </div>
+    </div>
+    <div
+      class="
+        w-1/5
+        p-2
+        absolute
+        top-0
+        left-0
+        bg-blue-800
+        border-b-2 border-r-2 border-white
+        rounded-br-lg
+      "
+    >
+      <div class="flex items-center">
+        <div>
+          <img
+            class="h-20 w-auto"
+            src="@/assets/logos/waa-logo-light.svg"
+            alt="We Are Auto"
+          />
+        </div>
+        <div>
+          <div class="text-4xl text-blue-50">We Are Auto</div>
+          <div class="text-gray-400">
+            For <span class="text-white">Enthusiasts</span> By
+            <span class="text-white">Enthusiasts</span>
           </div>
         </div>
       </div>
+    </div>
+    <div class="w-full absolute bottom-0">
       <div
         class="
           w-1/3
           bg-white
           p-2
-          absolute
-          bottom-0
           mx-auto
           border-r-2 border-l-2 border-t-2 border-blue-500
           rounded-t-lg
@@ -211,7 +211,7 @@ export default {
             enable: true,
             outMode: "bounce",
             random: false,
-            speed: 1,
+            speed: 0.5,
             straight: false,
           },
           number: {
@@ -242,9 +242,5 @@ export default {
 <style>
 .-mt-46 {
   margin-top: -46px;
-}
-
-.aspect-ratio-16\/9 {
-  padding-bottom: 56.25%;
 }
 </style>

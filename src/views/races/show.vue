@@ -1,5 +1,5 @@
 <template>
-  <div class="p-4 relative" v-if="race.length && races.length">
+  <div class="p-4 relative overflow-hidden" v-if="race.length && races.length">
     <div class="my-2 ml-2 mr-20">
       <v-card
         :heading="race.name"
@@ -108,114 +108,121 @@
       </v-card>
     </div>
 
-    <div class="absolute right-0 top-0 mt-6 z-10 px-4">
-      <div class="transform translate-x-full">
-        <div
-          class="
-            transform
-            duration-500
-            ease-in-out
-            -translate-x-14
-            hover:-translate-x-full
-            shadow-md
-            overflow-hidden
-          "
-        >
-          <v-card class="">
-            <template v-slot:header>
-              <div class="flex items-center p-2">
-                <div class="flex-shrink-0">
-                  <div class="px-2">
-                    <span class="sr-only">{{ race.series.name }}</span>
-                    <img
-                      class="h-10 w-10 rounded-full shadow"
-                      :src="race.series.logo"
-                      alt=""
-                    />
-                  </div>
-                </div>
-                <div class="ml-3">
-                  <div class="text-sm font-medium text-gray-900">
-                    <div class="font-bold text-gray-800">
-                      {{ race.series.name }}
-                    </div>
-                  </div>
-                  <div class="flex space-x-1 text-sm text-gray-400">
-                    <span>{{ race.season.name }}</span>
-                  </div>
+    <div
+      class="
+        absolute
+        right-0
+        top-0
+        mt-6
+        z-10
+        px-4
+        transform
+        translate-x-full
+        mx-20
+      "
+    >
+      <div
+        @mouseover="seasonOpen = true"
+        @mouseleave="seasonOpen = false"
+        :class="[
+          seasonOpen
+            ? 'transform duration-500 -translate-x-full ease-in-out mx-12'
+            : 'transform duration-500 translate-x-0 ease-in-out',
+        ]"
+      >
+        <v-card>
+          <template v-slot:header>
+            <div class="flex items-center p-2">
+              <div class="flex-shrink-0">
+                <div class="px-2">
+                  <span class="sr-only">{{ race.series.name }}</span>
+                  <img
+                    class="h-10 w-10 rounded-full shadow"
+                    :src="race.series.logo"
+                    alt=""
+                  />
                 </div>
               </div>
-            </template>
+              <div class="ml-3">
+                <div class="text-sm font-medium text-gray-900">
+                  <div class="font-bold text-gray-800">
+                    {{ race.series.name }}
+                  </div>
+                </div>
+                <div class="flex space-x-1 text-sm text-gray-400">
+                  <span>{{ race.season.name }}</span>
+                </div>
+              </div>
+            </div>
+          </template>
 
-            <!-- Activity Feed -->
-            <div class="flow-root">
-              <div class="m-4">
-                <div v-for="(race, index) in races" :key="race.id">
-                  <router-link
-                    class="group"
-                    :to="{ name: 'races.show', params: { id: race.id } }"
-                  >
-                    <div class="relative mb-8">
-                      <span
-                        v-if="index !== races.length - 1"
+          <div class="flow-root">
+            <div class="m-4">
+              <div v-for="(race, index) in races" :key="race.id">
+                <router-link
+                  class="group"
+                  :to="{ name: 'races.show', params: { id: race.id } }"
+                >
+                  <div class="relative mb-8">
+                    <span
+                      v-if="index !== races.length - 1"
+                      class="
+                        absolute
+                        top-12
+                        left-5
+                        -ml-px
+                        h-6
+                        w-0.5
+                        bg-gray-200
+                      "
+                      aria-hidden="true"
+                    />
+                    <div class="relative flex space-x-3">
+                      <div>
+                        <play-progress :race="race" />
+                      </div>
+                      <div
                         class="
-                          absolute
-                          top-12
-                          left-5
-                          -ml-px
-                          h-6
-                          w-0.5
-                          bg-gray-200
+                          min-w-0
+                          flex-1
+                          pt-1.5
+                          flex
+                          justify-between
+                          space-x-4
                         "
-                        aria-hidden="true"
-                      />
-                      <div class="relative flex space-x-3">
-                        <div>
-                          <play-progress :race="race" />
-                        </div>
-                        <div
-                          class="
-                            min-w-0
-                            flex-1
-                            pt-1.5
-                            flex
-                            justify-between
-                            space-x-4
-                          "
-                        >
-                          <div class="ml-1">
-                            <div
-                              class="
-                                text-sm text-gray-600
-                                group-hover:text-gray-900
-                              "
-                              :class="
-                                $route.params.id == race.id ? 'font-bold' : ''
-                              "
-                            >
-                              {{ race.name }}
-                            </div>
-                            <div
-                              class="
-                                text-sm text-gray-400
-                                group-hover:text-gray-700
-                              "
-                              :class="
-                                $route.params.id == race.id ? 'font-bold' : ''
-                              "
-                            >
-                              {{ race.track.name }}
-                            </div>
+                      >
+                        <div class="ml-1">
+                          <div
+                            class="
+                              text-sm text-gray-600
+                              group-hover:text-gray-900
+                            "
+                            :class="
+                              $route.params.id == race.id ? 'font-bold' : ''
+                            "
+                          >
+                            {{ race.name }}
+                          </div>
+                          <div
+                            class="
+                              text-sm text-gray-400
+                              group-hover:text-gray-700
+                            "
+                            :class="
+                              $route.params.id == race.id ? 'font-bold' : ''
+                            "
+                          >
+                            {{ race.track.name }}
                           </div>
                         </div>
                       </div>
                     </div>
-                  </router-link>
-                </div>
+                  </div>
+                </router-link>
               </div>
             </div>
-          </v-card>
-        </div>
+          </div>
+        </v-card>
       </div>
     </div>
   </div>
@@ -236,6 +243,7 @@ export default {
       race: [],
       races: [],
       player: null,
+      seasonOpen: false,
     };
   },
   async mounted() {

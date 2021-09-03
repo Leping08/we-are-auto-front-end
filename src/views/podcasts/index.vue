@@ -1,78 +1,163 @@
 <template>
-  <div class="p-6">
-    <div class="flex justify-between items-center">
-      <div class="text-xl font-bold text-gray-900 sm:text-2xl sm:truncate">
-        The We Are Auto Show
+  <div>
+    <div class="relative">
+      <div
+        class="
+          lg:mx-auto lg:px-8
+          py-20
+          lg:grid lg:grid-cols-2 lg:grid-flow-col-dense lg:gap-24
+        "
+      >
+        <div class="relative max-w-xl mx-auto p-6 lg:p-0">
+          <h3
+            class="
+              text-2xl
+              font-extrabold
+              text-gray-900
+              tracking-tight
+              sm:text-4xl
+            "
+          >
+            The We Are Auto Show
+          </h3>
+          <p class="mt-3 text-lg text-gray-500">
+            A weekly show covering auto news, racing news, car spots, interviews
+            and just plain old car banter.
+          </p>
+
+          <dl class="mt-10 space-y-10">
+            <div v-for="item in features" :key="item.id" class="relative">
+              <dt>
+                <div
+                  class="
+                    absolute
+                    flex
+                    items-center
+                    justify-center
+                    h-12
+                    w-12
+                    rounded-md
+                    bg-gradient-to-r
+                    from-blue-400
+                    to-blue-600
+                    text-white
+                  "
+                >
+                  <component
+                    :is="item.icon"
+                    class="h-6 w-6"
+                    aria-hidden="true"
+                  />
+                </div>
+                <p class="ml-16 text-lg leading-6 font-medium text-gray-900">
+                  {{ item.name }}
+                </p>
+              </dt>
+              <dd class="mt-2 ml-16 text-base text-gray-500">
+                {{ item.description }}
+              </dd>
+            </div>
+          </dl>
+        </div>
+        <div class="mt-12 sm:mt-16 lg:mt-0">
+          <div
+            class="
+              pl-4
+              -mr-48
+              sm:pl-6
+              md:-mr-16
+              lg:px-0 lg:m-0 lg:relative lg:h-full
+            "
+          >
+            <img
+              class="
+                w-full
+                rounded-xl
+                shadow-xl
+                ring-1 ring-black ring-opacity-5
+                lg:absolute lg:left-0 lg:h-full lg:w-auto lg:max-w-none
+              "
+              src="https://tailwindui.com/img/component-images/inbox-app-screenshot-1.jpg"
+              alt="Inbox user interface"
+            />
+          </div>
+        </div>
       </div>
     </div>
+  </div>
 
-    <div>
-      A weekly show covering auto news, racing news, car spots, interviews and
-      just plain old car banter.
-    </div>
-    <div>Listen anywhere any time.</div>
+  <div class="">
     <div
       class="
-        grid grid-cols-2
-        gap-4
         bg-gradient-to-r
         from-blue-400
         to-blue-600
-        p-2
+        h-24
+        -mb-12
+        -mx-12
+        transform
+        -rotate-2
       "
-    >
-      <div class="p-10">
-        <div
-          class="
-            shadow-lg
-            h-64
-            w-64
-            rounded-full
-            bg-white
-            overflow-hidden
-            mx-auto
-          "
-        >
-          <img
-            class="object-cover h-full"
-            src="@/assets/images/profile/derek.png"
-            alt=""
-          />
+    />
+    <div class="bg-gradient-to-r from-blue-400 to-blue-600">
+      <div class="grid grid-cols-2 gap-4 py-10">
+        <div class="p-10">
+          <div
+            class="
+              shadow-lg
+              h-64
+              w-64
+              rounded-full
+              bg-white
+              overflow-hidden
+              mx-auto
+            "
+          >
+            <img
+              class="object-cover h-full"
+              src="@/assets/images/profile/mike.png"
+              alt=""
+            />
+          </div>
+          <div class="text-center text-blue-50 text-2xl p-2">Michael</div>
         </div>
-        <div class="text-center text-blue-50 text-2xl p-2">Derek</div>
-        <div class="text-blue-100">
-          Aliquet adipiscing lectus praesent cras sed quis lectus egestas erat.
-          Bibendum curabitur eget habitant feugiat nec faucibus eu lorem
-          suscipit. Vitae vitae tempor enim eget lacus nulla leo.
-        </div>
-      </div>
-      <div class="p-10">
-        <div
-          class="
-            shadow-lg
-            h-64
-            w-64
-            rounded-full
-            bg-white
-            overflow-hidden
-            mx-auto
-          "
-        >
-          <img
-            class="object-cover h-full"
-            src="@/assets/images/profile/mike.png"
-            alt=""
-          />
-        </div>
-        <div class="text-center text-blue-50 text-2xl p-2">Micheal</div>
-        <div class="text-blue-100">
-          Aliquet adipiscing lectus praesent cras sed quis lectus egestas erat.
-          Bibendum curabitur eget habitant feugiat nec faucibus eu lorem
-          suscipit. Vitae vitae tempor enim eget lacus nulla leo.
+        <div class="p-10">
+          <div
+            class="
+              shadow-lg
+              h-64
+              w-64
+              rounded-full
+              bg-white
+              overflow-hidden
+              mx-auto
+            "
+          >
+            <img
+              class="object-cover h-full"
+              src="@/assets/images/profile/derek.png"
+              alt=""
+            />
+          </div>
+          <div class="text-center text-blue-50 text-2xl p-2">Derek</div>
         </div>
       </div>
     </div>
-    <div class="flex text-gray-600 space-x-2">
+    <div
+      class="
+        bg-gradient-to-r
+        from-blue-400
+        to-blue-600
+        h-24
+        -mb-12
+        -mx-12
+        transform
+        -rotate-2
+        -mt-12
+      "
+    />
+
+    <div class="flex text-gray-600 space-x-2 pt-24 m-4">
       <a
         href="https://podcasts.apple.com/us/podcast/we-are-auto/id1557884758?i=1000527608218"
         target="_blank"
@@ -93,7 +178,7 @@
       </a>
     </div>
 
-    <div v-if="loading">
+    <div class="m-6" v-if="loading">
       <template v-for="index in 5" :key="index">
         <div
           class="
@@ -129,7 +214,7 @@
       </template>
     </div>
 
-    <div v-if="!loading">
+    <div class="m-6" v-if="!loading">
       <template
         v-for="(podcast, index) in podcasts?.rss?.channel?.item"
         :key="podcast"
@@ -204,9 +289,13 @@
 </template>
 
 <script>
+import { shallowRef } from "vue";
 import { mapMutations } from "vuex";
 import { all } from "@/api/podcast/index.js";
 import playCircleOutline from "@/assets/icons/play-circle-outline.vue";
+import news from "@/assets/icons/news.vue";
+import chat from "@/assets/icons/chat.vue";
+import shift from "@/assets/icons/car-shift-pattern.vue";
 
 import applePodcast from "@/assets/icons/apple-podcast.vue";
 import googlePodcast from "@/assets/icons/google-podcast.vue";
@@ -222,6 +311,28 @@ export default {
     return {
       loading: false,
       podcasts: {},
+      features: [
+        {
+          id: 1,
+          name: "News",
+          description:
+            "The latest auto industry news as well as whats going on in the racing world.",
+          icon: shallowRef(news),
+        },
+        {
+          id: 2,
+          name: "Interviews",
+          description:
+            "Conversations with a verity of guests from all corners of the automotive industry.",
+          icon: shallowRef(chat),
+        },
+        {
+          id: 3,
+          name: "Car Banter",
+          description: "Simply car enthusiast's talking about car stuff.",
+          icon: shallowRef(shift),
+        },
+      ],
     };
   },
   async created() {
