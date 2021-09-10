@@ -6,8 +6,11 @@
         :subheading="race.track.name"
         class="row-span-2 col-span-3"
       >
-        <div id="wrapper" class="videoWrapper">
+        <div v-show="race.videos.length" id="wrapper" class="videoWrapper">
           <div id="player"></div>
+        </div>
+        <div v-show="!race.videos.length">
+          <div class="p-8">here</div>
         </div>
 
         <nav aria-label="Progress">
@@ -19,8 +22,9 @@
               v-for="(video, index) in race.videos"
               :key="video.id"
               class="relative md:flex-1 md:flex"
+              @click="selectVideoPart(index)"
             >
-              <a v-if="true" href="#" class="group flex items-center w-full">
+              <div class="group flex items-center w-full cursor-pointer">
                 <span
                   class="px-6 py-4 flex items-center text-sm font-medium group"
                 >
@@ -55,7 +59,7 @@
                     >Part {{ index + 1 }}</span
                   >
                 </span>
-              </a>
+              </div>
               <!-- <a v-else-if="step.status === 'current'" :href="step.href" class="px-6 py-4 flex items-center text-sm font-medium" aria-current="step">
                 <span class="flex-shrink-0 w-10 h-10 flex items-center justify-center border-2 border-indigo-600 rounded-full">
                   <span class="text-indigo-600">{{ step.id }}</span>
@@ -118,7 +122,7 @@
         px-4
         transform
         translate-x-full
-        mx-20
+        mx-22
       "
     >
       <div
@@ -166,15 +170,7 @@
                   <div class="relative mb-8">
                     <span
                       v-if="index !== races.length - 1"
-                      class="
-                        absolute
-                        top-12
-                        left-5
-                        -ml-px
-                        h-6
-                        w-0.5
-                        bg-gray-200
-                      "
+                      class="absolute top-12 left-5 h-6 w-0.5 bg-gray-200"
                       aria-hidden="true"
                     />
                     <div class="relative flex space-x-3">
@@ -293,6 +289,16 @@ export default {
       ({ data: this.race } = await new Race().show(this.$route.params.id));
       ({ data: this.races } = await new Race().index());
     },
+    selectVideoPart(index) {
+      // Check if you are already watching that part
+      if (
+        this.race.videos[index].video_id ===
+        this.player.getVideoData().player_id
+      ) {
+        return;
+      }
+      this.player.cueVideoById(this.race.videos[index].video_id);
+    },
   },
   watch: {
     async "$route.params.id"() {
@@ -315,5 +321,10 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
+}
+
+.mx-22 {
+  margin-left: 5.5rem;
+  margin-right: 5.5rem;
 }
 </style>

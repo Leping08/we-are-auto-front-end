@@ -62,6 +62,17 @@ const routes = [
       import(/* webpackChunkName: "auth.register" */ "@/views/obs/index.vue"),
   },
   {
+    path: "/obs/particles",
+    name: "obs.particles",
+    meta: {
+      disable_nav: true,
+    },
+    component: () =>
+      import(
+        /* webpackChunkName: "auth.register" */ "@/views/obs/particles.vue"
+      ),
+  },
+  {
     path: "/:pathMatch(.*)*",
     name: "404",
     component: () => import(/* webpackChunkName: "404" */ "@/views/404.vue"),
