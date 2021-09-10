@@ -59,7 +59,9 @@ const routes = [
       disable_nav: true,
     },
     component: () =>
-      import(/* webpackChunkName: "auth.register" */ "@/views/obs/index.vue"),
+      import(
+        /* webpackChunkName: "auth.register" */ "@/views/obs/two-people.vue"
+      ),
   },
   {
     path: "/obs/particles",
@@ -70,6 +72,17 @@ const routes = [
     component: () =>
       import(
         /* webpackChunkName: "auth.register" */ "@/views/obs/particles.vue"
+      ),
+  },
+  {
+    path: "/obs/guest",
+    name: "obs.guest",
+    meta: {
+      disable_nav: true,
+    },
+    component: () =>
+      import(
+        /* webpackChunkName: "auth.register" */ "@/views/obs/three-people.vue"
       ),
   },
   {
