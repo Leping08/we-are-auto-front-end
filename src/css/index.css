@@ -13,3 +13,7 @@
 .border-primary {
   border-color: #0CA5E9;
 }
+
+.-mt-48 {
+  margin-top: -48px;
+}

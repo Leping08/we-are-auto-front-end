@@ -79,9 +79,3 @@ export default {
   },
 };
 </script>
-
-<style>
-.-mt-48 {
-  margin-top: -48px;
-}
-</style>
