@@ -2,41 +2,37 @@
   <outline>
     <div class="h-screen">
       <div class="flex justify-around items-center p-10 pt-20">
-        <div class="relative w-1/3 border-2 border-primary rounded">
+        <div class="relative w-1/3 border-4 border-primary rounded-lg">
           <div
             class="
               p-2
               top-0
               w-1/6
-              -mt-46
+              -mt-48
               rounded-t-lg
               ml-4
               bg-white
-              border-t-2 border-l-2 border-r-2 border-primary
+              border-t-4 border-l-4 border-r-4 border-primary
               text-lg text-gray-900
             "
           >
             {{ guestName }}
           </div>
-          <div class="aspect-w-16 aspect-h-9">
-            <div class="p-10">
-              <input type="text" v-model="guestName" />
-            </div>
-          </div>
+          <div class="aspect-w-16 aspect-h-9"></div>
         </div>
       </div>
       <div class="flex justify-around items-center p-10">
-        <div class="relative w-1/3 border-2 border-primary rounded">
+        <div class="relative w-1/3 border-4 border-primary rounded-lg">
           <div
             class="
               p-2
               top-0
               w-1/6
-              -mt-46
+              -mt-48
               rounded-t-lg
               ml-4
               bg-white
-              border-t-2 border-l-2 border-r-2 border-primary
+              border-t-4 border-l-4 border-r-4 border-primary
               text-lg text-gray-900
             "
           >
@@ -44,17 +40,17 @@
           </div>
           <div class="aspect-w-16 aspect-h-9"></div>
         </div>
-        <div class="relative w-1/3 border-2 border-primary rounded">
+        <div class="relative w-1/3 border-4 border-primary rounded-lg">
           <div
             class="
               p-2
               top-0
               w-1/6
-              -mt-46
+              -mt-48
               rounded-t-lg
               ml-4
               bg-white
-              border-t-2 border-l-2 border-r-2 border-primary
+              border-t-4 border-l-4 border-r-4 border-primary
               text-lg text-gray-900
             "
           >
@@ -78,5 +74,14 @@ export default {
       guestName: "Guest",
     };
   },
+  created() {
+    this.guestName = this.$route.query.name;
+  },
 };
 </script>
+
+<style>
+.-mt-48 {
+  margin-top: -48px;
+}
+</style>

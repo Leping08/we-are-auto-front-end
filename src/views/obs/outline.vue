@@ -9,7 +9,7 @@
         top-0
         left-0
         bg-white
-        border-b-2 border-r-2 border-primary
+        border-b-4 border-r-4 border-primary
         rounded-br-lg
       "
     >
@@ -37,7 +37,7 @@
           bg-white
           p-2
           mx-auto
-          border-r-2 border-l-2 border-t-2 border-primary
+          border-r-4 border-l-4 border-t-4 border-primary
           rounded-t-lg
         "
       >
@@ -86,9 +86,3 @@ export default {
   },
 };
 </script>
-
-<style>
-.-mt-46 {
-  margin-top: -46px;
-}
-</style>
