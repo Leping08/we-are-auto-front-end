@@ -43,10 +43,7 @@
                       group-hover:bg-blue-500
                     "
                   >
-                    <play
-                      class="w-6 h-6 text-blue-500 group-hover:text-white"
-                      aria-hidden="true"
-                    />
+                    <video-progress :video="video" />
                   </span>
                   <span
                     class="
@@ -228,11 +225,11 @@
 import Race from "@/api/models/races.js";
 //import VideoProgress from "@/api/models/video-progress.js";
 import PlayProgress from "@/components/playProgress.vue";
-import Play from "@/assets/icons/play.vue";
+import VideoProgress from "@/components/videoProgress.vue";
 export default {
   components: {
     PlayProgress,
-    Play,
+    VideoProgress,
   },
   data() {
     return {
