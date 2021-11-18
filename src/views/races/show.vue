@@ -1,16 +1,28 @@
 <template>
-  <div class="p-4 relative overflow-hidden" v-if="race.length && races.length">
+  <div class="p-4 relative" v-if="race.length && races.length">
     <div class="my-2 ml-2 mr-20">
       <v-card
         :heading="race.name"
         :subheading="race.track.name"
         class="row-span-2 col-span-3"
       >
-        <div v-show="race.videos.length" id="wrapper" class="videoWrapper">
+        <div
+          v-show="raceState(race) === 'video'"
+          id="wrapper"
+          class="videoWrapper"
+        >
           <div id="player"></div>
         </div>
-        <div v-show="!race.videos.length">
-          <div class="p-8">here</div>
+        <div v-show="raceState(race) === 'add'">
+          <!-- Check if authenticated here -->
+          <suggestion :race="race" />
+        </div>
+
+        <div v-show="raceState(race) === 'locked'">
+          <div>
+            The {{ race.name }} is scheduled to start on
+            {{ humanReadableDate(race) }}
+          </div>
         </div>
 
         <nav aria-label="Progress">
@@ -57,20 +69,6 @@
                   >
                 </span>
               </div>
-              <!-- <a v-else-if="step.status === 'current'" :href="step.href" class="px-6 py-4 flex items-center text-sm font-medium" aria-current="step">
-                <span class="flex-shrink-0 w-10 h-10 flex items-center justify-center border-2 border-indigo-600 rounded-full">
-                  <span class="text-indigo-600">{{ step.id }}</span>
-                </span>
-                <span class="ml-4 text-sm font-medium text-indigo-600">{{ step.name }}</span>
-              </a>
-              <a v-else :href="step.href" class="group flex items-center">
-                <span class="px-6 py-4 flex items-center text-sm font-medium">
-                  <span class="flex-shrink-0 w-10 h-10 flex items-center justify-center border-2 border-gray-300 rounded-full group-hover:border-gray-400">
-                    <span class="text-gray-500 group-hover:text-gray-900">{{ step.id }}</span>
-                  </span>
-                  <span class="ml-4 text-sm font-medium text-gray-500 group-hover:text-gray-900">{{ step.name }}</span>
-                </span>
-              </a> -->
               <template v-if="index !== race.videos.length - 1">
                 <!-- Arrow separator for lg screens and up -->
                 <div
@@ -95,17 +93,6 @@
             </li>
           </ol>
         </nav>
-
-        <!-- <div class="flex justify-around p-4 items-center" v-if="race.videos.length > 1">
-          <div class="relative mx-auto" v-for="(video, index) in race.videos" :key="video.id">
-            <div class="text-gray-500 shadow-md border h-10 w-10 rounded-full flex justify-around items-center">
-              {{ index+1 }}
-            </div>
-            <div class="flex justify-around w-full" v-if="race.videos.length > index+1">
-                <div class="bg-gray-200 h-0.5 w-full -mt-5"></div>
-            </div>
-          </div>
-        </div> -->
       </v-card>
     </div>
 
@@ -226,10 +213,12 @@ import Race from "@/api/models/races.js";
 //import VideoProgress from "@/api/models/video-progress.js";
 import PlayProgress from "@/components/playProgress.vue";
 import VideoProgress from "@/components/videoProgress.vue";
+import Suggestion from "@/components/races/suggestion.vue";
 export default {
   components: {
     PlayProgress,
     VideoProgress,
+    Suggestion,
   },
   data() {
     return {
@@ -237,6 +226,8 @@ export default {
       races: [],
       player: null,
       seasonOpen: false,
+      suggestionLink: null,
+      validated: false,
     };
   },
   async mounted() {
@@ -246,10 +237,10 @@ export default {
   },
   async unmounted() {
     // Save the video progress on leave
-    // await new VideoProgress().store({
-    //   video_id: 1,
-    //   seconds: 100
-    // })
+    await new VideoProgress().store({
+      video_id: 1,
+      seconds: 100,
+    });
   },
   methods: {
     initPlayer() {
@@ -295,6 +286,31 @@ export default {
         return;
       }
       this.player.cueVideoById(this.race.videos[index].video_id);
+    },
+    raceState(race) {
+      if (race?.videos?.length >= 1) {
+        return "video";
+      }
+
+      const today = new Date().getTime();
+      const race_starts_at = isNaN(Date.parse(race?.starts_at))
+        ? 0
+        : Date.parse(race?.starts_at);
+
+      if (today < race_starts_at) {
+        return "locked";
+      }
+
+      if (!(race?.videos?.length >= 1)) {
+        return "add";
+      }
+
+      return null;
+    },
+    humanReadableDate(race) {
+      return isNaN(Date.parse(race?.starts_at))
+        ? 0
+        : new Date(Date.parse(race?.starts_at)).toLocaleDateString();
     },
   },
   watch: {

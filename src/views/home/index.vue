@@ -75,60 +75,10 @@
                 lg:mx-0
               "
             >
-              Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui
-              lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat
-              fugiat aliqua.
+              We Are Auto is a community of car enthusiasts built for
+              enthusiasts by enthusiasts. Weekly shows where we go deep into car
+              news, culture, and interviews with fellow enthusiasts.
             </p>
-            <div
-              class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start"
-            >
-              <div class="rounded-md shadow">
-                <a
-                  href="#"
-                  class="
-                    w-full
-                    flex
-                    items-center
-                    justify-center
-                    px-8
-                    py-3
-                    border border-transparent
-                    text-base
-                    font-medium
-                    rounded-md
-                    text-white
-                    bg-blue-500
-                    hover:bg-blue-400
-                    md:py-4 md:text-lg md:px-10
-                  "
-                >
-                  Get started
-                </a>
-              </div>
-              <div class="mt-3 sm:mt-0 sm:ml-3">
-                <a
-                  href="#"
-                  class="
-                    w-full
-                    flex
-                    items-center
-                    justify-center
-                    px-8
-                    py-3
-                    border border-transparent
-                    text-base
-                    font-medium
-                    rounded-md
-                    text-blue-500
-                    bg-blue-100
-                    hover:bg-blue-200
-                    md:py-4 md:text-lg md:px-10
-                  "
-                >
-                  Live demo
-                </a>
-              </div>
-            </div>
           </div>
         </main>
       </div>
@@ -141,11 +91,66 @@
       />
     </div>
   </div>
+  <div class="lg:m-24 md:m-10 sm:m-4">
+    <div class="flex justify-between items-center">
+      <div class="shadow-lg mx-10">
+        <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/videoseries?list=PLraZMoJiSzQwsE1md-537OkILuQAcI1Px"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+      <div class="mx-auto">
+        <div
+          class="
+            tracking-tight
+            font-bold
+            text-gray-900 text-xl
+            sm:text-3xl
+            pt-24
+          "
+        >
+          The <span class="text-blue-500">We Are Auto Show</span>
+        </div>
+        <div class="text-base text-gray-500">
+          A weekly show where we go deep into car news, culture, and interviews
+          with fellow enthusiasts.
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="
+      relative
+      px-4
+      py-14
+      sm:px-6
+      lg:py-20 lg:px-8
+      bg-gradient-to-r
+      from-blue-400
+      to-blue-600
+    "
+  >
+    <div class="absolute inset-0">
+      <div class="h-1/3 sm:h-2/3" />
+    </div>
+    <latest-races />
+  </div>
+  <!-- <div>
+    Fantasy Racing
+  </div> -->
 </template>
 
 <script>
+import latestRaces from "@/components/races/latestRaces.vue";
 export default {
-  components: {},
+  components: {
+    latestRaces,
+  },
   data() {
     return {
       test: "",

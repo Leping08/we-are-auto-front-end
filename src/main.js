@@ -7,8 +7,13 @@ import "./css/index.css";
 import VantageUi from "vantage-ui";
 import VueGtag from "vue-gtag";
 import Particles from "particles.vue3";
+import { admin, notAdmin, guest, auth } from "./directives/index.js";
 
 createApp(App)
+  .directive("admin", admin)
+  .directive("not-admin", notAdmin)
+  .directive("guest", guest)
+  .directive("auth", auth)
   .use(store)
   .use(router)
   .use(VantageUi)

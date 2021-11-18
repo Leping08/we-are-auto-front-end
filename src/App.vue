@@ -359,7 +359,7 @@
 </template>
 
 <script>
-import { mapActions, mapState } from "vuex";
+import { mapActions, mapState, mapGetters } from "vuex";
 import { shallowRef } from "vue";
 import {
   Dialog,
@@ -425,6 +425,7 @@ export default {
     ...mapState("user", {
       user: (state) => state.user,
     }),
+    ...mapGetters("user", ["isAdmin", "isAuthenticated"]),
   },
   methods: {
     ...mapActions("user", ["setUser"]),

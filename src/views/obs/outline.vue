@@ -50,9 +50,9 @@
           </div>
           <div class="flex items-center">
             <div>
-              <facebook class="h-6 text-primary" />
+              <youtube class="h-6 text-primary" />
             </div>
-            <div class="ml-1">@weareauto</div>
+            <div class="ml-1">We Are Auto</div>
           </div>
           <div class="flex items-center">
             <div>
@@ -76,13 +76,13 @@
 import tiktok from "@/assets/icons/tiktok.vue";
 import monitorCellphone from "@/assets/icons/monitor-cellphone.vue";
 import instagram from "@/assets/icons/instagram.vue";
-import facebook from "@/assets/icons/facebook.vue";
+import youtube from "@/assets/icons/youtube.vue";
 export default {
   components: {
     tiktok,
     monitorCellphone,
     instagram,
-    facebook,
+    youtube,
   },
 };
 </script>

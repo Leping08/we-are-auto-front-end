@@ -12,7 +12,7 @@ const state = () => ({
 const getters = {
   // -> getters['user/isAdmin']
   isAdmin(state) {
-    return state?.role || "user";
+    return state?.user?.role === "admin";
   },
   isAuthenticated(state) {
     return state.token ? true : false;

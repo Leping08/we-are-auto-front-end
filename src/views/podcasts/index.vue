@@ -75,10 +75,10 @@
                 rounded-xl
                 shadow-xl
                 ring-1 ring-black ring-opacity-5
-                lg:absolute lg:left-0 lg:h-full lg:w-auto lg:max-w-none
+                m-2
               "
-              src="https://tailwindui.com/img/component-images/inbox-app-screenshot-1.jpg"
-              alt="Inbox user interface"
+              src="@/assets/images/mics.jpg"
+              alt=""
             />
           </div>
         </div>
@@ -120,6 +120,9 @@
             />
           </div>
           <div class="text-center text-blue-50 text-2xl p-2">Michael</div>
+          <div class="text-center text-gray-200 text-md p-2">
+            A driving instructor with 5+ years of experience.
+          </div>
         </div>
         <div class="p-10">
           <div
@@ -140,6 +143,10 @@
             />
           </div>
           <div class="text-center text-blue-50 text-2xl p-2">Derek</div>
+          <div class="text-center text-gray-200 text-md p-2">
+            A software developer with 8+ years of experience in the automotive
+            industry.
+          </div>
         </div>
       </div>
     </div>
