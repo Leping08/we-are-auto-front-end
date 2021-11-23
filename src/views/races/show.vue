@@ -145,7 +145,7 @@
           </template>
 
           <div class="flow-root">
-            <div class="m-4">
+            <div class="m-4" v-if="races.length">
               <div v-for="(race, index) in races" :key="race.id">
                 <router-link
                   class="group"
@@ -210,7 +210,7 @@
 
 <script>
 import Race from "@/api/models/races.js";
-//import VideoProgress from "@/api/models/video-progress.js";
+import Series from "@/api/models/series.js";
 import PlayProgress from "@/components/playProgress.vue";
 import VideoProgress from "@/components/videoProgress.vue";
 import Suggestion from "@/components/races/suggestion.vue";
@@ -244,6 +244,10 @@ export default {
   },
   methods: {
     initPlayer() {
+      if (!this.race?.videos[0]?.video_id) {
+        return;
+      }
+
       var tag = document.createElement("script");
       tag.src = "https://www.youtube.com/iframe_api";
       var firstScriptTag = document.getElementsByTagName("script")[0];
@@ -275,7 +279,10 @@ export default {
     },
     async getRaceData() {
       ({ data: this.race } = await new Race().show(this.$route.params.id));
-      ({ data: this.races } = await new Race().index());
+      ({ data: this.races } = await new Series().series_season(
+        this.race?.series?.id,
+        this.race?.season?.id
+      ));
     },
     selectVideoPart(index) {
       // Check if you are already watching that part
@@ -316,7 +323,10 @@ export default {
   watch: {
     async "$route.params.id"() {
       await this.getRaceData();
-      this.player.cueVideoById(this.race.videos[0].video_id);
+      if (!this.race?.videos[0]?.video_id) {
+        return;
+      }
+      this.player.cueVideoById(this.race?.videos[0]?.video_id);
     },
   },
 };

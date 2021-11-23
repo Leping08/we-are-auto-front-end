@@ -125,16 +125,18 @@
 import Race from "@/api/models/races";
 import arrow from "@/assets/icons/arrow-right.vue";
 import playProgress from "@/components/playProgress.vue";
+import seriesPill from "@/components/series/pill.vue";
 export default {
   components: {
     arrow,
     playProgress,
+    seriesPill,
   },
   data() {
     return {
       races: [],
       numOfRaces: 3,
-      loadingRaces: true,
+      loadingLatestRaces: true,
     };
   },
   created() {
