@@ -15,7 +15,7 @@
             text-lg text-gray-900
           "
         >
-          Michael
+          Derek
         </div>
         <div class="aspect-w-16 aspect-h-9"></div>
       </div>
@@ -33,7 +33,7 @@
             text-lg text-gray-900
           "
         >
-          Derek
+          Michael
         </div>
         <div class="aspect-w-16 aspect-h-9"></div>
       </div>
