@@ -16,7 +16,7 @@
             text-lg text-gray-600 text-center
           "
         >
-          Derek
+          Michael
         </div>
         <div
           class="
@@ -32,7 +32,7 @@
             text-lg text-gray-600 text-center
           "
         >
-          Michael
+          Derek
         </div>
 
         <!-- <div
