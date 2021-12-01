@@ -104,7 +104,7 @@
           </div>
         </router-link>
       </div>
-      <div
+      <router-link
         class="
           flex
           justify-end
@@ -112,11 +112,14 @@
           m-4
           text-blue-200 text-lg
           font-bold
+          hover:text-blue-100
         "
+        tag="div"
+        :to="{ name: 'races.filter' }"
       >
         <div class="">View all</div>
         <arrow class="h-8 ml-2" />
-      </div>
+      </router-link>
     </div>
   </div>
 </template>

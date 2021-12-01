@@ -27,6 +27,12 @@ const routes = [
       ),
   },
   {
+    path: "/races/filter",
+    name: "races.filter",
+    component: () =>
+      import(/* webpackChunkName: "races.filter" */ "@/views/races/filter.vue"),
+  },
+  {
     path: "/races",
     name: "races.index",
     component: () =>
@@ -60,7 +66,18 @@ const routes = [
     },
     component: () =>
       import(
-        /* webpackChunkName: "auth.register" */ "@/views/obs/two-people.vue"
+        /* webpackChunkName: "obs.two-people" */ "@/views/obs/two-people.vue"
+      ),
+  },
+  {
+    path: "/obs/in-person",
+    name: "obs",
+    meta: {
+      disable_nav: true,
+    },
+    component: () =>
+      import(
+        /* webpackChunkName: "obs.in-person.one-frame" */ "@/views/obs/in-person/one-frame.vue"
       ),
   },
   {
@@ -71,7 +88,7 @@ const routes = [
     },
     component: () =>
       import(
-        /* webpackChunkName: "auth.register" */ "@/views/obs/particles.vue"
+        /* webpackChunkName: "obs.particles" */ "@/views/obs/particles.vue"
       ),
   },
   {
