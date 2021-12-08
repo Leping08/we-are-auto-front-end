@@ -81,6 +81,17 @@ const routes = [
       ),
   },
   {
+    path: "/obs/browser",
+    name: "obs",
+    meta: {
+      disable_nav: true,
+    },
+    component: () =>
+      import(
+        /* webpackChunkName: "obs.in-person.browser" */ "@/views/obs/in-person/browser.vue"
+      ),
+  },
+  {
     path: "/obs/particles",
     name: "obs.particles",
     meta: {
