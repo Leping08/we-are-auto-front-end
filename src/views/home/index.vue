@@ -118,7 +118,7 @@
         </div>
         <div class="text-base text-gray-500">
           A weekly show where we go deep into car news, culture, and interviews
-          with fellow enthusiasts.
+          with fellow enthusiasts. We apologize for both looking like Neo Nazis, We are actually great people!
         </div>
       </div>
     </div>
