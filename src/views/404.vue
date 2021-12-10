@@ -14,7 +14,7 @@
           Seems like you are lost.
         </div>
         <div class="text-gray-500 font-lg font-semibold">
-          At least you are these guys.
+          At least you aren't these guys.
         </div>
       </div>
       <div>
