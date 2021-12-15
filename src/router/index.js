@@ -71,7 +71,7 @@ const routes = [
   },
   {
     path: "/obs/in-person",
-    name: "obs",
+    name: "obs.one-person",
     meta: {
       disable_nav: true,
     },
@@ -82,7 +82,7 @@ const routes = [
   },
   {
     path: "/obs/browser",
-    name: "obs",
+    name: "obs.browser",
     meta: {
       disable_nav: true,
     },
