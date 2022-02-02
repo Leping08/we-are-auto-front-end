@@ -152,9 +152,7 @@ export default {
     latestRaces,
   },
   data() {
-    return {
-      test: "",
-    };
+    return {};
   },
 };
 </script>

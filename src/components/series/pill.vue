@@ -17,7 +17,7 @@
             {{ series.name }}
           </div>
         </div>
-        <div class="flex space-x-1 text-sm text-gray-400">
+        <div v-if="year" class="flex space-x-1 text-sm text-gray-400">
           <span>{{ year }}</span>
         </div>
       </div>
@@ -33,7 +33,7 @@ export default {
       type: Object,
     },
     year: {
-      required: true,
+      required: false,
       type: String,
     },
   },

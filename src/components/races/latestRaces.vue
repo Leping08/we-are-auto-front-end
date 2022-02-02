@@ -63,45 +63,8 @@
           :to="{ name: 'races.show', params: { id: race.id } }"
           v-for="race in races"
           :key="race.id"
-          class="flex flex-col rounded-lg shadow-lg overflow-hidden"
         >
-          <div class="relative">
-            <div class="absolute right-2 top-2 z-20">
-              <v-badge color="blue"> New </v-badge>
-            </div>
-            <img
-              class="
-                h-64
-                w-full
-                object-cover
-                transform
-                hover:scale-110
-                duration-100
-                ease-in-out
-              "
-              :src="`https://img.youtube.com/vi/${race.videos[0].video_id}/maxresdefault.jpg`"
-              alt=""
-            />
-            <div class="absolute right-0 bottom-0 -my-5 mr-6">
-              <play-progress :race="race" />
-            </div>
-
-            <div class="absolute left-0 bottom-0 -my-6 ml-6">
-              <series-pill :series="race.series" :year="race.season.name" />
-            </div>
-          </div>
-          <div class="flex-1 bg-white p-6 flex flex-col justify-between">
-            <div class="flex-1">
-              <div class="block mt-2">
-                <div class="text-xl font-semibold text-gray-900">
-                  {{ race.name }}
-                </div>
-                <div class="text-sm text-gray-400">
-                  {{ race.track.name }}
-                </div>
-              </div>
-            </div>
-          </div>
+          <race-card :race="race" />
         </router-link>
       </div>
       <router-link
@@ -126,14 +89,10 @@
 
 <script>
 import Race from "@/api/models/races";
-import arrow from "@/assets/icons/arrow-right.vue";
-import playProgress from "@/components/playProgress.vue";
-import seriesPill from "@/components/series/pill.vue";
+import raceCard from "@/components/races/raceCard.vue";
 export default {
   components: {
-    arrow,
-    playProgress,
-    seriesPill,
+    raceCard,
   },
   data() {
     return {

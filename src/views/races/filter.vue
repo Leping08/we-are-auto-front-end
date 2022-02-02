@@ -15,34 +15,54 @@
         <li
           v-for="(step, stepIdx) in steps"
           :key="step.name"
-          @click="selectStep(stepIdx)"
-          class="relative md:flex-1 md:flex bg-white"
+          @click="selectStep(stepIdx + 1)"
+          class="relative md:flex-1 md:flex bg-white cursor-pointer"
         >
           <a
             v-if="step.status === 'complete'"
             class="group flex items-center w-full"
           >
-            <span class="px-6 py-4 flex items-center text-sm font-medium">
-              <span
-                class="
-                  flex-shrink-0
-                  w-10
-                  h-10
-                  flex
-                  items-center
-                  justify-center
-                  bg-blue-600
-                  rounded-full
-                  group-hover:bg-blue-800
-                "
-              >
-                <!-- <CheckIcon class="w-6 h-6 text-white" aria-hidden="true" /> -->
-                <check class="w-6 h-6 text-white" aria-hidden="true" />
-              </span>
-              <span class="ml-4 text-sm font-medium text-gray-900">{{
-                step.name
-              }}</span>
-            </span>
+            <div
+              class="
+                px-6
+                py-4
+                flex
+                justify-between
+                w-full
+                items-center
+                text-sm
+                font-medium
+              "
+            >
+              <div class="items-center flex">
+                <div
+                  class="
+                    flex-shrink-0
+                    w-10
+                    h-10
+                    flex
+                    items-center
+                    justify-center
+                    bg-blue-600
+                    rounded-full
+                    group-hover:bg-blue-800
+                  "
+                >
+                  <check class="w-6 h-6 text-white" aria-hidden="true" />
+                </div>
+                <div class="ml-4 text-sm font-medium text-gray-900">
+                  {{ step.name }}
+                </div>
+              </div>
+              <div>
+                <div
+                  class="text-sm font-medium text-gray-900"
+                  v-if="selectedSeries && stepIdx === 1"
+                >
+                  {{ selectedSeries.name }}
+                </div>
+              </div>
+            </div>
           </a>
           <a
             v-else-if="step.status === 'current'"
@@ -127,22 +147,60 @@
       <div
         v-for="currentSeries in series"
         :key="currentSeries"
-        class="rounded-lg shadow-lg overflow-hidden w-1/3 p-4 m-4 bg-white"
+        @click="selectSeries(currentSeries)"
+        class="
+          rounded-lg
+          shadow-lg
+          overflow-hidden
+          w-1/3
+          p-4
+          m-4
+          bg-white
+          cursor-pointer
+        "
       >
         <div class="">
           {{ currentSeries.name }}
+        </div>
+        <div>
+          <img :src="currentSeries.logo" alt="" />
         </div>
       </div>
     </div>
 
     <div v-if="currentStep.id === 2">
+      <div v-if="!selectedSeries.seasons.length">
+        {{ selectedSeries.name }} has no races yet.
+      </div>
       <div
-        v-for="currentSeries in series"
-        :key="currentSeries"
+        v-for="season in selectedSeries.seasons"
+        :key="season"
         class="flex w-full"
       >
-        <div class="m-4 p-4 border w-1/3">
-          {{ currentSeries.name }}
+        <div class="m-4 p-4 bg-white rounded-lg w-1/3">
+          <pill :series="selectedSeries" />
+          <div @click="selectSeason(season)">
+            {{ season.name }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="relative rounded-xl overflow-auto p-8 w-full"
+      v-if="currentStep.id === 3"
+    >
+      <div class="grid grid-cols-4 gap-4">
+        <div v-for="race in seriesSeasonRaces" :key="race.id" class="h-full">
+          <div v-if="!loadingSeriesSeasonRaces" class="h-full">
+            <router-link
+              tag="div"
+              :to="{ name: 'races.show', params: { id: race.id } }"
+            >
+              <!-- TODO make this a component that does not throw the error: "Cannot destructure property 'type' of 'vnode' as it is null." -->
+              <race-card :race="race" />
+            </router-link>
+          </div>
         </div>
       </div>
     </div>
@@ -152,16 +210,19 @@
 <script>
 import Series from "@/api/models/series.js";
 import Check from "@/assets/icons/check.vue";
+import Pill from "@/components/series/pill.vue";
+import RaceCard from "@/components/races/raceCard.vue";
 export default {
   components: {
     Check,
+    Pill,
+    RaceCard,
   },
   data() {
     return {
       loadingSeries: true,
       series: [],
       selectedSeries: null,
-
       loadingSeasons: true,
       seasons: [
         {
@@ -174,10 +235,8 @@ export default {
         },
       ],
       selectedSeason: null,
-
       loadingSeriesSeasonRaces: true,
       seriesSeasonRaces: [],
-
       steps: [
         { id: 1, name: "Series", status: "current" },
         { id: 2, name: "Season", status: "upcoming" },
@@ -210,11 +269,22 @@ export default {
       ));
       this.loadingSeriesSeasonRaces = false;
     },
+    selectSeries(series) {
+      this.selectedSeries = series;
+      this.getSeriesSeason();
+      this.selectStep(2);
+    },
+    selectSeason(season) {
+      console.log(season);
+      this.selectedSeason = season;
+      this.getSeriesSeason();
+      this.selectStep(3);
+    },
     selectStep(index) {
       this.steps.forEach((step, idx) => {
-        if (index < idx) {
+        if (index < idx + 1) {
           step.status = "upcoming";
-        } else if (index === idx) {
+        } else if (index === idx + 1) {
           step.status = "current";
         } else {
           step.status = "complete";

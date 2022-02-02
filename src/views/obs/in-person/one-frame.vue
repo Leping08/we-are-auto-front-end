@@ -1,14 +1,14 @@
 <template>
   <outline>
     <div class="flex justify-around items-center h-screen">
-      <div class="relative w-3/5 border-4 border-primary rounded-lg">
-        <div
+      <div class="relative w-4/5 border-4 border-primary rounded-lg">
+        <!-- <div
           class="
             absolute
             w-32
             -mt-48
             top-0
-            right-32
+            right-64
             py-2
             rounded-t-lg
             bg-white
@@ -24,7 +24,7 @@
             w-32
             -mt-48
             top-0
-            left-32
+            left-64
             py-2
             rounded-t-lg
             bg-white
@@ -33,7 +33,7 @@
           "
         >
           Derek
-        </div>
+        </div> -->
 
         <!-- <div
           class="

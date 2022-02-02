@@ -16,7 +16,7 @@
       <div class="flex items-center">
         <div>
           <img
-            class="h-20 w-auto"
+            class="h-16 w-auto"
             src="@/assets/logos/waa-logo-dark.svg"
             alt="We Are Auto"
           />
