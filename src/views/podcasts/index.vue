@@ -74,7 +74,7 @@
                 w-full
                 rounded-xl
                 shadow-xl
-                ring-1 ring-black ring-opacity-5
+                ring-1 ring-blue ring-opacity-5
                 m-2
               "
               src="@/assets/images/mics.jpg"
@@ -226,70 +226,64 @@
         v-for="(podcast, index) in podcasts?.rss?.channel?.item"
         :key="podcast"
       >
-        <v-card
+        <div
           border
           padding
           @click="startPodcast(podcasts?.rss?.channel?.item?.length - index)"
-          class="my-4 cursor-pointer"
+          class="bg-white shadow-md rounded-lg my-4 cursor-pointer"
         >
-          <template #header>
-            <div class="px-4 py-2 w-full relative">
-              <div
-                class="
-                  -ml-4
-                  -mt-2
-                  flex
-                  justify-between
-                  items-center
-                  flex-wrap
-                  sm:flex-nowrap
-                "
-              >
-                <div class="ml-4 mt-4 flex items-center">
-                  <div class="pr-4">
-                    <play-circle-outline class="h-10 w-10 text-blue-500" />
-                  </div>
-                  <div>
-                    <h3
-                      class="text-xl leading-6 font-medium text-gray-900"
-                      :class="
-                        withinTheLastSevenDays(podcast['pubDate']['#text'])
-                          ? 'pr-12'
-                          : ''
-                      "
-                    >
-                      {{ podcast["itunes:title"]["#text"] }}
-                    </h3>
-                    <p class="mt-1 text-sm leading-5 text-gray-500">
-                      {{ formatDate(podcast["pubDate"]["#text"]) }}
-                    </p>
-                  </div>
+          <div class="px-4 py-2 w-full relative">
+            <div
+              class="
+                -ml-4
+                -mt-2
+                flex
+                justify-between
+                items-center
+                flex-wrap
+                sm:flex-nowrap
+              "
+            >
+              <div class="ml-4 mt-4 flex items-center">
+                <div class="pr-4">
+                  <play-circle-outline class="h-10 w-10 text-blue-500" />
                 </div>
-                <div
-                  v-if="withinTheLastSevenDays(podcast['pubDate']['#text'])"
-                  class="right-0 top-0 absolute p-4"
-                >
-                  <div
-                    class="
-                      px-2
-                      py-0.5
-                      bg-blue-200
-                      text-blue-800
-                      rounded-full
-                      text-sm
+                <div>
+                  <h3
+                    class="text-xl leading-6 font-medium text-gray-900"
+                    :class="
+                      withinTheLastSevenDays(podcast['pubDate']['#text'])
+                        ? 'pr-12'
+                        : ''
                     "
                   >
-                    New
-                  </div>
+                    {{ podcast["itunes:title"]["#text"] }}
+                  </h3>
+                  <p class="mt-1 text-sm leading-5 text-gray-500">
+                    {{ formatDate(podcast["pubDate"]["#text"]) }}
+                  </p>
+                </div>
+              </div>
+              <div
+                v-if="withinTheLastSevenDays(podcast['pubDate']['#text'])"
+                class="right-0 top-0 absolute p-4"
+              >
+                <div
+                  class="
+                    px-2
+                    py-0.5
+                    bg-blue-200
+                    text-blue-800
+                    rounded-full
+                    text-sm
+                  "
+                >
+                  New
                 </div>
               </div>
             </div>
-          </template>
-
-          <div class="text-gray-600 p-2">
-            {{ podcast["itunes:summary"]["#text"] }}
           </div>
-        </v-card>
+        </div>
       </template>
     </div>
   </div>

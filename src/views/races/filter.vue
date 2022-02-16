@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-gradient-to-r from-blue-400 to-blue-600">
+  <div class="bg-gradient-to-r from-blue-400 to-blue-600 min-h-screen">
     <!-- This example requires Tailwind CSS v2.0+ -->
     <nav aria-label="Progress" class="p-4">
       <ol
@@ -57,9 +57,15 @@
               <div>
                 <div
                   class="text-sm font-medium text-gray-900"
-                  v-if="selectedSeries && stepIdx === 1"
+                  v-if="selectedSeries && stepIdx === 0"
                 >
                   {{ selectedSeries.name }}
+                </div>
+                <div
+                  class="text-sm font-medium text-gray-900"
+                  v-if="selectedSeries && stepIdx === 1"
+                >
+                  {{ selectedSeason.name }}
                 </div>
               </div>
             </div>
@@ -145,52 +151,139 @@
 
     <div v-if="currentStep.id === 1" class="flex w-full">
       <div
-        v-for="currentSeries in series"
-        :key="currentSeries"
-        @click="selectSeries(currentSeries)"
-        class="
-          rounded-lg
-          shadow-lg
-          overflow-hidden
-          w-1/3
-          p-4
-          m-4
-          bg-white
-          cursor-pointer
-        "
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 pb-5 px-5"
       >
-        <div class="">
-          {{ currentSeries.name }}
-        </div>
-        <div>
-          <img :src="currentSeries.logo" alt="" />
-        </div>
-      </div>
-    </div>
-
-    <div v-if="currentStep.id === 2">
-      <div v-if="!selectedSeries.seasons.length">
-        {{ selectedSeries.name }} has no races yet.
-      </div>
-      <div
-        v-for="season in selectedSeries.seasons"
-        :key="season"
-        class="flex w-full"
-      >
-        <div class="m-4 p-4 bg-white rounded-lg w-1/3">
-          <pill :series="selectedSeries" />
-          <div @click="selectSeason(season)">
-            {{ season.name }}
+        <div
+          v-for="currentSeries in series"
+          :key="currentSeries"
+          @click="selectSeries(currentSeries)"
+          class="rounded-lg shadow-lg overflow-hidden bg-white cursor-pointer"
+        >
+          <div class="w-full relative">
+            <img
+              class="
+                h-64
+                w-full
+                object-cover
+                transform
+                hover:scale-110
+                duration-100
+                ease-in-out
+              "
+              :src="currentSeries.image_url"
+              alt=""
+            />
+            <series-pill
+              class="absolute left-0 bottom-0 -my-6 ml-6"
+              :series="currentSeries"
+            />
+          </div>
+          <div class="flex-1 bg-white p-6 flex flex-col justify-between">
+            <div class="pt-2">
+              <div class="text-xl font-semibold text-gray-900 py-2">
+                {{ currentSeries.full_name }}
+              </div>
+              <div class="text-sm text-gray-500">
+                {{ currentSeries.description }}
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
     <div
-      class="relative rounded-xl overflow-auto p-8 w-full"
-      v-if="currentStep.id === 3"
+      class="
+        relative
+        rounded-xl
+        overflow-auto
+        p-4
+        w-full
+        md:w-2/3
+        lg:w-1/2
+        xl:w-1/3
+        mx-auto
+      "
+      v-if="currentStep.id === 2"
     >
-      <div class="grid grid-cols-4 gap-4">
+      <div class="rounded-lg shadow-lg overflow-hidden bg-white">
+        <div class="w-full relative">
+          <img
+            class="
+              h-64
+              w-full
+              object-cover
+              transform
+              hover:scale-110
+              duration-100
+              ease-in-out
+            "
+            :src="selectedSeries.image_url"
+            alt=""
+          />
+          <series-pill
+            class="absolute left-0 bottom-0 -my-6 ml-6"
+            :series="selectedSeries"
+          />
+        </div>
+        <div class="flex-1 bg-white p-6 flex flex-col justify-between">
+          <div class="pt-2">
+            <div class="text-xl font-semibold text-gray-900 py-2">
+              {{ selectedSeries.full_name }}
+            </div>
+            <div
+              v-if="!selectedSeries.seasons.length"
+              class="text-md text-gray-600"
+            >
+              Sorry it looks like the {{ selectedSeries.name }} has no races
+              yet.
+            </div>
+            <div v-if="selectedSeries.seasons.length">
+              <div class="text-md text-gray-600">
+                Please select a season of {{ selectedSeries.name }} racing to
+                watch.
+              </div>
+              <ul role="list" class="divide-y divide-gray-200">
+                <li
+                  class="flex"
+                  v-for="season in selectedSeries.seasons"
+                  :key="season"
+                  @click="selectSeason(season)"
+                >
+                  <div
+                    class="
+                      py-4
+                      cursor-pointer
+                      px-3
+                      flex
+                      justify-between
+                      w-full
+                      items-center
+                      hover:bg-gray-200
+                    "
+                  >
+                    <div>
+                      <p class="font-medium text-gray-900">{{ season.name }}</p>
+                    </div>
+                    <div>
+                      <v-badge color="blue">
+                        {{ season.races_count }}
+                      </v-badge>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <!-- <div class="text-sm text-gray-500">{{ selectedSeries.description }}</div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex w-full" v-if="currentStep.id === 3">
+      <div
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 pb-5 px-5"
+      >
         <div v-for="race in seriesSeasonRaces" :key="race.id" class="h-full">
           <div v-if="!loadingSeriesSeasonRaces" class="h-full">
             <router-link
@@ -210,13 +303,13 @@
 <script>
 import Series from "@/api/models/series.js";
 import Check from "@/assets/icons/check.vue";
-import Pill from "@/components/series/pill.vue";
 import RaceCard from "@/components/races/raceCard.vue";
+import SeriesPill from "@/components/series/pill.vue";
 export default {
   components: {
     Check,
-    Pill,
     RaceCard,
+    SeriesPill,
   },
   data() {
     return {
@@ -224,16 +317,6 @@ export default {
       series: [],
       selectedSeries: null,
       loadingSeasons: true,
-      seasons: [
-        {
-          id: 1,
-          name: "2021",
-        },
-        {
-          id: 2,
-          name: "2022",
-        },
-      ],
       selectedSeason: null,
       loadingSeriesSeasonRaces: true,
       seriesSeasonRaces: [],
@@ -273,12 +356,19 @@ export default {
       this.selectedSeries = series;
       this.getSeriesSeason();
       this.selectStep(2);
+      this.$router.push({
+        name: "races.filter",
+        query: { ...this.$route.query, series: this.selectedSeries.name },
+      });
     },
     selectSeason(season) {
-      console.log(season);
       this.selectedSeason = season;
       this.getSeriesSeason();
       this.selectStep(3);
+      this.$router.push({
+        name: "races.filter",
+        query: { ...this.$route.query, season: this.selectedSeason.name },
+      });
     },
     selectStep(index) {
       this.steps.forEach((step, idx) => {
@@ -291,9 +381,24 @@ export default {
         }
       });
     },
+    filterDownByQueryParams() {
+      if (this.$route.query.series) {
+        this.selectedSeries = this.series.find(
+          (series) => series.name === this.$route.query.series
+        );
+        this.selectStep(2);
+      }
+      if (this.$route.query.season) {
+        this.selectedSeason = this.selectedSeries.seasons.find(
+          (season) => season.name === this.$route.query.season
+        );
+        this.selectStep(3);
+      }
+    },
   },
   async mounted() {
     await this.getSeries();
+    this.filterDownByQueryParams();
   },
   watch: {
     selectedSeries() {
@@ -301,6 +406,12 @@ export default {
     },
     selectedSeason() {
       this.getSeriesSeason();
+    },
+    "$route.params.series"() {
+      this.filterDownByQueryParams();
+    },
+    "$route.params.season"() {
+      this.filterDownByQueryParams();
     },
   },
   computed: {

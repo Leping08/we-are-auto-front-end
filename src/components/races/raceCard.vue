@@ -2,8 +2,7 @@
   <div class="flex flex-col rounded-lg shadow-lg overflow-hidden h-full">
     <div class="relative">
       <div class="absolute right-2 top-2 z-20">
-        {{ showNewBadge }}
-        <!-- <v-badge v-if="showNewBadge" color="blue">New</v-badge> -->
+        <v-badge v-if="showNewBadge" color="blue">New</v-badge>
       </div>
       <img
         class="
