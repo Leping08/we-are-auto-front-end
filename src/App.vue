@@ -392,7 +392,7 @@ const navigation = [
     name: "Races",
     route: "races.index",
     icon: shallowRef(flag),
-    coming_soon: true,
+    coming_soon: false,
   },
   {
     name: "Fantasy",
