@@ -56,13 +56,13 @@
               </div>
               <div>
                 <div
-                  class="text-sm font-medium text-gray-900"
+                  class="text-sm font-medium text-gray-500"
                   v-if="selectedSeries && stepIdx === 0"
                 >
                   {{ selectedSeries.name }}
                 </div>
                 <div
-                  class="text-sm font-medium text-gray-900"
+                  class="text-sm font-medium text-gray-500"
                   v-if="selectedSeries && stepIdx === 1"
                 >
                   {{ selectedSeason.name }}
