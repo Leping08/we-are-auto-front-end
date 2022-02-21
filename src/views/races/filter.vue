@@ -1,7 +1,7 @@
 <template>
   <div class="bg-gradient-to-r from-blue-400 to-blue-600 min-h-screen">
     <!-- This example requires Tailwind CSS v2.0+ -->
-    <nav aria-label="Progress" class="p-4">
+    <nav aria-label="Progress" class="p-5">
       <ol
         role="list"
         class="
@@ -149,9 +149,35 @@
       </ol>
     </nav>
 
-    <div v-if="currentStep.id === 1" class="flex w-full">
+    <div v-if="currentStep.id === 1" class="flex">
       <div
-        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 pb-5 px-5"
+        v-if="loadingSeries"
+        class="
+          w-full
+          grid grid-cols-1
+          md:grid-cols-2
+          lg:grid-cols-3
+          gap-5
+          pb-5
+          px-5
+        "
+      >
+        <div v-for="index in numOfSeries" :key="index">
+          <loading-race-card />
+        </div>
+      </div>
+
+      <div
+        v-if="!loadingSeries"
+        class="
+          w-full
+          grid grid-cols-1
+          md:grid-cols-2
+          lg:grid-cols-3
+          gap-5
+          pb-5
+          px-5
+        "
       >
         <div
           v-for="currentSeries in series"
@@ -282,10 +308,28 @@
 
     <div class="flex w-full" v-if="currentStep.id === 3">
       <div
+        v-if="loadingSeriesSeasonRaces"
+        class="
+          w-full
+          grid grid-cols-1
+          md:grid-cols-2
+          lg:grid-cols-4
+          gap-5
+          pb-5
+          px-5
+        "
+      >
+        <div v-for="index in numOfRaces" :key="index">
+          <loading-race-card />
+        </div>
+      </div>
+
+      <div
+        v-if="!loadingSeriesSeasonRaces"
         class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 pb-5 px-5"
       >
         <div v-for="race in seriesSeasonRaces" :key="race.id" class="h-full">
-          <div v-if="!loadingSeriesSeasonRaces" class="h-full">
+          <div class="h-full">
             <router-link
               tag="div"
               :to="{ name: 'races.show', params: { id: race.id } }"
@@ -304,20 +348,24 @@
 import Series from "@/api/models/series.js";
 import Check from "@/assets/icons/check.vue";
 import RaceCard from "@/components/races/raceCard.vue";
+import LoadingRaceCard from "@/components/races/loadingRaceCard.vue";
 import SeriesPill from "@/components/series/pill.vue";
 export default {
   components: {
     Check,
     RaceCard,
+    LoadingRaceCard,
     SeriesPill,
   },
   data() {
     return {
+      numOfSeries: 6,
       loadingSeries: true,
       series: [],
       selectedSeries: null,
       loadingSeasons: true,
       selectedSeason: null,
+      numOfRaces: 8,
       loadingSeriesSeasonRaces: true,
       seriesSeasonRaces: [],
       steps: [
@@ -354,7 +402,6 @@ export default {
     },
     selectSeries(series) {
       this.selectedSeries = series;
-      this.getSeriesSeason();
       this.selectStep(2);
       this.$router.push({
         name: "races.filter",

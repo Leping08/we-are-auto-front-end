@@ -2,18 +2,7 @@
 <template>
   <div class="relative overflow-hidden">
     <div class="mx-auto">
-      <div
-        class="
-          relative
-          z-10
-          pb-8
-          bg-white
-          sm:pb-16
-          md:pb-20
-          lg:max-w-4xl lg:w-full lg:pb-28
-          xl:pb-32
-        "
-      >
+      <div class="relative z-10 bg-white lg:max-w-4xl lg:w-full">
         <svg
           class="
             hidden
@@ -36,7 +25,7 @@
         </svg>
         <main
           class="
-            mt-10
+            mt-0
             mx-auto
             max-w-7xl
             px-4
@@ -46,44 +35,43 @@
             xl:mt-0
           "
         >
-          <div class="sm:text-center lg:text-left pl-20">
-            <h1
-              class="
-                text-2xl
-                tracking-tight
-                font-bold
-                text-gray-900
-                sm:text-3xl
-                md:text-5xl
-                pt-24
-              "
-            >
-              <span class="block xl:inline">For</span>
-              {{ " " }}
-              <span class="block text-blue-500 xl:inline">Enthusiasts</span>
-              <br />
-              <span class="block xl:inline">By</span>
-              {{ " " }}
-              <span class="block text-blue-500 xl:inline">Enthusiasts</span>
-            </h1>
-            <p
-              class="
-                mt-3
-                text-base text-gray-500
-                sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto
-                md:mt-5 md:text-xl
-                lg:mx-0
-              "
-            >
-              We Are Auto is a community of car enthusiasts built for
-              enthusiasts by enthusiasts. Weekly shows where we go deep into car
-              news, culture, and interviews with fellow enthusiasts.
-            </p>
+          <div class="sm:text-center lg:text-left">
+            <div class="p-10 sm:p-24">
+              <h1
+                class="
+                  tracking-tight
+                  font-bold
+                  text-gray-900 text-4xl
+                  md:text-5xl
+                "
+              >
+                <span class="xl:inline">For</span>
+                {{ " " }}
+                <span class="text-blue-500 xl:inline">Enthusiasts</span>
+                <br />
+                <span class="xl:inline">By</span>
+                {{ " " }}
+                <span class="text-blue-500 xl:inline">Enthusiasts</span>
+              </h1>
+              <p
+                class="
+                  mt-3
+                  text-base text-gray-500
+                  sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto
+                  md:mt-5 md:text-xl
+                  lg:mx-0
+                "
+              >
+                We Are Auto is a community of car enthusiasts built for
+                enthusiasts by enthusiasts. Weekly shows where we go deep into
+                car news, culture, and interviews with fellow enthusiasts.
+              </p>
+            </div>
           </div>
         </main>
       </div>
     </div>
-    <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
+    <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 hidden sm:block">
       <img
         class="
           h-56
@@ -100,27 +88,23 @@
     </div>
   </div>
   <div class="lg:m-24 md:m-10 sm:m-4">
-    <div class="flex justify-between items-center">
-      <div class="shadow-lg mx-10">
-        <iframe
-          width="560"
-          height="315"
-          src="https://www.youtube.com/embed/videoseries?list=PLraZMoJiSzQwsE1md-537OkILuQAcI1Px"
-          title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-        ></iframe>
+    <div class="grid sm:grid-cols-3 grid-cols-1 gap-4 items-center">
+      <div class="m-4 sm:m-0">
+        <div class="videoWrapper">
+          <iframe
+            width="100%"
+            height="349"
+            src="https://www.youtube.com/embed/videoseries?list=PLraZMoJiSzQwsE1md-537OkILuQAcI1Px"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </div>
       </div>
-      <div class="mx-auto">
+      <div class="col-span-2 sm:grid-cols-1 m-10 sm:p-10">
         <div
-          class="
-            tracking-tight
-            font-bold
-            text-gray-900 text-xl
-            sm:text-3xl
-            pt-24
-          "
+          class="tracking-tight font-bold text-gray-900 text-3xl md:text-4xl"
         >
           The <span class="text-blue-500">We Are Auto Show</span>
         </div>
@@ -164,3 +148,18 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.videoWrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+}
+.videoWrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+</style>

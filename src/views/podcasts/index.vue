@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="bg-white">
     <div class="relative">
       <div
         class="
@@ -86,8 +86,8 @@
     </div>
   </div>
 
-  <div class="">
-    <div
+  <div class="bg-gray-100">
+    <!-- <div
       class="
         bg-gradient-to-r
         from-blue-400
@@ -162,9 +162,9 @@
         -rotate-2
         -mt-12
       "
-    />
+    /> -->
 
-    <div class="flex text-gray-600 space-x-2 pt-24 m-4">
+    <!-- <div class="flex text-gray-600 space-x-2 pt-24 m-4">
       <a
         href="https://podcasts.apple.com/us/podcast/we-are-auto/id1557884758?i=1000527608218"
         target="_blank"
@@ -183,7 +183,7 @@
       >
         <spotify class="h-14 w-14" />
       </a>
-    </div>
+    </div> -->
 
     <div class="m-6" v-if="loading">
       <template v-for="index in 5" :key="index">
