@@ -223,7 +223,7 @@
         relative
         rounded-xl
         overflow-auto
-        p-4
+        px-5
         w-full
         md:w-2/3
         lg:w-1/2

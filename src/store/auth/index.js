@@ -46,6 +46,13 @@ const actions = {
     context.commit(SET_TOKEN, null); //Remove the token from vuex storage
     localStorage.removeItem("access_token"); //Set the token in local storage
   },
+  async register(context, data) {
+    try {
+      return await api.post("/register", data);
+    } catch (error) {
+      throw new Error(error);
+    }
+  },
 };
 
 const mutations = {

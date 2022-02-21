@@ -115,7 +115,6 @@ import flag from "@/assets/icons/flag-checkered.vue";
 import clockStart from "@/assets/icons/clock-start.vue";
 import checkboxMarkedCircleOutline from "@/assets/icons/checkbox-marked-circle-outline.vue";
 import formatListBulleted from "@/assets/icons/format-list-bulleted.vue";
-import arrow from "@/assets/icons/arrow-right.vue";
 import play from "@/assets/icons/play.vue";
 import playProgress from "@/components/playProgress.vue";
 import seriesPill from "@/components/series/pill.vue";
@@ -123,7 +122,6 @@ import latestRaces from "@/components/races/latestRaces.vue";
 export default {
   components: {
     flag,
-    arrow,
     play,
     playProgress,
     seriesPill,

@@ -41,12 +41,10 @@
 </template>
 
 <script>
-// import arrow from "@/assets/icons/arrow-right.vue";
 import playProgress from "@/components/playProgress.vue";
 import seriesPill from "@/components/series/pill.vue";
 export default {
   components: {
-    // arrow,
     playProgress,
     seriesPill,
   },

@@ -53,6 +53,7 @@
 </template>
 
 <script>
+import arrow from "@/assets/icons/arrow-right.vue";
 import Race from "@/api/models/races";
 import raceCard from "@/components/races/raceCard.vue";
 import loadingRaceCard from "@/components/races/loadingRaceCard.vue";
@@ -60,6 +61,7 @@ export default {
   components: {
     raceCard,
     loadingRaceCard,
+    arrow,
   },
   data() {
     return {
