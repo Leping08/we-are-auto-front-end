@@ -1,11 +1,45 @@
 <template>
   <div class="p-4 relative" v-if="race.length && races.length">
     <div class="my-2 ml-2 mr-20">
-      <v-card
-        :heading="race.name"
-        :subheading="race.track.name"
-        class="row-span-2 col-span-3"
+      <div
+        class="
+          bg-white
+          overflow-hidden
+          shadow-md
+          rounded-lg
+          row-span-2
+          col-span-3
+        "
+        data-v-0be565c4=""
       >
+        <div class="px-4 py-2">
+          <div
+            class="
+              -ml-4
+              -mt-2
+              flex
+              justify-between
+              items-center
+              flex-wrap
+              sm:flex-nowrap
+            "
+          >
+            <div class="ml-4 mt-4">
+              <h3 class="text-xl leading-6 font-medium text-gray-900">
+                Sahlen's Six Hours Of The Glen
+              </h3>
+              <p class="mt-1 text-sm leading-5 text-gray-500">
+                Watkins Glen International
+              </p>
+            </div>
+            <div>
+              <clock-start
+                @click="jumpToStart()"
+                class="h-6 w-6 text-gray-400 hover:text-blue-500 cursor-pointer"
+              />
+            </div>
+          </div>
+        </div>
         <div
           v-show="raceState(race) === 'video'"
           id="wrapper"
@@ -93,7 +127,7 @@
             </li>
           </ol>
         </nav>
-      </v-card>
+      </div>
     </div>
 
     <div
@@ -214,11 +248,13 @@ import Series from "@/api/models/series.js";
 import PlayProgress from "@/components/playProgress.vue";
 import VideoProgress from "@/components/videoProgress.vue";
 import Suggestion from "@/components/races/suggestion.vue";
+import ClockStart from "@/assets/icons/clock-start.vue";
 export default {
   components: {
     PlayProgress,
     VideoProgress,
     Suggestion,
+    ClockStart,
   },
   data() {
     return {
@@ -237,10 +273,10 @@ export default {
   },
   async unmounted() {
     // Save the video progress on leave
-    await new VideoProgress().store({
-      video_id: 1,
-      seconds: 100,
-    });
+    // await new VideoProgress().store({
+    //   video_id: 1,
+    //   seconds: 100,
+    // });
   },
   methods: {
     initPlayer() {
@@ -319,14 +355,19 @@ export default {
         ? 0
         : new Date(Date.parse(race?.starts_at)).toLocaleDateString();
     },
+    jumpToStart() {
+      this.player.seekTo(this.race?.videos[0]?.start_time);
+    },
   },
   watch: {
     async "$route.params.id"() {
-      await this.getRaceData();
-      if (!this.race?.videos[0]?.video_id) {
-        return;
+      if (this.$route.params.id) {
+        await this.getRaceData();
+        if (!this.race?.videos[0]?.video_id) {
+          return;
+        }
+        this.player.cueVideoById(this.race?.videos[0]?.video_id);
       }
-      this.player.cueVideoById(this.race?.videos[0]?.video_id);
     },
   },
 };

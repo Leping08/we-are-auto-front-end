@@ -82,7 +82,9 @@
                     :to="{ name: item.route }"
                     @click="sidebarOpen = false"
                     :class="[
-                      $route.matched.some(({ name }) => name === item.route)
+                      $route.matched.some(
+                        ({ name }) => name === item.name.toLowerCase()
+                      )
                         ? 'bg-gray-900 text-white'
                         : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                       'group flex items-center px-2 py-2 text-base font-medium rounded-md',
@@ -91,7 +93,9 @@
                     <component
                       :is="item.icon"
                       :class="[
-                        $route.matched.some(({ name }) => name === item.route)
+                        $route.matched.some(
+                          ({ name }) => name === item.name.toLowerCase()
+                        )
                           ? 'text-gray-300'
                           : 'text-gray-400 group-hover:text-gray-300',
                         'mr-4 flex-shrink-0 h-6 w-6',
@@ -104,7 +108,9 @@
                   <div
                     v-if="item.coming_soon"
                     :class="[
-                      $route.matched.some(({ name }) => name === item.route)
+                      $route.matched.some(
+                        ({ name }) => name === item.name.toLowerCase()
+                      )
                         ? 'bg-gray-900 text-white'
                         : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                       'group flex items-center px-2 py-2 text-sm font-medium rounded-md',
@@ -113,7 +119,9 @@
                     <component
                       :is="item.icon"
                       :class="[
-                        $route.matched.some(({ name }) => name === item.route)
+                        $route.matched.some(
+                          ({ name }) => name === item.name.toLowerCase()
+                        )
                           ? 'text-gray-300'
                           : 'text-gray-400 group-hover:text-gray-300',
                         'mr-4 flex-shrink-0 h-6 w-6',
@@ -185,7 +193,9 @@
                   tag="a"
                   :to="{ name: item.route }"
                   :class="[
-                    $route.matched.some(({ name }) => name === item.route)
+                    $route.matched.some(({ name }) =>
+                      name.includes(item.name.toLowerCase())
+                    )
                       ? 'bg-gray-900 text-white'
                       : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                     'group flex items-center px-2 py-2 text-sm font-medium rounded-md',
@@ -194,7 +204,9 @@
                   <component
                     :is="item.icon"
                     :class="[
-                      $route.matched.some(({ name }) => name === item.route)
+                      $route.matched.some(({ name }) =>
+                        name.includes(item.name.toLowerCase())
+                      )
                         ? 'text-gray-300'
                         : 'text-gray-400 group-hover:text-gray-300',
                       'mr-3 flex-shrink-0 h-6 w-6',
@@ -207,7 +219,9 @@
                 <div
                   v-if="item.coming_soon"
                   :class="[
-                    $route.matched.some(({ name }) => name === item.route)
+                    $route.matched.some(({ name }) =>
+                      name.includes(item.name.toLowerCase())
+                    )
                       ? 'bg-gray-900 text-white'
                       : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                     'group flex items-center px-2 py-2 text-sm font-medium rounded-md',
@@ -216,7 +230,9 @@
                   <component
                     :is="item.icon"
                     :class="[
-                      $route.matched.some(({ name }) => name === item.route)
+                      $route.matched.some(({ name }) =>
+                        name.includes(item.name.toLowerCase())
+                      )
                         ? 'text-gray-300'
                         : 'text-gray-400 group-hover:text-gray-300',
                       'mr-3 flex-shrink-0 h-6 w-6',
