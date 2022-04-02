@@ -251,27 +251,33 @@
             class="absolute left-0 bottom-0 -my-6 ml-6"
             :series="selectedSeries"
           />
-          <!-- <div class="absolute right-0 bottom-0 -my-6 mr-6">
+          <div class="absolute right-0 bottom-0 -my-6 mr-6">
             <div class="rounded-full mr-4 shadow-lg mb-1">
               <button
                 class="
                   inline-flex
                   items-center
-                  p-2
                   text-sm
                   font-medium
                   rounded-full
                   shadow
-                  bg-white 
+                  bg-white
                   hover:bg-blue-50
                   active:bg-blue-100
-                  focus:ring-0"
+                  focus:ring-0
+                "
               >
-                <bell-plus-outline class="w-6 h-6 text-gray-500 hover:text-blue-500" />
-                <bell-check-outline class="w-6 h-6 text-blue-500 hover:text-gray-500" />
+                <bell-plus-outline
+                  v-if="!selectedSeriesFollowStatus"
+                  class="w-6 h-6 text-gray-500 hover:text-blue-500 m-2"
+                />
+                <bell-check-outline
+                  v-if="selectedSeriesFollowStatus"
+                  class="w-6 h-6 text-blue-500 hover:text-gray-500 m-2"
+                />
               </button>
             </div>
-          </div> -->
+          </div>
         </div>
         <div class="flex-1 bg-white p-6 flex flex-col justify-between">
           <div class="pt-2">
@@ -355,7 +361,6 @@
               tag="div"
               :to="{ name: 'races.show', params: { id: race.id } }"
             >
-              <!-- TODO make this a component that does not throw the error: "Cannot destructure property 'type' of 'vnode' as it is null." -->
               <race-card :race="race" />
             </router-link>
           </div>
@@ -368,16 +373,17 @@
 <script>
 import Series from "@/api/models/series.js";
 import Check from "@/assets/icons/check.vue";
-// import BellPlusOutline from "@/assets/icons/bell-plus-outline.vue";
-// import BellCheckOutline from "@/assets/icons/bell-check-outline.vue";
+import BellPlusOutline from "@/assets/icons/bell-plus-outline.vue";
+import BellCheckOutline from "@/assets/icons/bell-check-outline.vue";
 import RaceCard from "@/components/races/raceCard.vue";
 import LoadingRaceCard from "@/components/races/loadingRaceCard.vue";
 import SeriesPill from "@/components/series/pill.vue";
+import FollowSeriesApi from "@/api/models/follow-series.js";
 export default {
   components: {
     Check,
-    // BellPlusOutline,
-    // BellCheckOutline,
+    BellPlusOutline,
+    BellCheckOutline,
     RaceCard,
     LoadingRaceCard,
     SeriesPill,
@@ -388,6 +394,7 @@ export default {
       loadingSeries: true,
       series: [],
       selectedSeries: null,
+      selectedSeriesFollowStatus: false,
       loadingSeasons: true,
       selectedSeason: null,
       numOfRaces: 8,
@@ -398,9 +405,7 @@ export default {
         { id: 2, name: "Season", status: "upcoming" },
         { id: 3, name: "Race", status: "upcoming" },
       ],
-
       // TODO
-      // show the latest 6 races if no filters are set up
       // add the ability to search all races
     };
   },
@@ -467,6 +472,10 @@ export default {
         this.selectStep(3);
       }
     },
+    async updateSeriesFollowStatus() {
+      const response = await new FollowSeriesApi().show(this.selectedSeries.id);
+      this.selectedSeriesFollowStatus = response?.data?.followed;
+    },
   },
   async mounted() {
     await this.getSeries();
@@ -475,6 +484,7 @@ export default {
   watch: {
     selectedSeries() {
       this.getSeriesSeason();
+      this.updateSeriesFollowStatus();
     },
     selectedSeason() {
       this.getSeriesSeason();

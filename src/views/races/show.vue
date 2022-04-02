@@ -272,6 +272,7 @@ export default {
     this.initPlayer();
   },
   async unmounted() {
+    this.player = null;
     // Save the video progress on leave
     // await new VideoProgress().store({
     //   video_id: 1,
@@ -284,29 +285,35 @@ export default {
         return;
       }
 
-      var tag = document.createElement("script");
-      tag.src = "https://www.youtube.com/iframe_api";
-      var firstScriptTag = document.getElementsByTagName("script")[0];
-      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-      window.onYouTubeIframeAPIReady = () => {
-        /* eslint-disable-next-line */
-        this.player = new YT.Player("player", {
-          height: "349",
-          width: "100%",
-          videoId: this.race.videos[0].video_id,
-          playerVars: {
-            playsinline: 0,
-          },
-          events: {
-            onReady: this.onPlayerReady,
-            //'onStateChange': this.onPlayerStateChange
-          },
-        });
-      };
+      if (window.YT) {
+        this.setPlayer();
+      } else {
+        var tag = document.createElement("script");
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName("script")[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        window.onYouTubeIframeAPIReady = () => {
+          this.setPlayer();
+        };
+      }
+    },
+    setPlayer() {
+      /* eslint-disable-next-line */
+      this.player = new YT.Player("player", {
+        height: "349",
+        width: "100%",
+        videoId: this.race.videos[0].video_id,
+        playerVars: {
+          playsinline: 0,
+        },
+        events: {
+          onReady: this.onPlayerReady,
+          //'onStateChange': this.onPlayerStateChange
+        },
+      });
     },
     onPlayerReady() {
       this.resizePlayer();
-      //this.player.playVideo();
     },
     resizePlayer() {
       const width = document.getElementById("wrapper").offsetWidth;
