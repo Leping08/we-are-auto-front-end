@@ -17,6 +17,9 @@ const getters = {
   isAuthenticated(state) {
     return state.token ? true : false;
   },
+  user(state) {
+    return state.user || null;
+  },
 };
 
 const actions = {

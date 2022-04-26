@@ -51,6 +51,12 @@ const routes = [
       import(/* webpackChunkName: "auth.login" */ "@/views/auth/login.vue"),
   },
   {
+    path: "/logout",
+    name: "auth.logout",
+    component: () =>
+      import(/* webpackChunkName: "auth.logout" */ "@/views/auth/logout.vue"),
+  },
+  {
     path: "/register",
     name: "auth.register",
     component: () =>
@@ -59,18 +65,15 @@ const routes = [
       ),
   },
   {
-    path: "/obs",
-    name: "obs",
-    meta: {
-      disable_nav: true,
-    },
+    path: "/users/profile",
+    name: "users.profile",
     component: () =>
       import(
-        /* webpackChunkName: "obs.two-people" */ "@/views/obs/two-people.vue"
+        /* webpackChunkName: "users.profile" */ "@/views/users/profile.vue"
       ),
   },
   {
-    path: "/obs/in-person",
+    path: "/obs",
     name: "obs.one-person",
     meta: {
       disable_nav: true,
@@ -78,6 +81,17 @@ const routes = [
     component: () =>
       import(
         /* webpackChunkName: "obs.in-person.one-frame" */ "@/views/obs/in-person/one-frame.vue"
+      ),
+  },
+  {
+    path: "/obs/interview",
+    name: "obs.interview",
+    meta: {
+      disable_nav: true,
+    },
+    component: () =>
+      import(
+        /* webpackChunkName: "obs.in-person.one-frame" */ "@/views/obs/in-person/interview.vue"
       ),
   },
   {
@@ -102,17 +116,28 @@ const routes = [
         /* webpackChunkName: "obs.particles" */ "@/views/obs/particles.vue"
       ),
   },
-  {
-    path: "/obs/guest",
-    name: "obs.guest",
-    meta: {
-      disable_nav: true,
-    },
-    component: () =>
-      import(
-        /* webpackChunkName: "auth.register" */ "@/views/obs/three-people.vue"
-      ),
-  },
+  // {
+  //   path: "/obs",
+  //   name: "obs",
+  //   meta: {
+  //     disable_nav: true,
+  //   },
+  //   component: () =>
+  //     import(
+  //       /* webpackChunkName: "obs.two-people" */ "@/views/obs/two-people.vue"
+  //     ),
+  // },
+  // {
+  //   path: "/obs/guest",
+  //   name: "obs.guest",
+  //   meta: {
+  //     disable_nav: true,
+  //   },
+  //   component: () =>
+  //     import(
+  //       /* webpackChunkName: "auth.register" */ "@/views/obs/three-people.vue"
+  //     ),
+  // },
   {
     path: "/:pathMatch(.*)*",
     name: "404",
