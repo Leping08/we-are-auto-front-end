@@ -87,8 +87,8 @@
       />
     </div>
   </div>
-  <div class="lg:m-24 md:m-10 sm:m-4">
-    <div class="grid sm:grid-cols-3 grid-cols-1 gap-4 items-center">
+  <div class="2xl:m-24 xl:m-18 lg:m-12 md:m-10 sm:m-4">
+    <div class="grid sm:grid-cols-2 grid-cols-1 gap-4 items-center">
       <div class="m-4 sm:m-0">
         <div class="videoWrapper">
           <iframe
@@ -102,7 +102,7 @@
           ></iframe>
         </div>
       </div>
-      <div class="col-span-2 sm:grid-cols-1 m-10 sm:p-10">
+      <div class="m-10 sm:p-10">
         <div
           class="tracking-tight font-bold text-gray-900 text-3xl md:text-4xl"
         >
@@ -112,6 +112,37 @@
           A weekly show where we go deep into car news, culture, and interviews
           with fellow enthusiasts.
         </div>
+        <dl class="mt-8 space-y-8">
+          <div v-for="item in podcastFeatures" :key="item.id" class="relative">
+            <dt>
+              <div
+                class="
+                  absolute
+                  flex
+                  items-center
+                  justify-center
+                  h-12
+                  w-12
+                  rounded-md
+                  bg-gradient-to-r
+                  from-blue-400
+                  to-blue-600
+                  text-white
+                "
+              >
+                <component :is="item.icon" class="h-6 w-6" aria-hidden="true" />
+              </div>
+              <p
+                class="mb-1 ml-16 text-lg font-semibold leading-6 text-gray-900"
+              >
+                {{ item.name }}
+              </p>
+            </dt>
+            <dd class="ml-16 text-base text-gray-500">
+              {{ item.description }}
+            </dd>
+          </div>
+        </dl>
       </div>
     </div>
   </div>
@@ -138,13 +169,40 @@
 </template>
 
 <script>
+import { shallowRef } from "vue";
 import latestRaces from "@/components/races/latestRaces.vue";
+import news from "@/assets/icons/news.vue";
+import people from "@/assets/icons/people.vue";
+import shift from "@/assets/icons/car-shift-pattern.vue";
 export default {
   components: {
     latestRaces,
   },
   data() {
-    return {};
+    return {
+      podcastFeatures: [
+        {
+          id: 1,
+          name: "News",
+          description:
+            "The latest auto industry news as well as whats going on in the racing world.",
+          icon: shallowRef(news),
+        },
+        {
+          id: 2,
+          name: "Guests",
+          description:
+            "Conversations with a verity of guests from all corners of the automotive industry.",
+          icon: shallowRef(people),
+        },
+        {
+          id: 3,
+          name: "Car Banter",
+          description: "Simply car enthusiast's talking about car stuff.",
+          icon: shallowRef(shift),
+        },
+      ],
+    };
   },
 };
 </script>

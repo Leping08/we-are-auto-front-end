@@ -10,22 +10,16 @@
       >
         <div class="relative max-w-xl mx-auto p-6 lg:p-0">
           <h3
-            class="
-              text-2xl
-              font-extrabold
-              text-gray-900
-              tracking-tight
-              sm:text-4xl
-            "
+            class="text-2xl font-bold text-gray-900 tracking-tight sm:text-4xl"
           >
-            The We Are Auto Show
+            The <span class="text-blue-500">We Are Auto Show</span>
           </h3>
           <p class="mt-3 text-lg text-gray-500">
             A weekly show covering auto news, racing news, car spots, interviews
             and just plain old car banter.
           </p>
 
-          <dl class="mt-10 space-y-10">
+          <dl class="mt-8 space-y-8">
             <div v-for="item in features" :key="item.id" class="relative">
               <dt>
                 <div
@@ -49,11 +43,20 @@
                     aria-hidden="true"
                   />
                 </div>
-                <p class="ml-16 text-lg leading-6 font-medium text-gray-900">
+                <p
+                  class="
+                    mb-1
+                    ml-16
+                    text-lg
+                    font-semibold
+                    leading-6
+                    text-gray-900
+                  "
+                >
                   {{ item.name }}
                 </p>
               </dt>
-              <dd class="mt-2 ml-16 text-base text-gray-500">
+              <dd class="ml-16 text-base text-gray-500">
                 {{ item.description }}
               </dd>
             </div>
@@ -295,7 +298,7 @@ import { mapMutations } from "vuex";
 import { all } from "@/api/podcast/index.js";
 import playCircleOutline from "@/assets/icons/play-circle-outline.vue";
 import news from "@/assets/icons/news.vue";
-import chat from "@/assets/icons/chat.vue";
+import people from "@/assets/icons/people.vue";
 import shift from "@/assets/icons/car-shift-pattern.vue";
 import applePodcast from "@/assets/icons/apple-podcast.vue";
 import googlePodcast from "@/assets/icons/google-podcast.vue";
@@ -324,7 +327,7 @@ export default {
           name: "Interviews",
           description:
             "Conversations with a verity of guests from all corners of the automotive industry.",
-          icon: shallowRef(chat),
+          icon: shallowRef(people),
         },
         {
           id: 3,
