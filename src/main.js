@@ -21,6 +21,8 @@ createApp(App)
   .use(
     VueGtag,
     {
+      appName: "We Are Auto",
+      pageTrackerScreenviewEnabled: true,
       config: { id: process.env.VUE_APP_GOOGLE_ANALYTICS_KEY },
     },
     router
