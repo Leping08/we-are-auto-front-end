@@ -10,7 +10,6 @@
           row-span-2
           col-span-3
         "
-        data-v-0be565c4=""
       >
         <div class="px-4 py-2">
           <div
@@ -26,10 +25,10 @@
           >
             <div class="ml-4 mt-4">
               <h3 class="text-xl leading-6 font-medium text-gray-900">
-                Sahlen's Six Hours Of The Glen
+                {{ race.name }}
               </h3>
               <p class="mt-1 text-sm leading-5 text-gray-500">
-                Watkins Glen International
+                {{ race.track.name }}
               </p>
             </div>
             <div>
@@ -243,12 +242,14 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 import Race from "@/api/models/races.js";
 import Series from "@/api/models/series.js";
 import PlayProgress from "@/components/playProgress.vue";
 import VideoProgress from "@/components/videoProgress.vue";
 import Suggestion from "@/components/races/suggestion.vue";
 import ClockStart from "@/assets/icons/clock-start.vue";
+import VideoProgressApi from "@/api/models/video-progress.js";
 export default {
   components: {
     PlayProgress,
@@ -264,20 +265,35 @@ export default {
       seasonOpen: false,
       suggestionLink: null,
       validated: false,
+      index: 0,
     };
+  },
+  computed: {
+    ...mapState("user", {
+      user: (state) => state.user,
+    }),
   },
   async mounted() {
     await this.getRaceData();
     window.addEventListener("resize", this.resizePlayer);
     this.initPlayer();
+    // todo set up correct video index by skipping already watched videos
+    // todo jump to part of video that was left off last from the video progress
   },
   async unmounted() {
-    this.player = null;
+    // this.player = null;
     // Save the video progress on leave
-    // await new VideoProgress().store({
-    //   video_id: 1,
-    //   seconds: 100,
-    // });
+    const currentTime = Math.round(this.player.getCurrentTime());
+    console.log(currentTime);
+
+    console.log(this.race.videos[this.index]);
+
+    if (currentTime && this.user) {
+      await new VideoProgressApi().store({
+        video_id: this.race.videos[this.index].id,
+        seconds: currentTime,
+      });
+    }
   },
   methods: {
     initPlayer() {
@@ -335,7 +351,8 @@ export default {
       ) {
         return;
       }
-      this.player.cueVideoById(this.race.videos[index].video_id);
+      this.index = index;
+      this.player.cueVideoById(this.race.videos[this.index].video_id);
     },
     raceState(race) {
       if (race?.videos?.length >= 1) {
