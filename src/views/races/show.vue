@@ -1,16 +1,7 @@
 <template>
   <div class="p-4 relative" v-if="race.length && races.length">
     <div class="my-2 ml-2 mr-20">
-      <div
-        class="
-          bg-white
-          overflow-hidden
-          shadow-md
-          rounded-lg
-          row-span-2
-          col-span-3
-        "
-      >
+      <div class="bg-white shadow-md rounded-lg row-span-2 col-span-3">
         <div class="px-4 py-2">
           <div
             class="
@@ -31,11 +22,61 @@
                 {{ race.track.name }}
               </p>
             </div>
-            <div>
-              <clock-start
-                @click="jumpToStart()"
-                class="h-6 w-6 text-gray-400 hover:text-blue-500 cursor-pointer"
-              />
+            <div class="flex items-center">
+              <div v-if="user" class="ml-4">
+                <tooltip>
+                  <movie-open-play-outline
+                    @click="resumeVideo()"
+                    class="
+                      h-6
+                      w-6
+                      text-gray-400
+                      hover:text-blue-500
+                      cursor-pointer
+                    "
+                  />
+                  <template #tooltip-content>
+                    <div class="text-sm leading-5 text-gray-500">Resume</div>
+                  </template>
+                </tooltip>
+              </div>
+              <div class="ml-4">
+                <tooltip>
+                  <clock-start
+                    @click="jumpToStart()"
+                    class="
+                      h-6
+                      w-6
+                      text-gray-400
+                      hover:text-blue-500
+                      cursor-pointer
+                    "
+                  />
+                  <template #tooltip-content>
+                    <div class="text-sm leading-5 text-gray-500 w-20">
+                      Race start
+                    </div>
+                  </template>
+                </tooltip>
+              </div>
+              <div v-if="user" class="ml-4">
+                <tooltip>
+                  <chat-alert-outline
+                    class="
+                      h-6
+                      w-6
+                      text-gray-400
+                      hover:text-blue-500
+                      cursor-pointer
+                    "
+                  />
+                  <template #tooltip-content>
+                    <div class="text-sm leading-5 text-gray-500 w-28">
+                      Report Problem
+                    </div>
+                  </template>
+                </tooltip>
+              </div>
             </div>
           </div>
         </div>
@@ -249,13 +290,19 @@ import PlayProgress from "@/components/playProgress.vue";
 import VideoProgress from "@/components/videoProgress.vue";
 import Suggestion from "@/components/races/suggestion.vue";
 import ClockStart from "@/assets/icons/clock-start.vue";
+import ChatAlertOutline from "@/assets/icons/chat-alert-outline.vue";
+import MovieOpenPlayOutline from "@/assets/icons/movie-open-play-outline.vue";
 import VideoProgressApi from "@/api/models/video-progress.js";
+import Tooltip from "@/components/tooltip.vue";
 export default {
   components: {
     PlayProgress,
     VideoProgress,
     Suggestion,
     ClockStart,
+    ChatAlertOutline,
+    MovieOpenPlayOutline,
+    Tooltip,
   },
   data() {
     return {
@@ -278,22 +325,10 @@ export default {
     window.addEventListener("resize", this.resizePlayer);
     this.initPlayer();
     // todo set up correct video index by skipping already watched videos
-    // todo jump to part of video that was left off last from the video progress
+    // todo wire up report problem button to video
   },
   async unmounted() {
-    // this.player = null;
-    // Save the video progress on leave
-    const currentTime = Math.round(this.player.getCurrentTime());
-    console.log(currentTime);
-
-    console.log(this.race.videos[this.index]);
-
-    if (currentTime && this.user) {
-      await new VideoProgressApi().store({
-        video_id: this.race.videos[this.index].id,
-        seconds: currentTime,
-      });
-    }
+    await this.saveVideoProgress();
   },
   methods: {
     initPlayer() {
@@ -312,6 +347,38 @@ export default {
           this.setPlayer();
         };
       }
+    },
+    async saveVideoProgress() {
+      // Check if the video player is ready
+      if (!this.player) {
+        return;
+      }
+
+      // Check if a user is logged in
+      if (!this.user) {
+        return;
+      }
+
+      // Check if the video was ever started
+      const currentVideoTime = Math.round(this.player.getCurrentTime());
+      if (!currentVideoTime) {
+        return;
+      }
+
+      // Check if the video is at the same exact time as the last saved time
+      if (
+        currentVideoTime === this.race?.videos[this.index]?.progress?.seconds
+      ) {
+        return;
+      }
+
+      await new VideoProgressApi().store({
+        video_id: this.race?.videos[this.index]?.id,
+        seconds: currentVideoTime,
+      });
+    },
+    resumeVideo() {
+      this.player.seekTo(this.race?.videos[this.index]?.progress?.seconds);
     },
     setPlayer() {
       /* eslint-disable-next-line */
@@ -380,7 +447,7 @@ export default {
         : new Date(Date.parse(race?.starts_at)).toLocaleDateString();
     },
     jumpToStart() {
-      this.player.seekTo(this.race?.videos[0]?.start_time);
+      this.player.seekTo(this.race?.videos[this.index]?.start_time);
     },
   },
   watch: {
