@@ -483,7 +483,9 @@ export default {
     ...mapActions("user", ["setUser"]),
   },
   created() {
-    this.setUser();
+    if (this.isAuthenticated) {
+      this.setUser(this.user);
+    }
   },
 };
 </script>

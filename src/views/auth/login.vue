@@ -75,6 +75,11 @@ export default {
           email: this.email,
           password: this.password,
         });
+
+        if (!data.access_token) {
+          throw new Error("No access token returned");
+        }
+
         this.setToken(data.access_token);
         await this.setUser();
         this.$router.push({
