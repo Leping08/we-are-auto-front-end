@@ -28,6 +28,10 @@ const actions = {
     return await axios.post(`${BACKEND_URL}/login`, data);
   },
   async setUser(context) {
+    if (!localStorage.getItem("access_token")) {
+      return;
+    }
+
     try {
       const response = await api.get("/user");
       context.commit(SET_USER, response.data);

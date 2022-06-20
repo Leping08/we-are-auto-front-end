@@ -23,7 +23,7 @@ axios.interceptors.response.use(
       // null the token in local storage
       // and set the user to null
       try {
-        store.dispatch("auth/logout");
+        store.dispatch("logout");
       } catch (error) {
         throw new Error(error);
       }
