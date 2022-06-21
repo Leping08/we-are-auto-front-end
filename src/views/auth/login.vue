@@ -30,6 +30,7 @@
           </div>
           <div>
             <v-button
+              v-if="!loginLoading"
               color="blue"
               size="md"
               rounded="rounded-lg"
@@ -39,6 +40,13 @@
             >
               Submit
             </v-button>
+            <v-progress-spinner v-if="loginLoading" :size="7" color="blue" />
+            <div
+              v-if="errorMessage && !loginLoading"
+              class="mt-2 text-sm text-red-600"
+            >
+              {{ errorMessage }}
+            </div>
           </div>
         </div>
       </v-card>
@@ -55,6 +63,8 @@ export default {
       emailValidated: true,
       password: "",
       passwordValidated: true,
+      loginLoading: false,
+      errorMessage: "",
     };
   },
   computed: {
@@ -69,26 +79,31 @@ export default {
   methods: {
     ...mapActions("user", ["login", "setUser", "setToken"]),
     async attemptLogin() {
+      this.loginLoading = true;
+      this.errorMessage = "";
       try {
-        // todo catch failed login and handel it better
-        // todo add loading spinner
         const { data } = await this.login({
           email: this.email,
           password: this.password,
         });
 
-        if (!data.access_token) {
-          throw new Error("No access token returned");
+        if (data?.access_token) {
+          await this.setToken(data?.access_token);
+          await this.setUser();
+          this.$router.push({
+            name: "races.index",
+          });
+        } else {
+          this.errorMessage = data?.message;
         }
-
-        await this.setToken(data.access_token);
-        await this.setUser();
-        this.$router.push({
-          name: "races.index",
-        });
       } catch (error) {
         console.error(error);
+        if (error?.response?.data?.message) {
+          this.errorMessage = error?.response?.data?.message;
+        }
+        this.loginLoading = false;
       }
+      this.loginLoading = false;
     },
   },
 };
