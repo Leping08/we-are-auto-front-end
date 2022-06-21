@@ -40,7 +40,7 @@
             >
               Submit
             </v-button>
-            <v-progress-spinner v-if="loginLoading" :size="7" color="blue" />
+            <v-progress-spinner v-if="loginLoading" :size="6" color="blue" />
             <div
               v-if="errorMessage && !loginLoading"
               class="mt-2 text-sm text-red-600"
