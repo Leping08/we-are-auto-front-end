@@ -85,7 +85,7 @@ export default {
     ...mapActions("user", ["login", "setUser", "setToken", "register"]),
     async attemptSignUp() {
       try {
-        //TODO catch failed login and handel it better
+        // todo catch failed login and handel it better
         const { data } = await this.register({
           name: this.name,
           email: this.email,

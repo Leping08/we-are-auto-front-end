@@ -1,6 +1,7 @@
 import { SET_USER, SET_TOKEN } from "@/store/auth/mutation-types.js";
 import axios from "axios";
 import api from "@/api/auth/index.js";
+import { refreshHeaders } from "@/api/auth/index.js";
 
 const BACKEND_URL = `${process.env.VUE_APP_BACKEND_URL}/api`;
 
@@ -33,6 +34,7 @@ const actions = {
     }
 
     try {
+      refreshHeaders();
       const response = await api.get("/user");
       context.commit(SET_USER, response.data);
     } catch (error) {

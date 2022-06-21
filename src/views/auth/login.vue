@@ -70,7 +70,8 @@ export default {
     ...mapActions("user", ["login", "setUser", "setToken"]),
     async attemptLogin() {
       try {
-        //TODO catch failed login and handel it better
+        // todo catch failed login and handel it better
+        // todo add loading spinner
         const { data } = await this.login({
           email: this.email,
           password: this.password,
@@ -80,7 +81,7 @@ export default {
           throw new Error("No access token returned");
         }
 
-        this.setToken(data.access_token);
+        await this.setToken(data.access_token);
         await this.setUser();
         this.$router.push({
           name: "races.index",

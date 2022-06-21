@@ -2,6 +2,16 @@ import axios from "@/api/index.js";
 import store from "@/store/index";
 import router from "@/router/index";
 
+// This is used when the login action is run
+function refreshHeaders() {
+  const newToken = localStorage.getItem("access_token") || null;
+  axios.defaults.headers.common = {
+    Authorization: `Bearer ${newToken}`,
+    "content-type": "application/json",
+    accept: "application/json",
+  };
+}
+
 const token = localStorage.getItem("access_token") || null;
 axios.defaults.headers.common = {
   Authorization: `Bearer ${token}`,
@@ -39,3 +49,4 @@ axios.interceptors.response.use(
 );
 
 export default axios;
+export { refreshHeaders };

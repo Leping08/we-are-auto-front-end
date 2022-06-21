@@ -6,7 +6,7 @@
 export default {
   created() {
     this.$store.dispatch("logout");
-    this.$router.push({ name: "login" });
+    this.$router.push({ name: "auth.login" });
   },
 };
 </script>

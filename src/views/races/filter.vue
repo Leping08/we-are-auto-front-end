@@ -405,8 +405,6 @@ export default {
         { id: 2, name: "Season", status: "upcoming" },
         { id: 3, name: "Race", status: "upcoming" },
       ],
-      // TODO
-      // add the ability to search all races
     };
   },
   methods: {
