@@ -60,6 +60,30 @@
                 </tooltip>
               </div>
               <div v-if="user" class="ml-4">
+                <v-progress-spinner
+                  v-if="loadingProgress"
+                  :size="5"
+                  color="blue"
+                />
+                <tooltip v-if="!loadingProgress">
+                  <check-circle-outline
+                    @click="markWatched()"
+                    class="
+                      h-6
+                      w-6
+                      text-gray-400
+                      hover:text-blue-500
+                      cursor-pointer
+                    "
+                  />
+                  <template #tooltip-content>
+                    <div class="text-sm leading-5 text-gray-500 w-24">
+                      Mark watched
+                    </div>
+                  </template>
+                </tooltip>
+              </div>
+              <div v-if="user" class="ml-4">
                 <tooltip>
                   <chat-alert-outline
                     class="
@@ -72,7 +96,7 @@
                   />
                   <template #tooltip-content>
                     <div class="text-sm leading-5 text-gray-500 w-28">
-                      Report Problem
+                      Report problem
                     </div>
                   </template>
                 </tooltip>
@@ -223,7 +247,10 @@
               <div v-for="(race, index) in races" :key="race.id">
                 <router-link
                   class="group"
-                  :to="{ name: 'races.show', params: { id: race.id } }"
+                  :to="{
+                    name: 'races.show',
+                    params: { id: race.id, text: race.name },
+                  }"
                 >
                   <div class="relative mb-8">
                     <span
@@ -290,6 +317,7 @@ import PlayProgress from "@/components/playProgress.vue";
 import VideoProgress from "@/components/videoProgress.vue";
 import Suggestion from "@/components/races/suggestion.vue";
 import ClockStart from "@/assets/icons/clock-start.vue";
+import CheckCircleOutline from "@/assets/icons/check-circle-outline.vue";
 import ChatAlertOutline from "@/assets/icons/chat-alert-outline.vue";
 import MovieOpenPlayOutline from "@/assets/icons/movie-open-play-outline.vue";
 import VideoProgressApi from "@/api/models/video-progress.js";
@@ -300,6 +328,7 @@ export default {
     VideoProgress,
     Suggestion,
     ClockStart,
+    CheckCircleOutline,
     ChatAlertOutline,
     MovieOpenPlayOutline,
     Tooltip,
@@ -313,6 +342,7 @@ export default {
       suggestionLink: null,
       validated: false,
       index: 0,
+      loadingProgress: false,
     };
   },
   computed: {
@@ -324,7 +354,6 @@ export default {
     await this.getRaceData();
     window.addEventListener("resize", this.resizePlayer);
     this.initPlayer();
-    // todo set up correct video index by skipping already watched videos
     // todo wire up report problem button to video
   },
   async unmounted() {
@@ -378,7 +407,50 @@ export default {
       });
     },
     resumeVideo() {
-      this.player.seekTo(this.race?.videos[this.index]?.progress?.seconds);
+      // todo save when a part is complete
+      // todo automatically move to the next part when the current one is done
+
+      // Figure out what index to jump too and resume at that index
+      this.race?.videos.find((video, index) => {
+        // The part is already done
+        if (video?.progress?.percentage >= 100) {
+          return false;
+        }
+
+        // The part has been started but not finished
+        if (video?.progress?.seconds) {
+          this.index = index;
+          return true;
+        }
+
+        // The part has not been started but the last part is done
+        if (this.race?.videos[index - 1]?.progress?.percentage >= 100) {
+          this.index = index;
+          return true;
+        }
+      });
+
+      this.selectVideoPart(this.index);
+      setTimeout(() => {
+        this.player.seekTo(this.race?.videos[this.index]?.progress?.seconds);
+      }, 250);
+    },
+    async markWatched() {
+      if (!this.user) {
+        return;
+      }
+
+      this.loadingProgress = true;
+      await Promise.all(
+        this.race?.videos.map(async (video) => {
+          await new VideoProgressApi().store({
+            video_id: video.id,
+            seconds: video.end_time,
+          });
+        })
+      );
+      await this.getRaceData();
+      this.loadingProgress = false;
     },
     setPlayer() {
       /* eslint-disable-next-line */

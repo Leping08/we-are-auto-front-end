@@ -39,7 +39,7 @@ const routes = [
       import(/* webpackChunkName: "races.index" */ "@/views/races/index.vue"),
   },
   {
-    path: "/races/:id(\\d+)",
+    path: "/races/:id(\\d+)/:text(.*)*",
     name: "races.show",
     component: () =>
       import(/* webpackChunkName: "races.show" */ "@/views/races/show.vue"),

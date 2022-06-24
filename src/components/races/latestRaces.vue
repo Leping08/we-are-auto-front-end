@@ -25,7 +25,7 @@
       >
         <router-link
           tag="div"
-          :to="{ name: 'races.show', params: { id: race.id } }"
+          :to="{ name: 'races.show', params: { id: race.id, text: race.name } }"
           v-for="race in races"
           :key="race.id"
         >

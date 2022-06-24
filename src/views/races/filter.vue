@@ -359,7 +359,10 @@
           <div class="h-full">
             <router-link
               tag="div"
-              :to="{ name: 'races.show', params: { id: race.id } }"
+              :to="{
+                name: 'races.show',
+                params: { id: race.id, text: race.name },
+              }"
             >
               <race-card :race="race" />
             </router-link>
