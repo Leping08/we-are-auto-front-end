@@ -218,7 +218,13 @@
       >
         <v-card>
           <template v-slot:header>
-            <div class="flex items-center p-2">
+            <router-link
+              :to="{
+                name: 'races.filter',
+                query: { series: race.series.name },
+              }"
+              class="flex items-center p-2"
+            >
               <div class="flex-shrink-0">
                 <div class="px-2">
                   <span class="sr-only">{{ race.series.name }}</span>
@@ -232,14 +238,14 @@
               <div class="ml-3">
                 <div class="text-sm font-medium text-gray-900">
                   <div class="font-bold text-gray-800">
-                    {{ race.series.name }}
+                    {{ race.series.full_name }}
                   </div>
                 </div>
                 <div class="flex space-x-1 text-sm text-gray-400">
                   <span>{{ race.season.name }}</span>
                 </div>
               </div>
-            </div>
+            </router-link>
           </template>
 
           <div class="flow-root">

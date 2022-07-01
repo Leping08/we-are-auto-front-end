@@ -117,14 +117,12 @@ import checkboxMarkedCircleOutline from "@/assets/icons/checkbox-marked-circle-o
 import formatListBulleted from "@/assets/icons/format-list-bulleted.vue";
 import play from "@/assets/icons/play.vue";
 import playProgress from "@/components/playProgress.vue";
-import seriesPill from "@/components/series/pill.vue";
 import latestRaces from "@/components/races/latestRaces.vue";
 export default {
   components: {
     flag,
     play,
     playProgress,
-    seriesPill,
     latestRaces,
   },
   data() {

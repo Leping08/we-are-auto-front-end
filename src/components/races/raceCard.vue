@@ -22,7 +22,11 @@
       </div>
 
       <div class="absolute left-0 bottom-0 -my-6 ml-6">
-        <series-pill :series="race.series" :year="race.season.name" />
+        <router-link
+          :to="{ name: 'races.filter', query: { series: race.series.name } }"
+        >
+          <series-pill :series="race.series" :year="race.season.name" />
+        </router-link>
       </div>
     </div>
     <div class="flex-1 bg-white p-6 flex flex-col justify-between">

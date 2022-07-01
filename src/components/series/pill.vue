@@ -12,10 +12,8 @@
         </div>
       </div>
       <div class="ml-3">
-        <div class="text-sm font-medium text-gray-900">
-          <div class="font-bold text-gray-800">
-            {{ series.name }}
-          </div>
+        <div class="font-bold text-gray-800 text-sm">
+          {{ series.name }}
         </div>
         <div v-if="year" class="flex space-x-1 text-sm text-gray-400">
           <span>{{ year }}</span>
