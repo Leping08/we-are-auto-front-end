@@ -385,7 +385,7 @@
             </div>
           </TransitionChild>
         </TransitionRoot>
-        <div class="relative">
+        <div class="relative overflow-hidden">
           <router-view />
           <!-- This is for spacing related to the podcast slide up -->
           <TransitionRoot as="template" :show="showPodcast">
@@ -405,7 +405,7 @@
       </main>
     </div>
   </div>
-  <div v-if="$route.meta.disable_nav">
+  <div class="overflow-hidden" v-if="$route.meta.disable_nav">
     <router-view />
   </div>
 </template>

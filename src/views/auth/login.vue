@@ -1,8 +1,18 @@
 <template>
-  <div class="flex">
-    <div></div>
-    <div class="m-auto w-1/2">
-      <v-card heading="Login" :padding="true" :border="true">
+  <div class="flex bg-gradient-to-r from-blue-400 to-blue-600 h-screen">
+    <div class="m-auto w-5/6 md:w-2/3 lg:w-1/2 xl:w-1/3">
+      <div class="p-8 bg-white rounded-lg shadow-lg relative">
+        <div class="w-full flex justify-center absolute -top-14 left-0">
+          <div class="bg-white rounded-full p-2">
+            <div class="rounded-full shadow-lg border">
+              <img
+                class="h-24 w-auto"
+                src="@/assets/logos/waa-logo-dark.svg"
+                alt="We Are Auto"
+              />
+            </div>
+          </div>
+        </div>
         <div>
           <div class="my-4">
             <v-input
@@ -49,7 +59,7 @@
             </div>
           </div>
         </div>
-      </v-card>
+      </div>
     </div>
   </div>
 </template>
