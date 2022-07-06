@@ -81,7 +81,7 @@
                   lg:absolute lg:left-0 lg:h-full lg:w-auto lg:max-w-none
                 "
                 src="@/assets/images/race-cars/mercedes-rolex-24.jpg"
-                alt="Inbox user interface"
+                alt="IMSA Racing"
               />
             </div>
           </div>

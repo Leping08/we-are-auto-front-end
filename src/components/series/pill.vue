@@ -7,7 +7,7 @@
           <img
             class="h-10 w-10 rounded-full shadow"
             :src="series.logo"
-            alt=""
+            :alt="series.full_name"
           />
         </div>
       </div>

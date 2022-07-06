@@ -15,7 +15,7 @@
           ease-in-out
         "
         :src="thumbnailUrl"
-        alt=""
+        :alt="race.name"
       />
       <div class="absolute right-0 bottom-0 -my-5 mr-6">
         <play-progress :race="race" />

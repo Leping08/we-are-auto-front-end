@@ -197,7 +197,7 @@
                 ease-in-out
               "
               :src="currentSeries.image_url"
-              alt=""
+              :alt="currentSeries.full_name"
             />
             <series-pill
               class="absolute left-0 bottom-0 -my-6 ml-6"
@@ -245,7 +245,7 @@
               ease-in-out
             "
             :src="selectedSeries.image_url"
-            alt=""
+            :alt="selectedSeries.full_name"
           />
           <series-pill
             class="absolute left-0 bottom-0 -my-6 ml-6"

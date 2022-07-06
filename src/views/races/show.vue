@@ -231,7 +231,7 @@
                   <img
                     class="h-10 w-10 rounded-full shadow"
                     :src="race.series.logo"
-                    alt=""
+                    :alt="race.name"
                   />
                 </div>
               </div>

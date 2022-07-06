@@ -83,7 +83,7 @@
           sm:ml-0
         "
         src="@/assets/images/race-cars/ferrari-rolex-24.jpg"
-        alt=""
+        alt="We Are Auto"
       />
     </div>
   </div>

@@ -21,7 +21,7 @@
         <img
           class="rounded-xl shadow-xl border"
           src="@/assets/images/car-stack.jpg"
-          alt=""
+          alt="We Are Auto"
         />
       </div>
       <div class="mt-12">

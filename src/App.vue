@@ -146,7 +146,7 @@
                   <img
                     class="inline-block h-10 w-10 rounded-full"
                     src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png"
-                    alt=""
+                    alt="profile image"
                   />
                 </div>
                 <div class="ml-3">
@@ -172,7 +172,7 @@
                   <img
                     class="inline-block h-10 w-10 rounded-full"
                     src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png"
-                    alt=""
+                    alt="profile image"
                   />
                 </div>
                 <div class="ml-3">
@@ -286,7 +286,7 @@
                   <img
                     class="inline-block h-10 w-10 rounded-full"
                     src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png"
-                    alt=""
+                    alt="profile image"
                   />
                 </div>
                 <div class="ml-3">
@@ -312,7 +312,7 @@
                   <img
                     class="inline-block h-10 w-10 rounded-full"
                     src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png"
-                    alt=""
+                    alt="profile image"
                   />
                 </div>
                 <div class="ml-3">
