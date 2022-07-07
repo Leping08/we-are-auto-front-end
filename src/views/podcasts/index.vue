@@ -81,7 +81,7 @@
                 m-2
               "
               src="@/assets/images/mics.jpg"
-              :alt="item.name"
+              :alt=""
             />
           </div>
         </div>
