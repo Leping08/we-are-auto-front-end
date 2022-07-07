@@ -81,7 +81,7 @@
                 m-2
               "
               src="@/assets/images/mics.jpg"
-              alt=""
+              alt="We Are Auto Show"
             />
           </div>
         </div>
