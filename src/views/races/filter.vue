@@ -254,6 +254,7 @@
           <div class="absolute right-0 bottom-0 -my-6 mr-6">
             <div class="rounded-full mr-4 shadow-lg mb-1">
               <button
+                @click="updateSeriesFollowStatus()"
                 class="
                   inline-flex
                   items-center
@@ -382,6 +383,7 @@ import RaceCard from "@/components/races/raceCard.vue";
 import LoadingRaceCard from "@/components/races/loadingRaceCard.vue";
 import SeriesPill from "@/components/series/pill.vue";
 import FollowSeriesApi from "@/api/models/follow-series.js";
+import { mapGetters } from "vuex";
 export default {
   components: {
     Check,
@@ -473,9 +475,16 @@ export default {
         this.selectStep(3);
       }
     },
-    async updateSeriesFollowStatus() {
+    async getSeriesFollowStatus() {
       const response = await new FollowSeriesApi().show(this.selectedSeries.id);
-      this.selectedSeriesFollowStatus = response?.data?.followed;
+      this.selectedSeriesFollowStatus = response?.data?.follow;
+    },
+    async updateSeriesFollowStatus() {
+      await new FollowSeriesApi().store({
+        series_id: this.selectedSeries.id,
+        user_id: this.user.id,
+      });
+      await this.getSeriesFollowStatus();
     },
   },
   async mounted() {
@@ -485,7 +494,7 @@ export default {
   watch: {
     selectedSeries() {
       this.getSeriesSeason();
-      this.updateSeriesFollowStatus();
+      this.getSeriesFollowStatus();
     },
     selectedSeason() {
       this.getSeriesSeason();
@@ -498,6 +507,7 @@ export default {
     },
   },
   computed: {
+    ...mapGetters("user", ["user"]),
     currentStep() {
       return this.steps.filter((step) => step.status === "current")[0];
     },
