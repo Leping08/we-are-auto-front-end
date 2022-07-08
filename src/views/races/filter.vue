@@ -251,7 +251,7 @@
             class="absolute left-0 bottom-0 -my-6 ml-6"
             :series="selectedSeries"
           />
-          <div class="absolute right-0 bottom-0 -my-6 mr-6">
+          <div class="absolute right-0 bottom-0 -my-6 mr-6 flex">
             <div class="rounded-full mr-4 shadow-lg mb-1">
               <button
                 @click="updateSeriesFollowStatus()"
@@ -268,12 +268,22 @@
                   focus:ring-0
                 "
               >
+                <v-progress-spinner
+                  v-if="seriesFollowStatusLoading"
+                  color="blue"
+                  :size="6"
+                  class="m-2"
+                />
                 <bell-plus-outline
-                  v-if="!selectedSeriesFollowStatus"
+                  v-if="
+                    !selectedSeriesFollowStatus && !seriesFollowStatusLoading
+                  "
                   class="w-6 h-6 text-gray-500 hover:text-blue-500 m-2"
                 />
                 <bell-check-outline
-                  v-if="selectedSeriesFollowStatus"
+                  v-if="
+                    selectedSeriesFollowStatus && !seriesFollowStatusLoading
+                  "
                   class="w-6 h-6 text-blue-500 hover:text-gray-500 m-2"
                 />
               </button>
@@ -400,6 +410,7 @@ export default {
       series: [],
       selectedSeries: null,
       selectedSeriesFollowStatus: false,
+      seriesFollowStatusLoading: false,
       loadingSeasons: true,
       selectedSeason: null,
       numOfRaces: 8,
@@ -475,16 +486,21 @@ export default {
         this.selectStep(3);
       }
     },
+    // todo add loading state
     async getSeriesFollowStatus() {
+      this.seriesFollowStatusLoading = true;
       const response = await new FollowSeriesApi().show(this.selectedSeries.id);
       this.selectedSeriesFollowStatus = response?.data?.follow;
+      this.seriesFollowStatusLoading = false;
     },
     async updateSeriesFollowStatus() {
+      this.seriesFollowStatusLoading = true;
       await new FollowSeriesApi().store({
         series_id: this.selectedSeries.id,
         user_id: this.user.id,
       });
       await this.getSeriesFollowStatus();
+      this.seriesFollowStatusLoading = false;
     },
   },
   async mounted() {
