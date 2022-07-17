@@ -86,6 +86,7 @@
               <div v-if="user" class="ml-4">
                 <tooltip>
                   <chat-alert-outline
+                    @click="showProblemForm = !showProblemForm"
                     class="
                       h-6
                       w-6
@@ -103,6 +104,9 @@
               </div>
             </div>
           </div>
+        </div>
+        <div v-show="showProblemForm" class="p-4 border-t">
+          <report-problem :race="race" />
         </div>
         <div
           v-show="raceState(race) === 'video'"
@@ -322,6 +326,7 @@ import Series from "@/api/models/series.js";
 import PlayProgress from "@/components/playProgress.vue";
 import VideoProgress from "@/components/videoProgress.vue";
 import Suggestion from "@/components/races/suggestion.vue";
+import ReportProblem from "@/components/races/reportProblem.vue";
 import ClockStart from "@/assets/icons/clock-start.vue";
 import CheckCircleOutline from "@/assets/icons/check-circle-outline.vue";
 import ChatAlertOutline from "@/assets/icons/chat-alert-outline.vue";
@@ -333,6 +338,7 @@ export default {
     PlayProgress,
     VideoProgress,
     Suggestion,
+    ReportProblem,
     ClockStart,
     CheckCircleOutline,
     ChatAlertOutline,
@@ -349,6 +355,7 @@ export default {
       validated: false,
       index: 0,
       loadingProgress: false,
+      showProblemForm: false,
     };
   },
   computed: {
