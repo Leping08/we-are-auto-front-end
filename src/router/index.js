@@ -7,12 +7,12 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "home.index" */ "@/views/home/index.vue"),
     meta: {
-      title: "We Are Auto",
+      title: "We Are Auto | Weekly Podcasts, Watch Full Length Races Online",
       metaTags: [
         {
           name: "description",
           content:
-            "We Are Auto is a community of people who are passionate about everything automotive.",
+            "We Are Auto consists of weekly shows where we go deep into car news, racing new, car culture, and interviews with fellow enthusiasts.",
         },
       ],
     },
@@ -26,11 +26,13 @@ const routes = [
       ),
     meta: {
       requiresAuth: true,
-      title: "We Are Auto Show",
+      title:
+        "We Are Auto Show | Podcast About Car News, Racing New, & Car Culture",
       metaTags: [
         {
           name: "description",
-          content: "Watch and listen to the we are auto show.",
+          content:
+            "Watch and listen a weekly podcast about car news, racing new, and car culture.",
         },
       ],
     },
@@ -43,7 +45,7 @@ const routes = [
         /* webpackChunkName: "fantasy.index" */ "@/views/fantasy/index.vue"
       ),
     meta: {
-      title: "Fantasy sports car racing",
+      title: "We Are Auto | Fantasy Sports Car Racing",
       metaTags: [
         {
           name: "description",
@@ -58,11 +60,12 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "races.filter" */ "@/views/races/filter.vue"),
     meta: {
-      title: "Sports car racing",
+      title: "We Are Auto | Watch Free Full Length Automotive Races Online",
       metaTags: [
         {
           name: "description",
-          content: "Watch sports car racing from around the world.",
+          content:
+            "Watch full length automotive races online for free including IMSA, WEC, SRO, ELMS.",
         },
       ],
     },
@@ -73,11 +76,12 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "races.index" */ "@/views/races/index.vue"),
     meta: {
-      title: "Auto racing",
+      title: "We Are Auto | Watch Full Length Automotive Races Online for Free",
       metaTags: [
         {
           name: "description",
-          content: "Watch sports car racing from around the world.",
+          content:
+            "Watch full length sports car races online for free including MX-5 Cup, 24H, Trans Am",
         },
       ],
     },
@@ -88,11 +92,11 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "races.show" */ "@/views/races/show.vue"),
     meta: {
-      title: "Sports car racing",
+      title: "Sports car racing", // this will get overridden in the show.vue component
       metaTags: [
         {
           name: "description",
-          content: "Watch sports car racing from around the world.",
+          content: "Watch sports car racing from around the world.", // this will get overridden in the show.vue component
         },
       ],
     },
@@ -103,11 +107,12 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "auth.login" */ "@/views/auth/login.vue"),
     meta: {
-      title: "We Are Auto - Login",
+      title: "We Are Auto | Login To Watch Full Length Racing Videos",
       metaTags: [
         {
           name: "description",
-          content: "Login to We Are Auto website.",
+          content:
+            "Login to track progress of watching full length racing videos online for free.",
         },
       ],
     },
@@ -135,11 +140,13 @@ const routes = [
         /* webpackChunkName: "auth.register" */ "@/views/auth/register.vue"
       ),
     meta: {
-      title: "We Are Auto - Register",
+      title:
+        "We Are Auto | Register To Track and Watch Full Length Racing Videos",
       metaTags: [
         {
           name: "description",
-          content: "Sign up for the We Are Auto.",
+          content:
+            "Register to track progress of watching full length racing videos online.",
         },
       ],
     },
@@ -152,7 +159,7 @@ const routes = [
         /* webpackChunkName: "users.profile" */ "@/views/users/profile.vue"
       ),
     meta: {
-      title: "Profile",
+      title: "We Are Auto | Profile",
       metaTags: [
         {
           name: "description",
@@ -232,11 +239,11 @@ const routes = [
     name: "404",
     component: () => import(/* webpackChunkName: "404" */ "@/views/404.vue"),
     meta: {
-      title: "404 - Not Found",
+      title: "We Are Auto | 404 Page Not Found",
       metaTags: [
         {
           name: "description",
-          content: "Page not found.",
+          content: "Looks like you are lost. Lets get you back on track.",
         },
       ],
     },
