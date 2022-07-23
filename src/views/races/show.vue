@@ -494,6 +494,13 @@ export default {
         this.race?.series?.id,
         this.race?.season?.id
       ));
+      this.updateSEO();
+    },
+    updateSEO() {
+      document.title = this.race.name;
+      document.querySelector(
+        'meta[name="description"]'
+      ).content = `Watch the ${this.race?.season?.name} ${this.race?.name} from ${this.race?.series?.full_name}.`;
     },
     selectVideoPart(index) {
       // Check if you are already watching that part

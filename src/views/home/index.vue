@@ -36,7 +36,7 @@
           "
         >
           <div class="sm:text-center lg:text-left">
-            <div class="p-10 sm:p-24">
+            <div class="p-8 sm:p-12 md:p-16 xl:p-18">
               <h1
                 class="
                   tracking-tight
