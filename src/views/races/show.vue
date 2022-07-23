@@ -500,8 +500,7 @@ export default {
       document.title = `Watch ${this.race?.season?.name} ${this.race.name} | We Are Auto`;
       document.querySelector(
         'meta[name="description"]'
-      ).content = `Watch the ${this.race?.season?.name} ${this.race?.name} at ${this.race?.track?.name} from ${this.race?.series?.full_name}.`;
-      // `Watch the 2022 Sebring 12 hours at  from World Enduance Championship.`
+      ).content = `Watch the ${this.race?.series?.full_name} ${this.race?.season?.name} ${this.race?.name} at ${this.race?.track?.name}.`;
     },
     selectVideoPart(index) {
       // Check if you are already watching that part
