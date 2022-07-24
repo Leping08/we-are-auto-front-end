@@ -104,7 +104,7 @@ export default {
             name: "races.index",
           });
         } else {
-          this.errorMessage = data?.message;
+          this.errorMessage = data?.message || "Oh no, an error occurred";
         }
       } catch (error) {
         console.error(error);
