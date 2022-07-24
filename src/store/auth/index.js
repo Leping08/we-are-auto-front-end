@@ -35,7 +35,7 @@ const actions = {
 
     try {
       refreshHeaders();
-      const response = await api.get("/user");
+      const response = await api.get("/user/me");
       context.commit(SET_USER, response.data);
     } catch (error) {
       throw new Error(error);

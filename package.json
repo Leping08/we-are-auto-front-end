@@ -19,7 +19,7 @@
     "postcss": "^7.0.39",
     "register-service-worker": "^1.7.1",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.17",
-    "vantage-ui": "^0.7.8",
+    "vantage-ui": "^0.7.9",
     "vue": "^3.2.22",
     "vue-gtag": "^2.0.1",
     "vue-router": "^4.0.12",

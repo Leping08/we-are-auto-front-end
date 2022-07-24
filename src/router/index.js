@@ -155,9 +155,7 @@ const routes = [
     path: "/users/profile",
     name: "users.profile",
     component: () =>
-      import(
-        /* webpackChunkName: "users.profile" */ "@/views/users/profile.vue"
-      ),
+      import(/* webpackChunkName: "users.index" */ "@/views/users/index.vue"),
     meta: {
       title: "We Are Auto | Profile",
       metaTags: [
