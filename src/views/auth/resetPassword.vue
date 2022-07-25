@@ -17,7 +17,7 @@
           <v-input
             v-model="newPassword"
             color="blue"
-            label="Password"
+            label="New Password"
             placeholder=""
             :rules="['min:2', 'max:255', 'required']"
             type="text"
@@ -27,7 +27,7 @@
           <v-input
             v-model="confirmNewPassword"
             color="blue"
-            label="Password Confirmation"
+            label="Confirm New Password"
             placeholder=""
             :rules="['min:2', 'max:255', 'required']"
             type="text"
