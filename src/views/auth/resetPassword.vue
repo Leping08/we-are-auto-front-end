@@ -13,13 +13,23 @@
           Enter the email address associated with your account. We'll send you
           an email with a link to reset your password.
         </div>
-        <!-- todo figure out validation rules here -->
         <div class="my-4">
           <v-input
-            v-model="email"
+            v-model="newPassword"
             color="blue"
-            label="Email"
+            label="Password"
             placeholder=""
+            :rules="['min:2', 'max:255', 'required']"
+            type="text"
+          />
+        </div>
+        <div class="my-4">
+          <v-input
+            v-model="confirmNewPassword"
+            color="blue"
+            label="Password Confirmation"
+            placeholder=""
+            :rules="['min:2', 'max:255', 'required']"
             type="text"
           />
         </div>
@@ -30,8 +40,13 @@
             </div>
             <div class="flex justify-end">
               <v-button
-                @click="submitForgotPasswordRequest()"
-                :disabled="!email || loading"
+                @click="submitResetPassword()"
+                :disabled="
+                  (!newPassword &&
+                    !confirmNewPassword &&
+                    !confirmNewPassword === newPassword) ||
+                  loading
+                "
                 type="submit"
                 >Submit</v-button
               >
@@ -77,24 +92,28 @@ export default {
   },
   data() {
     return {
-      email: "",
+      newPassword: "",
+      confirmNewPassword: "",
       loading: false,
       successMessage: null,
       errorMessage: null,
     };
   },
   methods: {
-    async submitForgotPasswordRequest() {
+    async submitResetPassword() {
       // todo check if email is valid
+      // todo handle errors better
       this.loading = true;
       this.errorMessage = null;
       this.successMessage = null;
       try {
-        const response = await api.post("/forgot-password", {
-          email: this.email,
+        await api.post("/reset-password", {
+          password: this.newPassword,
+          password_confirmation: this.confirmNewPassword,
+          email: this.$route.params.email,
+          token: this.$route.params.token,
         });
-        this.successMessage = response?.data?.message;
-        this.email = null;
+        this.$router.push({ name: "auth.logout" }); // redirect to logout page to clear any tokens and then get redirected to the login page
       } catch (error) {
         this.errorMessage = error?.response?.data?.message;
         console.log(error);

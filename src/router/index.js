@@ -150,6 +150,24 @@ const routes = [
     },
   },
   {
+    path: "/password-reset/email/:email/token/:token",
+    name: "auth.reset-password",
+    component: () =>
+      import(
+        /* webpackChunkName: "auth.resetPassword" */ "@/views/auth/resetPassword.vue"
+      ),
+    meta: {
+      title: "We Are Auto | Account Password Reset",
+      metaTags: [
+        {
+          name: "description",
+          content:
+            "Reset We Are Auto account password to watch full length racing videos online.",
+        },
+      ],
+    },
+  },
+  {
     path: "/register",
     name: "auth.register",
     component: () =>
