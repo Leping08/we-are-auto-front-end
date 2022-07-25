@@ -33,9 +33,12 @@
               type="password"
             />
           </div>
-          <div class="text-sm text-blue-500 my-2">
-            <router-link :to="{ name: 'auth.register' }">
-              Don't have an account?
+          <div
+            class="text-sm text-blue-500 my-2 flex justify-between items-center"
+          >
+            <router-link :to="{ name: 'auth.register' }"> Sign up </router-link>
+            <router-link :to="{ name: 'auth.forgot-password' }">
+              Forgot your password?
             </router-link>
           </div>
           <div>
@@ -47,6 +50,7 @@
               shadow="shadow"
               :disabled="!inputsAreValid"
               @click="attemptLogin"
+              class="mt-2"
             >
               Submit
             </v-button>

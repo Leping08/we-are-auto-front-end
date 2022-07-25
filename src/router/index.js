@@ -25,7 +25,6 @@ const routes = [
         /* webpackChunkName: "podcast.index" */ "@/views/podcasts/index.vue"
       ),
     meta: {
-      requiresAuth: true,
       title:
         "We Are Auto Show | Podcast About Car News, Racing New, & Car Culture",
       metaTags: [
@@ -133,6 +132,24 @@ const routes = [
     },
   },
   {
+    path: "/forgot-password",
+    name: "auth.forgot-password",
+    component: () =>
+      import(
+        /* webpackChunkName: "auth.forgotPassword" */ "@/views/auth/forgotPassword.vue"
+      ),
+    meta: {
+      title: "We Are Auto | Forgot Account Password",
+      metaTags: [
+        {
+          name: "description",
+          content:
+            "Forgot password on We Are Auto account to watch full length racing videos online.",
+        },
+      ],
+    },
+  },
+  {
     path: "/register",
     name: "auth.register",
     component: () =>
@@ -158,6 +175,7 @@ const routes = [
       import(/* webpackChunkName: "users.index" */ "@/views/users/index.vue"),
     meta: {
       title: "We Are Auto | Profile",
+      requiresAuth: true,
       metaTags: [
         {
           name: "description",
@@ -255,6 +273,15 @@ const router = createRouter({
 
 // This callback runs before every route change, including on page load.
 router.beforeEach((to, from, next) => {
+  // this route requires auth, check if logged in
+  if (to.matched.some((record) => record.meta.requiresAuth)) {
+    if (!window.localStorage.access_token) {
+      next({
+        path: "/logout",
+      });
+    }
+  }
+
   // This goes through the matched routes from last to first, finding the closest route with a title.
   // e.g., if we have `/some/deep/nested/route` and `/some`, `/deep`, and `/nested` have titles,
   // `/nested`'s will be chosen.
