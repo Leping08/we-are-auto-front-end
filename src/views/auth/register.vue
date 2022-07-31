@@ -1,8 +1,18 @@
 <template>
-  <div class="flex">
-    <div></div>
-    <div class="m-auto w-1/2">
-      <v-card heading="Sign Up" :padding="true" :border="true">
+  <div class="flex bg-gradient-to-r from-blue-400 to-blue-600 h-screen">
+    <div class="m-auto w-5/6 md:w-2/3 lg:w-1/2 xl:w-1/3">
+      <div class="p-8 bg-white rounded-lg shadow-lg relative">
+        <div class="w-full flex justify-center absolute -top-14 left-0">
+          <div class="bg-white rounded-full p-2">
+            <div class="rounded-full shadow-lg border">
+              <img
+                class="h-24 w-auto"
+                src="@/assets/logos/waa-logo-dark.svg"
+                alt="We Are Auto"
+              />
+            </div>
+          </div>
+        </div>
         <div>
           <div class="my-4">
             <v-input
@@ -44,18 +54,27 @@
           </div>
           <div>
             <v-button
+              v-if="!signUpLoading"
               color="blue"
               size="md"
               rounded="rounded-lg"
               shadow="shadow"
               :disabled="!inputsAreValid"
               @click="attemptSignUp"
+              class="mt-2"
             >
               Submit
             </v-button>
+            <v-progress-spinner v-if="signUpLoading" :size="6" color="blue" />
+            <div
+              v-if="errorMessage && !signUpLoading"
+              class="mt-2 text-sm text-red-600"
+            >
+              {{ errorMessage }}
+            </div>
           </div>
         </div>
-      </v-card>
+      </div>
     </div>
   </div>
 </template>
@@ -70,6 +89,8 @@ export default {
       emailValidated: true,
       password: "",
       confirmPassword: "",
+      signUpLoading: false,
+      errorMessage: "",
     };
   },
   computed: {
@@ -85,21 +106,31 @@ export default {
     ...mapActions("user", ["login", "setUser", "setToken", "register"]),
     async attemptSignUp() {
       try {
-        // todo catch failed login and handel it better
+        this.signUpLoading = true;
+        this.errorMessage = "";
         const { data } = await this.register({
           name: this.name,
           email: this.email,
           password: this.password,
           password_confirmation: this.confirmPassword,
         });
-        await this.setToken(data?.access_token);
-        await this.setUser();
-        this.$router.push({
-          name: "races.index",
-        });
+        if (data?.access_token) {
+          await this.setToken(data?.access_token);
+          await this.setUser();
+          this.$router.push({
+            name: "races.index",
+          });
+        } else {
+          this.errorMessage = data?.message || "Oh no, an error occurred";
+        }
       } catch (error) {
         console.error(error);
+        if (error?.response?.data?.message) {
+          this.errorMessage = error?.response?.data?.message;
+        }
+        this.signUpLoading = false;
       }
+      this.signUpLoading = false;
     },
   },
 };

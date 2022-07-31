@@ -127,25 +127,6 @@ export default {
   },
   data() {
     return {
-      index: 0,
-      images: [
-        {
-          alt: "",
-          src: "https://www.supercars.net/blog/wp-content/uploads/2020/12/Lamborghini-Race-Cars.png",
-        },
-        {
-          alt: "",
-          src: "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/roar24-2018-friday-marshallpruett-258-1609356367.jpg",
-        },
-        {
-          alt: "",
-          src: "https://www.audi.com/content/dam/gbp2/experience-audi/audi-sport/audi-racing-models/landingpage/1920x600_A207806_large%20copy.jpg?imwidth=1920&imdensity=1",
-        },
-        {
-          alt: "",
-          src: "https://cdn.hiconsumption.com/wp-content/uploads/2019/04/Best-American-Race-Cars-In-History-0-FB.jpg",
-        },
-      ],
       features: [
         {
           id: 1,

@@ -66,8 +66,8 @@
             <div class="flex-1 h-0 overflow-y-auto">
               <div class="flex-shrink-0 flex items-center px-4 bg-gray-900">
                 <img
-                  class="h-14 w-auto"
-                  src="@/assets/logos/waa-logo-light.svg"
+                  class="h-14 w-auto m-1 rounded-full bg-white"
+                  src="@/assets/logos/waa-logo-dark.svg"
                   alt="We Are Auto"
                 />
                 <div class="text-gray-100 tracking-tight text-xl px-2">
@@ -82,19 +82,19 @@
                     :to="{ name: item.route }"
                     @click="sidebarOpen = false"
                     :class="[
-                      $route.matched.some(
-                        ({ name }) => name === item.name.toLowerCase()
+                      $route.matched.some(({ name }) =>
+                        name.includes(item.name.toLowerCase())
                       )
                         ? 'bg-gray-900 text-white'
                         : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                      'group flex items-center px-2 py-2 text-base font-medium rounded-md',
+                      'group flex items-center px-2 py-2 text-sm font-medium rounded-md',
                     ]"
                   >
                     <component
                       :is="item.icon"
                       :class="[
-                        $route.matched.some(
-                          ({ name }) => name === item.name.toLowerCase()
+                        $route.matched.some(({ name }) =>
+                          name.includes(item.name.toLowerCase())
                         )
                           ? 'text-gray-300'
                           : 'text-gray-400 group-hover:text-gray-300',
@@ -108,8 +108,8 @@
                   <div
                     v-if="item.coming_soon"
                     :class="[
-                      $route.matched.some(
-                        ({ name }) => name === item.name.toLowerCase()
+                      $route.matched.some(({ name }) =>
+                        name.includes(item.name.toLowerCase())
                       )
                         ? 'bg-gray-900 text-white'
                         : 'text-gray-300 hover:bg-gray-700 hover:text-white',
@@ -119,8 +119,8 @@
                     <component
                       :is="item.icon"
                       :class="[
-                        $route.matched.some(
-                          ({ name }) => name === item.name.toLowerCase()
+                        $route.matched.some(({ name }) =>
+                          name.includes(item.name.toLowerCase())
                         )
                           ? 'text-gray-300'
                           : 'text-gray-400 group-hover:text-gray-300',
@@ -206,8 +206,8 @@
           <div class="flex-1 flex flex-col overflow-y-auto bg-gray-900">
             <div class="flex items-center flex-shrink-0 p-1">
               <img
-                class="h-16 w-auto"
-                src="@/assets/logos/waa-logo-light.svg"
+                class="h-14 w-auto m-1 rounded-full bg-white"
+                src="@/assets/logos/waa-logo-dark.svg"
                 alt="We Are Auto"
               />
               <div class="text-gray-100 tracking-tight text-xl px-2">
@@ -360,8 +360,8 @@
           </div>
           <div class="flex-1 w-full">
             <img
-              class="h-12 w-auto mx-auto"
-              src="@/assets/logos/waa-logo-light.svg"
+              class="h-12 w-auto mx-auto m-1 rounded-full bg-white"
+              src="@/assets/logos/waa-logo-dark.svg"
               alt="We Are Auto"
             />
           </div>
