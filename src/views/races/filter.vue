@@ -491,12 +491,17 @@ export default {
       });
     },
     filterDownByQueryParams() {
+      if (!this.$route.query.series && !this.$route.query.season) {
+        this.selectStep(1);
+      }
+
       if (this.$route.query.series) {
         this.selectedSeries = this.series.find(
           (series) => series.name === this.$route.query.series
         );
         this.selectStep(2);
       }
+
       if (this.$route.query.season) {
         this.selectedSeason = this.selectedSeries.seasons.find(
           (season) => season.name === this.$route.query.season
@@ -520,10 +525,17 @@ export default {
       await this.getSeriesFollowStatus();
       this.seriesFollowStatusLoading = false;
     },
+    backButtonPressed() {
+      this.filterDownByQueryParams();
+    },
   },
   async mounted() {
     await this.getSeries();
     this.filterDownByQueryParams();
+    window.addEventListener("popstate", this.backButtonPressed);
+  },
+  beforeUnmount() {
+    window.removeEventListener("popstate", this.backButtonPressed);
   },
   watch: {
     selectedSeries() {
