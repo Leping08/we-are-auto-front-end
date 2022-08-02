@@ -268,6 +268,7 @@
               </template>
               <div class="rounded-full mr-4 shadow-lg mb-1">
                 <button
+                  v-if="isAuthenticated"
                   @click="updateSeriesFollowStatus()"
                   class="
                     inline-flex
@@ -540,7 +541,7 @@ export default {
     },
   },
   computed: {
-    ...mapGetters("user", ["user"]),
+    ...mapGetters("user", ["user", "isAuthenticated"]),
     currentStep() {
       return this.steps.filter((step) => step.status === "current")[0];
     },
