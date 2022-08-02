@@ -92,6 +92,11 @@ export default {
           this.successCheckmark = true;
           this.problemText = "";
         }
+
+        // Hide success message after 10 seconds
+        setTimeout(() => {
+          this.successCheckmark = false;
+        }, 10000);
       } catch (error) {
         this.errorMessage = "Ohhh no! An error occurred reporting the problem.";
       }
