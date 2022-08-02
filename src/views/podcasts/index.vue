@@ -531,7 +531,7 @@ export default {
         {
           id: 3,
           name: "I wish they would have",
-          description: "",
+          description: "What do you wish they would have?",
           icon: shallowRef(pray),
         },
       ],
