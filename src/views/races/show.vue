@@ -65,23 +65,44 @@
                   :size="5"
                   color="blue"
                 />
-                <tooltip v-if="!loadingProgress">
-                  <check-circle-outline
-                    @click="markWatched()"
-                    class="
-                      h-6
-                      w-6
-                      text-gray-400
-                      hover:text-blue-500
-                      cursor-pointer
-                    "
-                  />
-                  <template #tooltip-content>
-                    <div class="text-sm leading-5 text-gray-500 w-24">
-                      Mark watched
-                    </div>
-                  </template>
-                </tooltip>
+                <div v-if="watchedProgress < 99">
+                  <tooltip v-if="!loadingProgress">
+                    <check-circle-outline
+                      @click="markWatched()"
+                      class="
+                        h-6
+                        w-6
+                        text-gray-400
+                        hover:text-blue-500
+                        cursor-pointer
+                      "
+                    />
+                    <template #tooltip-content>
+                      <div class="text-sm leading-5 text-gray-500 w-24">
+                        Mark watched
+                      </div>
+                    </template>
+                  </tooltip>
+                </div>
+                <div v-else>
+                  <tooltip v-if="!loadingProgress">
+                    <check-circle-outline
+                      @click="markUnwatched()"
+                      class="
+                        h-6
+                        w-6
+                        text-green-500
+                        hover:text-blue-500
+                        cursor-pointer
+                      "
+                    />
+                    <template #tooltip-content>
+                      <div class="text-sm leading-5 text-gray-500 w-28">
+                        Mark unwatched
+                      </div>
+                    </template>
+                  </tooltip>
+                </div>
               </div>
               <div v-if="user" class="ml-4">
                 <tooltip>
@@ -362,6 +383,36 @@ export default {
     ...mapState("user", {
       user: (state) => state.user,
     }),
+    watchedProgress() {
+      const race_total_in_seconds = this.race?.videos
+        ?.map((video) => video.end_time - video.start_time)
+        .reduce((a, b) => a + b, 0);
+
+      if (race_total_in_seconds <= 0) {
+        return 0;
+      }
+
+      const total_seconds_watched = this.race?.videos
+        ?.map((video) => {
+          const time_of_video_watched_after_start =
+            video?.progress?.seconds - video?.start_time;
+          return Math.sign(time_of_video_watched_after_start) >= 1
+            ? time_of_video_watched_after_start
+            : 0;
+        })
+        .reduce((a, b) => a + b, 0);
+
+      const progress_percentage = Math.round(
+        ((total_seconds_watched ?? 0) * 100) / race_total_in_seconds,
+        0
+      );
+
+      if (progress_percentage > 100) {
+        return 100;
+      } else {
+        return progress_percentage;
+      }
+    },
   },
   async mounted() {
     await this.getRaceData();
@@ -461,6 +512,23 @@ export default {
           await new VideoProgressApi().store({
             video_id: video.id,
             seconds: video.end_time,
+          });
+        })
+      );
+      await this.getRaceData();
+      this.loadingProgress = false;
+    },
+    async markUnwatched() {
+      if (!this.user) {
+        return;
+      }
+
+      this.loadingProgress = true;
+      await Promise.all(
+        this.race?.videos.map(async (video) => {
+          await new VideoProgressApi().store({
+            video_id: video.id,
+            seconds: 0,
           });
         })
       );
