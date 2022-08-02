@@ -66,7 +66,7 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 import api from "@/api/auth/index.js";
 export default {
   name: "Account",
@@ -85,6 +85,7 @@ export default {
     },
   },
   methods: {
+    ...mapActions("user", ["setUser"]),
     async save() {
       this.loading = true;
       // todo handel error
@@ -97,6 +98,8 @@ export default {
     },
     async getFreshUserData() {
       this.loading = true;
+      // update the user in the vuex store to update the name in the nav bar
+      this.setUser(this.user);
       const response = await api.get("/user/me");
       this.oldUser = response?.data;
       this.email = response?.data?.email;
