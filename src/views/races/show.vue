@@ -23,7 +23,7 @@
               </p>
             </div>
             <div class="flex items-center">
-              <div v-if="user" class="ml-4">
+              <!-- <div v-if="user" class="ml-4">
                 <tooltip>
                   <movie-open-play-outline
                     @click="resumeVideo()"
@@ -39,7 +39,7 @@
                     <div class="text-sm leading-5 text-gray-500">Resume</div>
                   </template>
                 </tooltip>
-              </div>
+              </div> -->
               <div class="ml-4">
                 <tooltip>
                   <clock-start
@@ -330,7 +330,7 @@ import ReportProblem from "@/components/races/reportProblem.vue";
 import ClockStart from "@/assets/icons/clock-start.vue";
 import CheckCircleOutline from "@/assets/icons/check-circle-outline.vue";
 import ChatAlertOutline from "@/assets/icons/chat-alert-outline.vue";
-import MovieOpenPlayOutline from "@/assets/icons/movie-open-play-outline.vue";
+// import MovieOpenPlayOutline from "@/assets/icons/movie-open-play-outline.vue";
 import VideoProgressApi from "@/api/models/video-progress.js";
 import Tooltip from "@/components/tooltip.vue";
 export default {
@@ -342,7 +342,7 @@ export default {
     ClockStart,
     CheckCircleOutline,
     ChatAlertOutline,
-    MovieOpenPlayOutline,
+    // MovieOpenPlayOutline,
     Tooltip,
   },
   data() {
@@ -367,11 +367,10 @@ export default {
     await this.getRaceData();
     window.addEventListener("resize", this.resizePlayer);
     this.initPlayer();
-    // todo wire up report problem button to video
   },
-  async unmounted() {
-    await this.saveVideoProgress();
-  },
+  // async unmounted() {
+  //   await this.saveVideoProgress(); // find a better way to handel this
+  // },
   methods: {
     initPlayer() {
       if (!this.race?.videos[0]?.video_id) {
@@ -390,6 +389,9 @@ export default {
         };
       }
     },
+    // this is not being used at all any more
+    // is was being used when the component was
+    // unmounted to save video progress
     async saveVideoProgress() {
       // Check if the video player is ready
       if (!this.player) {
@@ -419,35 +421,35 @@ export default {
         seconds: currentVideoTime,
       });
     },
-    resumeVideo() {
-      // todo save when a part is complete
-      // todo automatically move to the next part when the current one is done
+    // resumeVideo() {
+    //   // todo save when a part is complete
+    //   // todo automatically move to the next part when the current one is done
 
-      // Figure out what index to jump too and resume at that index
-      this.race?.videos.find((video, index) => {
-        // The part is already done
-        if (video?.progress?.percentage >= 100) {
-          return false;
-        }
+    //   // Figure out what index to jump too and resume at that index
+    //   this.race?.videos.find((video, index) => {
+    //     // The part is already done
+    //     if (video?.progress?.percentage >= 100) {
+    //       return false;
+    //     }
 
-        // The part has been started but not finished
-        if (video?.progress?.seconds) {
-          this.index = index;
-          return true;
-        }
+    //     // The part has been started but not finished
+    //     if (video?.progress?.seconds) {
+    //       this.index = index;
+    //       return true;
+    //     }
 
-        // The part has not been started but the last part is done
-        if (this.race?.videos[index - 1]?.progress?.percentage >= 100) {
-          this.index = index;
-          return true;
-        }
-      });
+    //     // The part has not been started but the last part is done
+    //     if (this.race?.videos[index - 1]?.progress?.percentage >= 100) {
+    //       this.index = index;
+    //       return true;
+    //     }
+    //   });
 
-      this.selectVideoPart(this.index);
-      setTimeout(() => {
-        this.player.seekTo(this.race?.videos[this.index]?.progress?.seconds);
-      }, 250);
-    },
+    //   this.selectVideoPart(this.index);
+    //   setTimeout(() => {
+    //     this.player.seekTo(this.race?.videos[this.index]?.progress?.seconds);
+    //   }, 250);
+    // },
     async markWatched() {
       if (!this.user) {
         return;
