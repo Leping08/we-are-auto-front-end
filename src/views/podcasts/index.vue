@@ -4,8 +4,9 @@
       <div
         class="
           lg:mx-auto lg:px-8
-          py-20
+          py-10
           lg:grid lg:grid-cols-2 lg:grid-flow-col-dense lg:gap-24
+          items-center
         "
       >
         <div class="relative max-w-xl mx-auto p-6 lg:p-0">
@@ -89,106 +90,236 @@
     </div>
   </div>
 
-  <div class="bg-gray-100">
-    <!-- <div
-      class="
-        bg-gradient-to-r
-        from-blue-400
-        to-blue-600
-        h-24
-        -mb-12
-        -mx-12
-        transform
-        -rotate-2
-      "
-    />
-    <div class="bg-gradient-to-r from-blue-400 to-blue-600">
-      <div class="grid grid-cols-2 gap-4 py-10">
-        <div class="p-10">
-          <div
-            class="
-              shadow-lg
-              h-64
-              w-64
-              rounded-full
-              bg-white
-              overflow-hidden
-              mx-auto
-            "
-          >
-            <img
-              class="object-cover h-full"
-              src="@/assets/images/profile/mike.png"
-              alt=""
-            />
-          </div>
-          <div class="text-center text-blue-50 text-2xl p-2">Michael</div>
-          <div class="text-center text-gray-200 text-md p-2">
-            A driving instructor with 5+ years of experience.
-          </div>
+  <div class="2xl:p-24 xl:p-18 lg:p-12 md:p-10 sm:p-4 bg-gray-100">
+    <div class="grid sm:grid-cols-2 grid-cols-1 gap-4 items-center">
+      <div class="m-4 sm:m-0">
+        <div class="videoWrapper">
+          <iframe
+            width="100%"
+            height="349"
+            src="https://www.youtube.com/embed/videoseries?list=PLraZMoJiSzQwM_SUHOZ7aBm-F4cSSmlJp"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
         </div>
-        <div class="p-10">
-          <div
-            class="
-              shadow-lg
-              h-64
-              w-64
-              rounded-full
-              bg-white
-              overflow-hidden
-              mx-auto
-            "
-          >
-            <img
-              class="object-cover h-full"
-              src="@/assets/images/profile/derek.png"
-              alt=""
-            />
+      </div>
+      <div class="m-10 sm:p-10">
+        <div
+          class="tracking-tight font-bold text-gray-900 text-3xl md:text-4xl"
+        >
+          Latest <span class="text-blue-500">Auto News</span>
+        </div>
+        <div class="text-base text-gray-500 mt-2">
+          The latest news, updates and trends from around the auto industry.
+        </div>
+        <dl class="mt-8 space-y-8">
+          <div v-for="item in autoNews" :key="item.id" class="relative">
+            <dt>
+              <div
+                class="
+                  absolute
+                  flex
+                  items-center
+                  justify-center
+                  h-12
+                  w-12
+                  rounded-md
+                  bg-gradient-to-r
+                  from-blue-400
+                  to-blue-600
+                  text-white
+                "
+              >
+                <component :is="item.icon" class="h-6 w-6" aria-hidden="true" />
+              </div>
+              <p
+                class="mb-1 ml-16 text-lg font-semibold leading-6 text-gray-800"
+              >
+                {{ item.name }}
+              </p>
+            </dt>
+            <dd class="ml-16 text-base text-gray-500">
+              {{ item.description }}
+            </dd>
           </div>
-          <div class="text-center text-blue-50 text-2xl p-2">Derek</div>
-          <div class="text-center text-gray-200 text-md p-2">
-            A software developer with 8+ years of experience in the automotive
-            industry.
+        </dl>
+      </div>
+    </div>
+  </div>
+
+  <div class="2xl:p-24 xl:p-18 lg:p-12 md:p-10 sm:p-4 bg-white">
+    <div class="grid sm:grid-cols-2 grid-cols-1 gap-4 items-center">
+      <div class="m-10 sm:p-10">
+        <div
+          class="tracking-tight font-bold text-gray-900 text-3xl md:text-4xl"
+        >
+          Latest <span class="text-blue-500">Racing News</span>
+        </div>
+        <div class="text-base text-gray-500 mt-2">
+          Checkout the latest news from around the racing world.
+        </div>
+        <dl class="mt-8 space-y-8">
+          <div v-for="item in racingNews" :key="item.id" class="relative">
+            <dt>
+              <div
+                class="
+                  absolute
+                  flex
+                  items-center
+                  justify-center
+                  h-12
+                  w-12
+                  rounded-md
+                  bg-gradient-to-r
+                  from-blue-400
+                  to-blue-600
+                  text-white
+                "
+              >
+                <component :is="item.icon" class="h-6 w-6" aria-hidden="true" />
+              </div>
+              <p
+                class="mb-1 ml-16 text-lg font-semibold leading-6 text-gray-800"
+              >
+                {{ item.name }}
+              </p>
+            </dt>
+            <dd class="ml-16 text-base text-gray-500">
+              {{ item.description }}
+            </dd>
           </div>
+        </dl>
+      </div>
+      <div class="m-4 sm:m-0">
+        <div class="videoWrapper">
+          <iframe
+            width="100%"
+            height="349"
+            src="https://www.youtube.com/embed/videoseries?list=PLraZMoJiSzQwMliZS3Sk1UOizSgKw_nyD"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
         </div>
       </div>
     </div>
-    <div
-      class="
-        bg-gradient-to-r
-        from-blue-400
-        to-blue-600
-        h-24
-        -mb-12
-        -mx-12
-        transform
-        -rotate-2
-        -mt-12
-      "
-    /> -->
+  </div>
 
-    <!-- <div class="flex text-gray-600 space-x-2 pt-24 m-4">
-      <a
-        href="https://podcasts.apple.com/us/podcast/we-are-auto/id1557884758?i=1000527608218"
-        target="_blank"
-      >
-        <apple-podcast class="h-14 w-14 p-2" />
-      </a>
-      <a
-        href="https://podcasts.google.com/feed/aHR0cHM6Ly93ZWFyZWF1dG8ubGlic3luLmNvbS9yc3M"
-        target="_blank"
-      >
-        <google-podcast class="h-14 w-14 p-2" />
-      </a>
-      <a
-        href="https://open.spotify.com/show/1ePLe4BB9nUGBWGVfpx14q?si=D_FQ3Ap-S-iKfaSetQML1g&dl_branch=1"
-        target="_blank"
-      >
-        <spotify class="h-14 w-14" />
-      </a>
-    </div> -->
+  <div class="2xl:p-24 xl:p-18 lg:p-12 md:p-10 sm:p-4 bg-gray-100">
+    <div class="grid sm:grid-cols-2 grid-cols-1 gap-4 items-center">
+      <div class="m-4 sm:m-0">
+        <div class="videoWrapper">
+          <iframe
+            width="100%"
+            height="349"
+            src="https://www.youtube.com/embed/videoseries?list=PLraZMoJiSzQzTgQZN6yPra35sjOY_4D9i"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+      <div class="m-10 sm:p-10">
+        <div
+          class="tracking-tight font-bold text-gray-900 text-3xl md:text-4xl"
+        >
+          Latest <span class="text-blue-500">Car Banter</span>
+        </div>
+        <div class="text-base text-gray-500 mt-2">
+          If you are a car guy you know the deal. Just car guys talking about
+          car stuff.
+        </div>
+        <dl class="mt-8 space-y-8">
+          <div v-for="item in banter" :key="item.id" class="relative">
+            <dt>
+              <div
+                class="
+                  absolute
+                  flex
+                  items-center
+                  justify-center
+                  h-12
+                  w-12
+                  rounded-md
+                  bg-gradient-to-r
+                  from-blue-400
+                  to-blue-600
+                  text-white
+                "
+              >
+                <component :is="item.icon" class="h-6 w-6" aria-hidden="true" />
+              </div>
+              <p
+                class="mb-1 ml-16 text-lg font-semibold leading-6 text-gray-800"
+              >
+                {{ item.name }}
+              </p>
+            </dt>
+            <dd class="ml-16 text-base text-gray-500">
+              {{ item.description }}
+            </dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </div>
 
-    <div class="m-6" v-if="loading">
+  <div
+    class="
+      relative
+      px-4
+      py-14
+      sm:px-6
+      lg:py-20 lg:px-8
+      bg-gradient-to-r
+      from-blue-400
+      to-blue-600
+      flex
+      items-center
+      w-full
+    "
+  >
+    <div class="w-1/2">
+      <div class="text-2xl font-bold tracking-tight sm:text-4xl text-white">
+        Want to listen instead?
+      </div>
+      <div class="text-md text-gray-100">
+        You can listen to every episode on your podcast catcher of choice.
+      </div>
+    </div>
+    <div class="flex items-center w-1/2 justify-center">
+      <div class="bg-white p-1 rounded-full m-4">
+        <a
+          href="https://podcasts.apple.com/us/podcast/we-are-auto/id1557884758?i=1000527608218"
+          target="_blank"
+        >
+          <apple-podcast class="h-14 w-14 p-2" />
+        </a>
+      </div>
+      <div class="bg-white p-1 rounded-full m-4">
+        <a
+          href="https://podcasts.google.com/feed/aHR0cHM6Ly93ZWFyZWF1dG8ubGlic3luLmNvbS9yc3M"
+          target="_blank"
+        >
+          <google-podcast class="h-14 w-14 p-2" />
+        </a>
+      </div>
+      <div class="bg-white p-1 rounded-full m-4">
+        <a
+          href="https://open.spotify.com/show/1ePLe4BB9nUGBWGVfpx14q?si=D_FQ3Ap-S-iKfaSetQML1g&dl_branch=1"
+          target="_blank"
+        >
+          <spotify class="h-14 w-14" />
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="m-6" v-if="loading">
       <template v-for="index in 5" :key="index">
         <div
           class="
@@ -222,9 +353,9 @@
           </div>
         </div>
       </template>
-    </div>
+    </div> -->
 
-    <div class="m-6" v-if="!loading">
+  <!-- <div class="m-6" v-if="!loading">
       <template
         v-for="(podcast, index) in podcasts?.rss?.channel?.item"
         :key="podcast"
@@ -288,8 +419,7 @@
           </div>
         </div>
       </template>
-    </div>
-  </div>
+    </div> -->
 </template>
 
 <script>
@@ -299,6 +429,13 @@ import { all } from "@/api/podcast/index.js";
 import playCircleOutline from "@/assets/icons/play-circle-outline.vue";
 import news from "@/assets/icons/news.vue";
 import people from "@/assets/icons/people.vue";
+import powerPlug from "@/assets/icons/power-plug-outline.vue";
+import flagCheckered from "@/assets/icons/flag-checkered.vue";
+import racingHelmet from "@/assets/icons/racing-helmet.vue";
+import waveform from "@/assets/icons/waveform.vue";
+import mapMarker from "@/assets/icons/map-marker.vue";
+import pray from "@/assets/icons/hands-pray.vue";
+import trendingUp from "@/assets/icons/trending-up.vue";
 import shift from "@/assets/icons/car-shift-pattern.vue";
 import applePodcast from "@/assets/icons/apple-podcast.vue";
 import googlePodcast from "@/assets/icons/google-podcast.vue";
@@ -334,6 +471,68 @@ export default {
           name: "Car Banter",
           description: "Simply car enthusiasts talking about car stuff.",
           icon: shallowRef(shift),
+        },
+      ],
+      autoNews: [
+        {
+          id: 1,
+          name: "New Car Releases",
+          description:
+            "The latest new car releases and what they mean for the competition.",
+          icon: shallowRef(news),
+        },
+        {
+          id: 2,
+          name: "EV News",
+          description: "Latest on new EV's to hit the market",
+          icon: shallowRef(powerPlug),
+        },
+        {
+          id: 3,
+          name: "Industry Trends",
+          description: "The latest industry changes and trends.",
+          icon: shallowRef(trendingUp),
+        },
+      ],
+      racingNews: [
+        {
+          id: 1,
+          name: "Racing News",
+          description: "The latest racing news and updates.",
+          icon: shallowRef(shift),
+        },
+        {
+          id: 3,
+          name: "Review Previous Races",
+          description: "A look at what happened in last weekends races.",
+          icon: shallowRef(flagCheckered),
+        },
+        {
+          id: 2,
+          name: "Preview Upcoming Races",
+          description: "A preview of what is coming up this weekend in racing.",
+          icon: shallowRef(racingHelmet),
+        },
+      ],
+      banter: [
+        {
+          id: 1,
+          name: "Car Banter",
+          description: "Just car guys talking about car stuff.",
+          icon: shallowRef(waveform),
+        },
+        {
+          id: 2,
+          name: "Spots of the week",
+          description:
+            "The latest cars we spotted while we were out and about.",
+          icon: shallowRef(mapMarker),
+        },
+        {
+          id: 3,
+          name: "I wish they would have",
+          description: "",
+          icon: shallowRef(pray),
         },
       ],
     };
