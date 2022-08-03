@@ -470,7 +470,7 @@ export default {
           id: 3,
           name: "Car Banter",
           description: "Simply car enthusiasts talking about car stuff.",
-          icon: shallowRef(shift),
+          icon: shallowRef(waveform),
         },
       ],
       autoNews: [
