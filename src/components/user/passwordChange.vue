@@ -11,36 +11,66 @@
         <div class="space-y-6">
           <div class="grid grid-cols-6 gap-6">
             <div class="col-span-6 sm:col-span-6">
-              <v-input
-                v-model="oldPassword"
-                color="blue"
-                label="Old Password"
-                placeholder=""
-                :rules="['min:2', 'max:255', 'required']"
-                type="text"
-              />
+              <div class="my-4 flex items-center">
+                <v-input
+                  class="w-full"
+                  v-model="oldPassword"
+                  color="blue"
+                  label="Old Password"
+                  placeholder=""
+                  :rules="['min:2', 'max:255', 'required']"
+                  :type="showOldPassword ? 'text' : 'password'"
+                />
+                <div
+                  class="text-gray-500 pt-5 ml-2 cursor-pointer"
+                  @click="showOldPassword = !showOldPassword"
+                >
+                  <eye v-if="!showOldPassword" class="h-6" />
+                  <eye-off v-if="showOldPassword" class="h-6" />
+                </div>
+              </div>
             </div>
 
             <div class="col-span-6 sm:col-span-6">
-              <v-input
-                v-model="newPassword"
-                color="blue"
-                label="New Password"
-                placeholder=""
-                :rules="['min:2', 'max:255', 'required']"
-                type="text"
-              />
+              <div class="my-4 flex items-center">
+                <v-input
+                  class="w-full"
+                  v-model="newPassword"
+                  color="blue"
+                  label="New Password"
+                  placeholder=""
+                  :rules="['min:2', 'max:255', 'required']"
+                  :type="showNewPasswords ? 'text' : 'password'"
+                />
+                <div
+                  class="text-gray-500 pt-5 ml-2 cursor-pointer"
+                  @click="showNewPasswords = !showNewPasswords"
+                >
+                  <eye v-if="!showNewPasswords" class="h-6" />
+                  <eye-off v-if="showNewPasswords" class="h-6" />
+                </div>
+              </div>
             </div>
 
             <div class="col-span-6 sm:col-span-6">
-              <v-input
-                v-model="confirmNewPassword"
-                color="blue"
-                label="Confirm New Password"
-                placeholder=""
-                :rules="['min:2', 'max:255', 'required']"
-                type="text"
-              />
+              <div class="my-4 flex items-center">
+                <v-input
+                  class="w-full"
+                  v-model="confirmNewPassword"
+                  color="blue"
+                  label="Confirm New Password"
+                  placeholder=""
+                  :rules="['min:2', 'max:255', 'required']"
+                  :type="showNewPasswords ? 'text' : 'password'"
+                />
+                <div
+                  class="text-gray-500 pt-5 ml-2 cursor-pointer"
+                  @click="showNewPasswords = !showNewPasswords"
+                >
+                  <eye v-if="!showNewPasswords" class="h-6" />
+                  <eye-off v-if="showNewPasswords" class="h-6" />
+                </div>
+              </div>
             </div>
           </div>
           <!-- <div>
@@ -79,14 +109,22 @@
 <script>
 import { mapGetters } from "vuex";
 import api from "@/api/auth/index.js";
+import eyeOff from "@/assets/icons/eye-off-outline.vue";
+import eye from "@/assets/icons/eye-outline.vue";
 export default {
   name: "PasswordChange",
+  components: {
+    eyeOff,
+    eye,
+  },
   data() {
     return {
       user: {},
       oldPassword: "",
+      showOldPassword: false,
       newPassword: "",
       confirmNewPassword: "",
+      showNewPasswords: false,
       loading: false,
     };
   },

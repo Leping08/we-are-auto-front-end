@@ -13,25 +13,43 @@
           Enter the email address associated with your account. We'll send you
           an email with a link to reset your password.
         </div>
-        <div class="my-4">
+        <div class="my-4 flex items-center">
           <v-input
+            class="w-full"
             v-model="newPassword"
             color="blue"
             label="New Password"
             placeholder=""
             :rules="['min:2', 'max:255', 'required']"
-            type="text"
+            :type="showPasswords ? 'text' : 'password'"
           />
+          <div
+            class="text-gray-500 pt-5 ml-2 cursor-pointer"
+            @click="showPasswords = !showPasswords"
+          >
+            <eye v-if="!showPasswords" class="h-6" />
+            <eye-off v-if="showPasswords" class="h-6" />
+          </div>
         </div>
         <div class="my-4">
-          <v-input
-            v-model="confirmNewPassword"
-            color="blue"
-            label="Confirm New Password"
-            placeholder=""
-            :rules="['min:2', 'max:255', 'required']"
-            type="text"
-          />
+          <div class="my-4 flex items-center">
+            <v-input
+              class="w-full"
+              v-model="confirmNewPassword"
+              color="blue"
+              label="Confirm New Password"
+              placeholder=""
+              :rules="['min:2', 'max:255', 'required']"
+              :type="showPasswords ? 'text' : 'password'"
+            />
+            <div
+              class="text-gray-500 pt-5 ml-2 cursor-pointer"
+              @click="showPasswords = !showPasswords"
+            >
+              <eye v-if="!showPasswords" class="h-6" />
+              <eye-off v-if="showPasswords" class="h-6" />
+            </div>
+          </div>
         </div>
         <div class="pt-4">
           <div class="flex justify-end items-center">
@@ -83,15 +101,20 @@
 import api from "@/api/index.js";
 import checkCircleOutline from "@/assets/icons/checkbox-marked-circle-outline.vue";
 import closeCircleOutline from "@/assets/icons/close-circle-outline.vue";
+import eyeOff from "@/assets/icons/eye-off-outline.vue";
+import eye from "@/assets/icons/eye-outline.vue";
 import accountLock from "@/assets/icons/account-lock.vue";
 export default {
   components: {
     checkCircleOutline,
     closeCircleOutline,
     accountLock,
+    eyeOff,
+    eye,
   },
   data() {
     return {
+      showPasswords: false,
       newPassword: "",
       confirmNewPassword: "",
       loading: false,
