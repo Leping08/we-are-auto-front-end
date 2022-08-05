@@ -11,7 +11,7 @@
         <div class="space-y-6">
           <div class="grid grid-cols-6 gap-6">
             <div class="col-span-6 sm:col-span-6">
-              <div class="my-4 flex items-center">
+              <div class="flex items-center">
                 <v-input
                   class="w-full"
                   v-model="oldPassword"
@@ -32,7 +32,7 @@
             </div>
 
             <div class="col-span-6 sm:col-span-6">
-              <div class="my-4 flex items-center">
+              <div class="flex items-center">
                 <v-input
                   class="w-full"
                   v-model="newPassword"
@@ -53,7 +53,7 @@
             </div>
 
             <div class="col-span-6 sm:col-span-6">
-              <div class="my-4 flex items-center">
+              <div class="flex items-center">
                 <v-input
                   class="w-full"
                   v-model="confirmNewPassword"

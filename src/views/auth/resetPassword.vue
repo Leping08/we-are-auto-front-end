@@ -31,24 +31,22 @@
             <eye-off v-if="showPasswords" class="h-6" />
           </div>
         </div>
-        <div class="my-4">
-          <div class="my-4 flex items-center">
-            <v-input
-              class="w-full"
-              v-model="confirmNewPassword"
-              color="blue"
-              label="Confirm New Password"
-              placeholder=""
-              :rules="['min:2', 'max:255', 'required']"
-              :type="showPasswords ? 'text' : 'password'"
-            />
-            <div
-              class="text-gray-500 pt-5 ml-2 cursor-pointer"
-              @click="showPasswords = !showPasswords"
-            >
-              <eye v-if="!showPasswords" class="h-6" />
-              <eye-off v-if="showPasswords" class="h-6" />
-            </div>
+        <div class="my-4 flex items-center">
+          <v-input
+            class="w-full"
+            v-model="confirmNewPassword"
+            color="blue"
+            label="Confirm New Password"
+            placeholder=""
+            :rules="['min:2', 'max:255', 'required']"
+            :type="showPasswords ? 'text' : 'password'"
+          />
+          <div
+            class="text-gray-500 pt-5 ml-2 cursor-pointer"
+            @click="showPasswords = !showPasswords"
+          >
+            <eye v-if="!showPasswords" class="h-6" />
+            <eye-off v-if="showPasswords" class="h-6" />
           </div>
         </div>
         <div class="pt-4">

@@ -35,22 +35,42 @@
             />
           </div>
           <div class="my-4">
-            <v-input
-              v-model="password"
-              color="blue"
-              label="Password"
-              :rules="['min:2', 'max:255', 'required']"
-              type="password"
-            />
+            <div class="flex items-center">
+              <v-input
+                class="w-full"
+                v-model="password"
+                color="blue"
+                label="Password"
+                :rules="['min:2', 'max:255', 'required']"
+                :type="showPassword ? 'text' : 'password'"
+              />
+              <div
+                class="text-gray-500 pt-5 ml-2 cursor-pointer"
+                @click="showPassword = !showPassword"
+              >
+                <eye v-if="!showPassword" class="h-6" />
+                <eye-off v-if="showPassword" class="h-6" />
+              </div>
+            </div>
           </div>
           <div class="my-4">
-            <v-input
-              v-model="confirmPassword"
-              color="blue"
-              label="Confirm Password"
-              :rules="['min:2', 'max:255', 'required']"
-              type="password"
-            />
+            <div class="flex items-center">
+              <v-input
+                class="w-full"
+                v-model="confirmPassword"
+                color="blue"
+                label="Confirm Password"
+                :rules="['min:2', 'max:255', 'required']"
+                :type="showPassword ? 'text' : 'password'"
+              />
+              <div
+                class="text-gray-500 pt-5 ml-2 cursor-pointer"
+                @click="showPassword = !showPassword"
+              >
+                <eye v-if="!showPassword" class="h-6" />
+                <eye-off v-if="showPassword" class="h-6" />
+              </div>
+            </div>
           </div>
           <div>
             <v-button
@@ -81,7 +101,13 @@
 
 <script>
 import { mapActions, mapGetters } from "vuex";
+import eyeOff from "@/assets/icons/eye-off-outline.vue";
+import eye from "@/assets/icons/eye-outline.vue";
 export default {
+  components: {
+    eyeOff,
+    eye,
+  },
   data() {
     return {
       name: "",
@@ -89,6 +115,7 @@ export default {
       emailValidated: true,
       password: "",
       confirmPassword: "",
+      showPassword: false,
       signUpLoading: false,
       errorMessage: "",
     };

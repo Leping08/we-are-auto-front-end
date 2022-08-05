@@ -26,7 +26,7 @@
             />
           </div>
           <div class="my-4">
-            <div class="my-4 flex items-center">
+            <div class="flex items-center">
               <v-input
                 class="w-full"
                 v-model="password"
