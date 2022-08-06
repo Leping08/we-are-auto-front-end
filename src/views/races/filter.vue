@@ -305,6 +305,41 @@
               </div>
             </tooltip>
           </div>
+          <div
+            v-if="selectedSeries.website"
+            class="absolute right-0 bottom-0 -my-6 mr-20 flex"
+          >
+            <tooltip position="left" margin="mr-16">
+              <template #tooltip-content>
+                <div class="w-60 text-sm text-gray-600 mr-4">
+                  <div>Check out the {{ selectedSeries.name }} website.</div>
+                </div>
+              </template>
+              <div class="rounded-full mr-4 shadow-lg mb-1">
+                <a
+                  :href="selectedSeries.website"
+                  target="_blank"
+                  class="
+                    cursor-pointer
+                    inline-flex
+                    items-center
+                    text-sm
+                    font-medium
+                    rounded-full
+                    shadow
+                    bg-white
+                    hover:bg-blue-50
+                    active:bg-blue-100
+                    focus:ring-0
+                  "
+                >
+                  <open-in-new
+                    class="w-6 h-6 text-gray-500 hover:text-blue-500 m-2"
+                  />
+                </a>
+              </div>
+            </tooltip>
+          </div>
         </div>
         <div class="flex-1 bg-white p-6 flex flex-col justify-between">
           <div class="pt-2">
@@ -408,6 +443,7 @@ import BellCheckOutline from "@/assets/icons/bell-check-outline.vue";
 import RaceCard from "@/components/races/raceCard.vue";
 import LoadingRaceCard from "@/components/races/loadingRaceCard.vue";
 import SeriesPill from "@/components/series/pill.vue";
+import OpenInNew from "@/assets/icons/open-in-new.vue";
 import FollowSeriesApi from "@/api/models/follow-series.js";
 import Tooltip from "@/components/tooltip.vue";
 import { mapGetters } from "vuex";
@@ -419,6 +455,7 @@ export default {
     RaceCard,
     LoadingRaceCard,
     SeriesPill,
+    OpenInNew,
     Tooltip,
   },
   data() {
