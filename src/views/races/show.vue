@@ -526,7 +526,7 @@ export default {
       index: 0,
       loadingProgress: false,
       showProblemForm: false,
-      loadingRaceData: false,
+      loadingRaceData: true,
     };
   },
   computed: {
