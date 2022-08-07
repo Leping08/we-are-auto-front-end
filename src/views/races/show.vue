@@ -1,7 +1,155 @@
 <template>
   <div class="p-4 relative" v-if="race.length && races.length">
     <div class="my-2 ml-2 mr-20">
-      <div class="bg-white shadow-md rounded-lg row-span-2 col-span-3">
+      <div
+        v-if="loadingRaceData"
+        class="bg-white shadow-md rounded-lg row-span-2 col-span-3"
+      >
+        <div class="p-4 grid space-y-2 animate-pulse">
+          <div class="h-4 w-1/3 bg-gray-500 rounded-full"></div>
+          <div class="h-4 w-1/4 bg-gray-300 rounded-full"></div>
+        </div>
+        <div class="videoWrapper bg-gray-200 animate-pulse"></div>
+        <div class="flex p-4 animate-pulse items-center">
+          <div class="h-10 w-10 bg-gray-500 rounded-full"></div>
+          <div class="h-4 w-20 bg-gray-300 rounded-full ml-4"></div>
+        </div>
+      </div>
+
+      <div
+        v-if="loadingRaceData"
+        class="
+          bg-white
+          shadow-md
+          rounded-lg
+          absolute
+          right-0
+          top-0
+          mt-6
+          z-10
+          transform
+          translate-x-full
+          mr-20
+          w-20
+        "
+      >
+        <div
+          class="
+            h-10
+            w-10
+            bg-gray-300
+            animate-pulse
+            mx-4
+            mt-4
+            mb-6
+            rounded-full
+            relative
+          "
+        ></div>
+        <div
+          class="
+            h-10
+            w-10
+            bg-gray-300
+            animate-pulse
+            mx-4
+            mt-4
+            mb-10
+            rounded-full
+            relative
+          "
+        >
+          <div
+            class="absolute animate-pulse top-12 left-5 h-6 w-0.5 bg-gray-200"
+          ></div>
+        </div>
+        <div
+          class="
+            h-10
+            w-10
+            bg-gray-300
+            animate-pulse
+            mx-4
+            mt-4
+            mb-10
+            rounded-full
+            relative
+          "
+        >
+          <div
+            class="absolute animate-pulse top-12 left-5 h-6 w-0.5 bg-gray-200"
+          ></div>
+        </div>
+        <div
+          class="
+            h-10
+            w-10
+            bg-gray-300
+            animate-pulse
+            mx-4
+            mt-4
+            mb-10
+            rounded-full
+            relative
+          "
+        >
+          <div
+            class="absolute animate-pulse top-12 left-5 h-6 w-0.5 bg-gray-200"
+          ></div>
+        </div>
+        <div
+          class="
+            h-10
+            w-10
+            bg-gray-300
+            animate-pulse
+            mx-4
+            mt-4
+            mb-10
+            rounded-full
+            relative
+          "
+        >
+          <div
+            class="absolute animate-pulse top-12 left-5 h-6 w-0.5 bg-gray-200"
+          ></div>
+        </div>
+        <div
+          class="
+            h-10
+            w-10
+            bg-gray-300
+            animate-pulse
+            mx-4
+            mt-4
+            mb-10
+            rounded-full
+            relative
+          "
+        >
+          <div
+            class="absolute animate-pulse top-12 left-5 h-6 w-0.5 bg-gray-200"
+          ></div>
+        </div>
+        <div
+          class="
+            h-10
+            w-10
+            bg-gray-300
+            animate-pulse
+            mx-4
+            mt-4
+            mb-4
+            rounded-full
+            relative
+          "
+        ></div>
+      </div>
+
+      <div
+        v-if="!loadingRaceData"
+        class="bg-white shadow-md rounded-lg row-span-2 col-span-3"
+      >
         <div class="px-4 py-2">
           <div
             class="
@@ -220,6 +368,7 @@
     </div>
 
     <div
+      v-if="!loadingRaceData"
       class="
         absolute
         right-0
@@ -377,6 +526,7 @@ export default {
       index: 0,
       loadingProgress: false,
       showProblemForm: false,
+      loadingRaceData: false,
     };
   },
   computed: {
@@ -559,11 +709,13 @@ export default {
       this.player.setSize(width, height);
     },
     async getRaceData() {
+      this.loadingRaceData = true;
       ({ data: this.race } = await new Race().show(this.$route.params.id));
       ({ data: this.races } = await new Series().series_season(
         this.race?.series?.id,
         this.race?.season?.id
       ));
+      this.loadingRaceData = false;
       this.updateSEO();
     },
     updateSEO() {
