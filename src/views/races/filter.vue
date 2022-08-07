@@ -251,94 +251,94 @@
             class="absolute left-0 bottom-0 -my-6 ml-6"
             :series="selectedSeries"
           />
-          <div class="absolute right-0 bottom-0 -my-6 mr-6 flex">
-            <tooltip position="left" margin="mr-16">
-              <template #tooltip-content>
-                <div class="w-60 text-sm text-gray-600 mr-4">
-                  <div v-if="selectedSeriesFollowStatus">
-                    You are currently subscribed to
-                    {{ selectedSeries.name }} and will receive weekly updates
-                    via email when new races are available.
+          <div class="absolute right-0 bottom-0 -my-6 flex">
+            <div v-if="selectedSeries.website" class="flex">
+              <tooltip position="left" margin="mr-20">
+                <template #tooltip-content>
+                  <div class="w-60 text-sm text-gray-600 mr-4">
+                    <div>Check out the {{ selectedSeries.name }} website.</div>
                   </div>
-                  <div v-if="!selectedSeriesFollowStatus">
-                    Subscribe to {{ selectedSeries.name }} be notified via email
-                    when new races are available.
+                </template>
+                <div class="rounded-full mr-6 shadow-lg mb-1">
+                  <a
+                    :href="selectedSeries.website"
+                    target="_blank"
+                    class="
+                      cursor-pointer
+                      inline-flex
+                      items-center
+                      text-sm
+                      font-medium
+                      rounded-full
+                      shadow
+                      bg-white
+                      hover:bg-blue-50
+                      active:bg-blue-100
+                      focus:ring-0
+                    "
+                  >
+                    <open-in-new
+                      class="w-6 h-6 text-gray-500 hover:text-blue-500 m-2"
+                    />
+                  </a>
+                </div>
+              </tooltip>
+            </div>
+            <div v-if="isAuthenticated" class="flex">
+              <tooltip position="left" margin="mr-20">
+                <template #tooltip-content>
+                  <div class="w-60 text-sm text-gray-600 mr-4">
+                    <div v-if="selectedSeriesFollowStatus">
+                      You are currently subscribed to
+                      {{ selectedSeries.name }} and will receive weekly updates
+                      via email when new races are available.
+                    </div>
+                    <div v-if="!selectedSeriesFollowStatus">
+                      Subscribe to {{ selectedSeries.name }} be notified via
+                      email when new races are available.
+                    </div>
                   </div>
-                </div>
-              </template>
-              <div class="rounded-full mr-4 shadow-lg mb-1">
-                <button
-                  v-if="isAuthenticated"
-                  @click="updateSeriesFollowStatus()"
-                  class="
-                    inline-flex
-                    items-center
-                    text-sm
-                    font-medium
-                    rounded-full
-                    shadow
-                    bg-white
-                    hover:bg-blue-50
-                    active:bg-blue-100
-                    focus:ring-0
-                  "
-                >
-                  <v-progress-spinner
-                    v-if="seriesFollowStatusLoading"
-                    color="blue"
-                    :size="6"
-                    class="m-2"
-                  />
-                  <bell-plus-outline
-                    v-if="
-                      !selectedSeriesFollowStatus && !seriesFollowStatusLoading
+                </template>
+                <div class="rounded-full mr-6 shadow-lg mb-1">
+                  <button
+                    v-if="isAuthenticated"
+                    @click="updateSeriesFollowStatus()"
+                    class="
+                      inline-flex
+                      items-center
+                      text-sm
+                      font-medium
+                      rounded-full
+                      shadow
+                      bg-white
+                      hover:bg-blue-50
+                      active:bg-blue-100
+                      focus:ring-0
                     "
-                    class="w-6 h-6 text-gray-500 hover:text-blue-500 m-2"
-                  />
-                  <bell-check-outline
-                    v-if="
-                      selectedSeriesFollowStatus && !seriesFollowStatusLoading
-                    "
-                    class="w-6 h-6 text-blue-500 hover:text-gray-500 m-2"
-                  />
-                </button>
-              </div>
-            </tooltip>
-          </div>
-          <div
-            v-if="selectedSeries.website"
-            class="absolute right-0 bottom-0 -my-6 mr-20 flex"
-          >
-            <tooltip position="left" margin="mr-16">
-              <template #tooltip-content>
-                <div class="w-60 text-sm text-gray-600 mr-4">
-                  <div>Check out the {{ selectedSeries.name }} website.</div>
+                  >
+                    <v-progress-spinner
+                      v-if="seriesFollowStatusLoading"
+                      color="blue"
+                      :size="6"
+                      class="m-2"
+                    />
+                    <bell-plus-outline
+                      v-if="
+                        !selectedSeriesFollowStatus &&
+                        !seriesFollowStatusLoading
+                      "
+                      class="w-6 h-6 text-gray-500 hover:text-blue-500 m-2"
+                    />
+                    <bell-check-outline
+                      v-if="
+                        selectedSeriesFollowStatus && !seriesFollowStatusLoading
+                      "
+                      class="w-6 h-6 text-blue-500 hover:text-gray-500 m-2"
+                    />
+                  </button>
                 </div>
-              </template>
-              <div class="rounded-full mr-4 shadow-lg mb-1">
-                <a
-                  :href="selectedSeries.website"
-                  target="_blank"
-                  class="
-                    cursor-pointer
-                    inline-flex
-                    items-center
-                    text-sm
-                    font-medium
-                    rounded-full
-                    shadow
-                    bg-white
-                    hover:bg-blue-50
-                    active:bg-blue-100
-                    focus:ring-0
-                  "
-                >
-                  <open-in-new
-                    class="w-6 h-6 text-gray-500 hover:text-blue-500 m-2"
-                  />
-                </a>
-              </div>
-            </tooltip>
+              </tooltip>
+            </div>
           </div>
         </div>
         <div class="flex-1 bg-white p-6 flex flex-col justify-between">
