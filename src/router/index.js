@@ -101,6 +101,40 @@ const routes = [
     },
   },
   {
+    path: "/privacy-policy",
+    name: "legal.privacy-policy",
+    component: () =>
+      import(
+        /* webpackChunkName: "legal.privacy-policy" */ "@/views/legal/privacyPolicy.vue"
+      ),
+    meta: {
+      title: "We Are Auto Privacy Policy",
+      metaTags: [
+        {
+          name: "description",
+          content: "Read the We Are Auto privacy policy.",
+        },
+      ],
+    },
+  },
+  {
+    path: "/terms-and-conditions",
+    name: "legal.terms-and-conditions",
+    component: () =>
+      import(
+        /* webpackChunkName: "legal.terms-and-conditions" */ "@/views/legal/termsAndConditions.vue"
+      ),
+    meta: {
+      title: "We Are Auto Terms and Conditions",
+      metaTags: [
+        {
+          name: "description",
+          content: "Read the We Are Auto terms and conditions.",
+        },
+      ],
+    },
+  },
+  {
     path: "/login",
     name: "auth.login",
     component: () =>

@@ -72,6 +72,30 @@
               </div>
             </div>
           </div>
+          <div class="my-4">
+            <div class="flex items-center">
+              <v-check-box
+                color="blue"
+                v-model="termsAndConditions"
+                :value="true"
+                label=""
+                sub-title=""
+              />
+              <div class="text-gray-500 text-xs">
+                I agree to the
+                <a
+                  class="text-blue-500"
+                  target="_blank"
+                  href="/terms-and-conditions"
+                  >terms and conditions</a
+                >
+                and
+                <a class="text-blue-500" target="_blank" href="/privacy-policy"
+                  >privacy policy</a
+                >.
+              </div>
+            </div>
+          </div>
           <div>
             <v-button
               v-if="!signUpLoading"
@@ -118,12 +142,18 @@ export default {
       showPassword: false,
       signUpLoading: false,
       errorMessage: "",
+      termsAndConditions: false,
     };
   },
   computed: {
     ...mapGetters("user", ["isAuthenticated"]),
     inputsAreValid() {
-      return this.name && this.email && this.confirmPassword === this.password;
+      return (
+        this.name &&
+        this.email &&
+        this.confirmPassword === this.password &&
+        this.termsAndConditions
+      );
     },
   },
   created() {
@@ -140,6 +170,7 @@ export default {
           email: this.email,
           password: this.password,
           password_confirmation: this.confirmPassword,
+          terms_and_conditions: this.termsAndConditions,
         });
         if (data?.access_token) {
           await this.setToken(data?.access_token);
