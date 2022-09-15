@@ -1,7 +1,7 @@
 <template>
   <div class="bg-gradient-to-r from-blue-400 to-blue-600 min-h-screen">
     <!-- This example requires Tailwind CSS v2.0+ -->
-    <nav aria-label="Progress" class="p-5">
+    <nav aria-label="Progress" id="progress" class="p-5">
       <ol
         role="list"
         class="
@@ -526,6 +526,7 @@ export default {
           step.status = "complete";
         }
       });
+      this.scrollToTop();
     },
     filterDownByQueryParams() {
       if (!this.$route.query.series && !this.$route.query.season) {
@@ -565,8 +566,15 @@ export default {
     backButtonPressed() {
       this.filterDownByQueryParams();
     },
+    scrollToTop() {
+      console.log("here");
+      document
+        .getElementById("progress")
+        .scrollIntoView({ behavior: "smooth" });
+    },
   },
   async mounted() {
+    this.scrollToTop();
     await this.getSeries();
     this.filterDownByQueryParams();
     window.addEventListener("popstate", this.backButtonPressed);

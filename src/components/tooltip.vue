@@ -20,7 +20,7 @@ export default {
       default: "top",
     },
     margin: {
-      type: Text,
+      type: String,
       default: "mr-8",
     },
   },
