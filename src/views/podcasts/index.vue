@@ -325,6 +325,14 @@
           />
         </a>
       </div>
+      <div class="bg-white p-2 rounded-full m-4">
+        <a
+          href="https://www.pandora.com/podcast/we-are-auto/PC:1001025983"
+          target="_blank"
+        >
+          <pandora class="h-12 w-12" />
+        </a>
+      </div>
     </div>
   </div>
 </template>
@@ -347,12 +355,14 @@ import shift from "@/assets/icons/car-shift-pattern.vue";
 import applePodcast from "@/assets/icons/apple-podcast.vue";
 import googlePodcast from "@/assets/icons/google-podcast.vue";
 import spotify from "@/assets/icons/spotify.vue";
+import pandora from "@/assets/icons/pandora.vue";
 export default {
   components: {
     playCircleOutline,
     applePodcast,
     googlePodcast,
     spotify,
+    pandora,
   },
   data() {
     return {
