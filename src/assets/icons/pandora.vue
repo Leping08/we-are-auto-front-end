@@ -40,41 +40,6 @@
         />
       </linearGradient>
     </defs>
-    <sodipodi:namedview
-      id="base"
-      pagecolor="#ffffff"
-      bordercolor="#666666"
-      borderopacity="1.0"
-      inkscape:pageopacity="0.0"
-      inkscape:pageshadow="2"
-      inkscape:zoom="0.40120419"
-      inkscape:cx="784.72313"
-      inkscape:cy="753.80182"
-      inkscape:document-units="mm"
-      inkscape:current-layer="layer1"
-      inkscape:document-rotation="0"
-      showgrid="false"
-      showguides="false"
-      fit-margin-top="0"
-      fit-margin-left="0"
-      fit-margin-right="0"
-      fit-margin-bottom="0"
-      scale-x="1"
-      inkscape:window-width="1440"
-      inkscape:window-height="837"
-      inkscape:window-x="-8"
-      inkscape:window-y="-8"
-      inkscape:window-maximized="1"
-    />
-    <metadata id="metadata5">
-      <rdf:RDF>
-        <cc:Work rdf:about="">
-          <dc:format>image/svg+xml</dc:format>
-          <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-          <dc:title />
-        </cc:Work>
-      </rdf:RDF>
-    </metadata>
     <g
       inkscape:label="Layer 1"
       inkscape:groupmode="layer"
