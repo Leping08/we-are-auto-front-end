@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-guest>
+    <guest>
       <div class="p-4">
         <div>
           The {{ race.name }} has completed but we have not located the video
@@ -8,9 +8,9 @@
           get it added as soon as we can.
         </div>
       </div>
-    </div>
+    </guest>
 
-    <div v-auth>
+    <authenticated>
       <div class="px-4">
         <div>
           The {{ race.name }} has completed but we have not located the video
@@ -62,13 +62,19 @@
           Send
         </v-button>
       </div>
-    </div>
+    </authenticated>
   </div>
 </template>
 
 <script>
 import Race from "@/api/models/races.js";
+import guest from "@/components/auth/guest.vue";
+import authenticated from "@/components/auth/authenticated.vue";
 export default {
+  components: {
+    guest,
+    authenticated
+  },
   data() {
     return {
       response: null,

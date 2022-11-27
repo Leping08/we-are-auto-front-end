@@ -140,7 +140,7 @@
               <router-link
                 :to="{ name: 'users.profile' }"
                 class="flex items-center"
-                v-if="user"
+                v-if="authStore.isAuthenticated"
               >
                 <div>
                   <img
@@ -280,7 +280,7 @@
               <router-link
                 :to="{ name: 'users.profile' }"
                 class="flex items-center"
-                v-if="user"
+                v-if="authStore.isAuthenticated"
               >
                 <div>
                   <img
@@ -400,7 +400,7 @@ import garage from "@/assets/icons/garage.vue";
 import flag from "@/assets/icons/flag-checkered.vue";
 
 const authStore = useAuthStore();
-const user = mapState(authStore, ["user", "isAuthenticated"]);
+const user = mapState(authStore, ["user"]);
 const sidebarOpen = ref(false);
 
 const navigation = [

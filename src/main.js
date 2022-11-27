@@ -1,7 +1,6 @@
 import { createApp } from "vue";
 import { createPinia } from "pinia";
 import * as vantageComponents from "./lib-components/index.js";
-import { admin, notAdmin, guest, auth } from "./directives/index.js";
 
 import VueGtag from "vue-gtag";
 
@@ -13,11 +12,6 @@ import "./style.css"; // tailwind
 const app = createApp(App);
 
 app.use(createPinia())
-
-app.directive("admin", admin)
-app.directive("not-admin", notAdmin)
-app.directive("guest", guest)
-app.directive("auth", auth)
 
 app.component("VAccordion", vantageComponents.VAccordion);
 app.component("VAvatar", vantageComponents.VAvatar);
