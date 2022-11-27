@@ -3,7 +3,7 @@ import { useAuthStore } from '@/stores/auth'
 import router from "@/router/index";
 
 // This is used when the login action is run
-function refreshHeaders() {
+function setRefreshHeaders() {
   const newToken = localStorage.getItem("access_token") || null;
   axios.defaults.headers.common = {
     Authorization: `Bearer ${newToken}`,
@@ -50,4 +50,4 @@ axios.interceptors.response.use(
 );
 
 export default axios;
-export { refreshHeaders };
+export { setRefreshHeaders };

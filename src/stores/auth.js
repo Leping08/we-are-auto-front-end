@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import axios from "axios"
 import api from "@/api/auth/index.js"
+import { setRefreshHeaders } from "@/api/auth/index.js"
 
 const BACKEND_URL = `${import.meta.env.VITE_APP_BACKEND_URL}/api`;
 
@@ -27,7 +28,7 @@ export const useAuthStore = defineStore('auth', {
             }
 
             try {
-                refreshHeaders();
+                setRefreshHeaders();
                 const response = await api.get("/user/me");
                 this.user = response.data;
             } catch (error) {

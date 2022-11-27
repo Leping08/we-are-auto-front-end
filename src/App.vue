@@ -150,7 +150,7 @@
                   />
                 </div>
                 <div class="ml-3">
-                  <p class="text-sm font-medium text-white">{{ user.name }}</p>
+                  <p class="text-sm font-medium text-white">{{ authStore?.user?.name }}</p>
                   <div
                     class="
                       text-xs
@@ -290,7 +290,7 @@
                   />
                 </div>
                 <div class="ml-3">
-                  <p class="text-sm font-medium text-white">{{ user.name }}</p>
+                  <p class="text-sm font-medium text-white">{{ authStore?.user?.name }}</p>
                   <div
                     class="
                       text-xs
@@ -400,7 +400,6 @@ import garage from "@/assets/icons/garage.vue";
 import flag from "@/assets/icons/flag-checkered.vue";
 
 const authStore = useAuthStore();
-const user = mapState(authStore, ["user"]);
 const sidebarOpen = ref(false);
 
 const navigation = [
