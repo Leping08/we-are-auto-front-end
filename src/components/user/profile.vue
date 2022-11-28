@@ -72,14 +72,13 @@ import { useAuthStore } from "@/stores/auth.js";
 
 const authStore = useAuthStore();
 
-const oldUser = ref(authStore.user);
 const name = ref("");
 const email = ref("");
 const loading = ref(false);
 
 const eligibleForUpdate = computed(() => {
   return (
-    name.value !== oldUser.value.name || email.value !== oldUser.value.email
+    name.value !== authStore?.user?.name || email.value !== authStore?.user?.email
   );
 });
 
@@ -89,9 +88,9 @@ onMounted(() => {
 
 const save = async () => {
   loading.value = true;
-  const response = await api.post(`/user/${oldUser.value.id}`, {
-    ...(name.value != oldUser.value.name && { name: name.value }),
-    ...(email.value != oldUser.value.email && { email: email.value }),
+  const response = await api.post(`/user/${authStore?.user?.id}`, {
+    ...(name.value != authStore?.user?.name && { name: name.value }),
+    ...(email.value != authStore?.user?.email && { email: email.value }),
   });
   if (response.status === 200) {
     getFreshUserData();
@@ -107,7 +106,6 @@ const getFreshUserData = async () => {
   const response = await api.get("/user/me");
   if (response.status === 200) {
     authStore.setUser(response.data);
-    oldUser.value = response.data;
     name.value = response.data.name;
     email.value = response.data.email;
   } else {

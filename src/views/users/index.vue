@@ -3,7 +3,7 @@
     <div class="space-y-6 m-4">
       <profile />
 
-      <password-change />
+      <!-- <password-change /> -->
 
       <!-- <div class="bg-white shadow px-4 py-5 rounded-lg sm:p-6">
         <div class="md:grid md:grid-cols-3 md:gap-6">
@@ -55,21 +55,7 @@
   </div>
 </template>
 
-<script>
-// todo move over to setup
-import { mapState } from "pinia";
-import { useAuthStore } from "@/stores/auth.js";
+<script setup>
 import profile from "@/components/user/profile.vue";
-import passwordChange from "@/components/user/passwordChange.vue";
-export default {
-  components: {
-    profile,
-    passwordChange,
-  },
-  computed: {
-    ...mapState(useAuthStore, {
-      user: (store) => store.user,
-    })
-  },
-};
+// import passwordChange from "@/components/user/passwordChange.vue";
 </script>

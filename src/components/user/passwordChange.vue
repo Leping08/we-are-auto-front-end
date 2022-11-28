@@ -109,6 +109,7 @@
 <script>
 // todo move this to setup
 import { mapState } from "pinia";
+import { useAuthStore } from "@/stores/auth.js";
 import api from "@/api/auth/index.js";
 import eyeOff from "@/assets/icons/eye-off-outline.vue";
 import eye from "@/assets/icons/eye-outline.vue";

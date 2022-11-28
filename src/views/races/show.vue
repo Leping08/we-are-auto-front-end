@@ -219,7 +219,7 @@
                 <div v-if="watchedProgress < 99">
                   <tooltip v-if="!loadingProgress">
                     <check-circle-outline
-                      @click="markWatched()"
+                      @click="markWatched"
                       class="
                         h-6
                         w-6
@@ -238,7 +238,7 @@
                 <div v-else>
                   <tooltip v-if="!loadingProgress">
                     <check-circle-outline
-                      @click="markUnwatched()"
+                      @click="markUnwatched"
                       class="
                         h-6
                         w-6
