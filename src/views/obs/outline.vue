@@ -1,5 +1,5 @@
 <template>
-  <div class="h-screen relative">
+  <div class="h-screen relative bg-gradient-to-br from-gray-900 to-gray-700">
     <slot></slot>
     <div
       class="
