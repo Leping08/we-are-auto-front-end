@@ -19,7 +19,7 @@
         >
           Derek & Michael
         </div>
-        <div class="aspect-w-16 aspect-h-9"></div>
+        <div class="aspect-video"></div>
       </div>
       <div class="relative w-6/12 border-4 border-primary rounded-lg mr-8 ml-4">
         <div
@@ -39,7 +39,7 @@
         >
           {{ guestName }}
         </div>
-        <div class="aspect-w-16 aspect-h-9"></div>
+        <div class="aspect-video"></div>
       </div>
     </div>
   </outline>

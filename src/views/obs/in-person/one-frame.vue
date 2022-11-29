@@ -78,7 +78,7 @@
           Michael
         </div> -->
 
-        <div class="aspect-w-16 aspect-h-9"></div>
+        <div class="aspect-video"></div>
       </div>
     </div>
   </outline>

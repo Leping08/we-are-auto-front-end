@@ -18,7 +18,7 @@
           >
             {{ guestName }}
           </div>
-          <div class="aspect-w-16 aspect-h-9"></div>
+          <div class="aspect-video"></div>
         </div>
       </div>
       <div class="flex justify-around items-center p-10">
@@ -38,7 +38,7 @@
           >
             Michael
           </div>
-          <div class="aspect-w-16 aspect-h-9"></div>
+          <div class="aspect-video"></div>
         </div>
         <div class="relative w-1/3 border-4 border-primary rounded-lg">
           <div
@@ -56,7 +56,7 @@
           >
             Derek
           </div>
-          <div class="aspect-w-16 aspect-h-9"></div>
+          <div class="aspect-video"></div>
         </div>
       </div>
     </div>

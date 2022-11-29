@@ -17,7 +17,7 @@
         >
           Derek
         </div>
-        <div class="aspect-w-16 aspect-h-9"></div>
+        <div class="aspect-video"></div>
       </div>
       <div class="relative w-2/5 border-4 border-primary rounded-lg">
         <div
@@ -35,7 +35,7 @@
         >
           Michael
         </div>
-        <div class="aspect-w-16 aspect-h-9"></div>
+        <div class="aspect-video"></div>
       </div>
     </div>
   </outline>
