@@ -22,6 +22,7 @@
 </template>
 
 <script setup>
+import { ref } from "vue";
 import { useRoute } from "vue-router";
 import { onMounted } from "vue";
 import outline from "@/views/obs/outline.vue";
@@ -30,6 +31,6 @@ const guestName = ref("Guest Name");
 
 onMounted(() => {
   const route = useRoute();
-  guestName.value = route.params.name; // could be route.params.name
+  guestName.value = route.query.name; // could be route.params.name
 });
 </script>
