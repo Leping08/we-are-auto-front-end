@@ -3,6 +3,7 @@ import { createPinia } from "pinia";
 import * as vantageComponents from "./lib-components/index.js";
 
 import VueGtag from "vue-gtag";
+import Particles from "particles.vue3";
 
 import App from "./App.vue";
 import router from "./router";
@@ -12,6 +13,7 @@ import "./style.css"; // tailwind
 const app = createApp(App);
 
 app.use(createPinia());
+app.use(Particles);
 
 app.component("VAccordion", vantageComponents.VAccordion);
 app.component("VAvatar", vantageComponents.VAvatar);
