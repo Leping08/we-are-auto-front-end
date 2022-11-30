@@ -4,17 +4,7 @@
       <textarea
         v-model="problemText"
         placeholder="Describe the problem..."
-        class="
-          block
-          w-full
-          h-40
-          px-4
-          py-2
-          text-gray-900
-          border-gray-300 border-2
-          rounded-lg
-          focus:outline-none focus:border-blue-500
-        "
+        class="block w-full h-40 px-4 py-2 text-gray-900 border-gray-300 border-2 rounded-lg focus:outline-none focus:border-blue-500"
       ></textarea>
     </div>
     <div class="flex items-center mt-4">
@@ -45,7 +35,7 @@
 
 <script>
 import { mapState } from "pinia";
-import { useAuthStore } from '@/stores/auth.js';
+import { useAuthStore } from "@/stores/auth.js";
 import RaceProblemApi from "@/api/models/race-problem.js";
 import checkCircleOutline from "@/assets/icons/checkbox-marked-circle-outline.vue";
 export default {
@@ -69,7 +59,7 @@ export default {
   computed: {
     ...mapState(useAuthStore, {
       user: (store) => store.user,
-    })
+    }),
   },
   methods: {
     async reportProblem() {

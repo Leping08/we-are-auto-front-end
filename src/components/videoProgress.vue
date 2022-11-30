@@ -2,42 +2,14 @@
   <div>
     <div
       v-if="icon == 'play'"
-      class="
-        h-10
-        w-10
-        rounded-full
-        bg-white
-        relative
-        flex
-        items-center
-        justify-around
-        shadow-md
-      "
+      class="h-10 w-10 rounded-full bg-white relative flex items-center justify-around shadow-md"
     >
       <div
-        class="
-          h-9
-          w-9
-          rounded-full
-          relative
-          flex
-          items-center
-          justify-around
-          transform
-        "
+        class="h-9 w-9 rounded-full relative flex items-center justify-around transform"
         :style="progress"
       >
         <div
-          class="
-            h-8
-            w-8
-            rounded-full
-            bg-white
-            relative
-            flex
-            items-center
-            justify-around
-          "
+          class="h-8 w-8 rounded-full bg-white relative flex items-center justify-around"
         >
           <play class="text-blue-500 h-6 w-6" />
         </div>
@@ -45,17 +17,7 @@
     </div>
     <div
       v-if="icon == 'check'"
-      class="
-        h-10
-        w-10
-        rounded-full
-        bg-green-500
-        relative
-        flex
-        items-center
-        justify-around
-        shadow-md
-      "
+      class="h-10 w-10 rounded-full bg-green-500 relative flex items-center justify-around shadow-md"
     >
       <check class="text-white h-6 w-6" />
     </div>

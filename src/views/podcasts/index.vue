@@ -2,12 +2,7 @@
   <div class="bg-white">
     <div class="relative">
       <div
-        class="
-          lg:mx-auto lg:px-8
-          py-10
-          lg:grid lg:grid-cols-2 lg:grid-flow-col-dense lg:gap-24
-          items-center
-        "
+        class="lg:mx-auto lg:px-8 py-10 lg:grid lg:grid-cols-2 lg:grid-flow-col-dense lg:gap-24 items-center"
       >
         <div class="relative max-w-xl mx-auto p-6 lg:p-0">
           <h3
@@ -24,19 +19,7 @@
             <div v-for="item in features" :key="item.id" class="relative">
               <dt>
                 <div
-                  class="
-                    absolute
-                    flex
-                    items-center
-                    justify-center
-                    h-12
-                    w-12
-                    rounded-md
-                    bg-gradient-to-r
-                    from-blue-400
-                    to-blue-600
-                    text-white
-                  "
+                  class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-gradient-to-r from-blue-400 to-blue-600 text-white"
                 >
                   <component
                     :is="item.icon"
@@ -45,14 +28,7 @@
                   />
                 </div>
                 <p
-                  class="
-                    mb-1
-                    ml-16
-                    text-lg
-                    font-semibold
-                    leading-6
-                    text-gray-900
-                  "
+                  class="mb-1 ml-16 text-lg font-semibold leading-6 text-gray-900"
                 >
                   {{ item.name }}
                 </p>
@@ -65,22 +41,10 @@
         </div>
         <div class="mt-12 sm:mt-16 lg:mt-0">
           <div
-            class="
-              pl-4
-              -mr-48
-              sm:pl-6
-              md:-mr-16
-              lg:px-0 lg:m-0 lg:relative lg:h-full
-            "
+            class="pl-4 -mr-48 sm:pl-6 md:-mr-16 lg:px-0 lg:m-0 lg:relative lg:h-full"
           >
             <img
-              class="
-                w-full
-                rounded-xl
-                shadow-xl
-                ring-1 ring-blue ring-opacity-5
-                m-2
-              "
+              class="w-full rounded-xl shadow-xl ring-1 ring-blue ring-opacity-5 m-2"
               src="@/assets/images/mics.jpg"
               alt="We Are Auto Show"
             />
@@ -118,19 +82,7 @@
           <div v-for="item in autoNews" :key="item.id" class="relative">
             <dt>
               <div
-                class="
-                  absolute
-                  flex
-                  items-center
-                  justify-center
-                  h-12
-                  w-12
-                  rounded-md
-                  bg-gradient-to-r
-                  from-blue-400
-                  to-blue-600
-                  text-white
-                "
+                class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-gradient-to-r from-blue-400 to-blue-600 text-white"
               >
                 <component :is="item.icon" class="h-6 w-6" aria-hidden="true" />
               </div>
@@ -164,19 +116,7 @@
           <div v-for="item in racingNews" :key="item.id" class="relative">
             <dt>
               <div
-                class="
-                  absolute
-                  flex
-                  items-center
-                  justify-center
-                  h-12
-                  w-12
-                  rounded-md
-                  bg-gradient-to-r
-                  from-blue-400
-                  to-blue-600
-                  text-white
-                "
+                class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-gradient-to-r from-blue-400 to-blue-600 text-white"
               >
                 <component :is="item.icon" class="h-6 w-6" aria-hidden="true" />
               </div>
@@ -237,19 +177,7 @@
           <div v-for="item in banter" :key="item.id" class="relative">
             <dt>
               <div
-                class="
-                  absolute
-                  flex
-                  items-center
-                  justify-center
-                  h-12
-                  w-12
-                  rounded-md
-                  bg-gradient-to-r
-                  from-blue-400
-                  to-blue-600
-                  text-white
-                "
+                class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-gradient-to-r from-blue-400 to-blue-600 text-white"
               >
                 <component :is="item.icon" class="h-6 w-6" aria-hidden="true" />
               </div>
@@ -269,20 +197,7 @@
   </div>
 
   <div
-    class="
-      relative
-      px-4
-      py-14
-      sm:px-6
-      lg:py-20 lg:px-8
-      bg-gradient-to-r
-      from-blue-400
-      to-blue-600
-      flex flex-col
-      md:flex-row
-      items-center
-      w-full
-    "
+    class="relative px-4 py-14 sm:px-6 lg:py-20 lg:px-8 bg-gradient-to-r from-blue-400 to-blue-600 flex flex-col md:flex-row items-center w-full"
   >
     <div>
       <div class="text-2xl font-bold tracking-tight sm:text-4xl text-white">
@@ -430,8 +345,7 @@ const banter = [
   {
     id: 2,
     name: "Spots of the week",
-    description:
-      "The latest cars we spotted while we were out and about.",
+    description: "The latest cars we spotted while we were out and about.",
     icon: mapMarker,
   },
   {

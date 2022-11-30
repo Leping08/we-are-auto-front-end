@@ -3,7 +3,7 @@
 </template>
 
 <script setup>
-import { useRouter } from 'vue-router'
+import { useRouter } from "vue-router";
 import { useAuthStore } from "@/stores/auth.js";
 
 onMounted(async () => {

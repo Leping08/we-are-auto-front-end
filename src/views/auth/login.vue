@@ -103,7 +103,7 @@ async function attemptLogin() {
   try {
     const { data } = await authStore.login({
       email: email.value,
-      password : password.value,
+      password: password.value,
     });
 
     if (data?.access_token) {

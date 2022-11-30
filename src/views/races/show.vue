@@ -21,131 +21,48 @@
 
       <div
         v-if="loadingRaceData"
-        class="
-          bg-white
-          shadow-md
-          rounded-lg
-          absolute
-          right-0
-          top-0
-          mt-6
-          z-10
-          transform
-          translate-x-full
-          mr-20
-          w-20
-        "
+        class="bg-white shadow-md rounded-lg absolute right-0 top-0 mt-6 z-10 transform translate-x-full mr-20 w-20"
       >
         <div
-          class="
-            h-10
-            w-10
-            bg-gray-300
-            animate-pulse
-            mx-4
-            mt-4
-            mb-6
-            rounded-full
-            relative
-          "
+          class="h-10 w-10 bg-gray-300 animate-pulse mx-4 mt-4 mb-6 rounded-full relative"
         ></div>
         <div
-          class="
-            h-10
-            w-10
-            bg-gray-300
-            animate-pulse
-            mx-4
-            mt-4
-            mb-10
-            rounded-full
-            relative
-          "
+          class="h-10 w-10 bg-gray-300 animate-pulse mx-4 mt-4 mb-10 rounded-full relative"
         >
           <div
             class="absolute animate-pulse top-12 left-5 h-6 w-0.5 bg-gray-200"
           ></div>
         </div>
         <div
-          class="
-            h-10
-            w-10
-            bg-gray-300
-            animate-pulse
-            mx-4
-            mt-4
-            mb-10
-            rounded-full
-            relative
-          "
+          class="h-10 w-10 bg-gray-300 animate-pulse mx-4 mt-4 mb-10 rounded-full relative"
         >
           <div
             class="absolute animate-pulse top-12 left-5 h-6 w-0.5 bg-gray-200"
           ></div>
         </div>
         <div
-          class="
-            h-10
-            w-10
-            bg-gray-300
-            animate-pulse
-            mx-4
-            mt-4
-            mb-10
-            rounded-full
-            relative
-          "
+          class="h-10 w-10 bg-gray-300 animate-pulse mx-4 mt-4 mb-10 rounded-full relative"
         >
           <div
             class="absolute animate-pulse top-12 left-5 h-6 w-0.5 bg-gray-200"
           ></div>
         </div>
         <div
-          class="
-            h-10
-            w-10
-            bg-gray-300
-            animate-pulse
-            mx-4
-            mt-4
-            mb-10
-            rounded-full
-            relative
-          "
+          class="h-10 w-10 bg-gray-300 animate-pulse mx-4 mt-4 mb-10 rounded-full relative"
         >
           <div
             class="absolute animate-pulse top-12 left-5 h-6 w-0.5 bg-gray-200"
           ></div>
         </div>
         <div
-          class="
-            h-10
-            w-10
-            bg-gray-300
-            animate-pulse
-            mx-4
-            mt-4
-            mb-10
-            rounded-full
-            relative
-          "
+          class="h-10 w-10 bg-gray-300 animate-pulse mx-4 mt-4 mb-10 rounded-full relative"
         >
           <div
             class="absolute animate-pulse top-12 left-5 h-6 w-0.5 bg-gray-200"
           ></div>
         </div>
         <div
-          class="
-            h-10
-            w-10
-            bg-gray-300
-            animate-pulse
-            mx-4
-            mt-4
-            mb-4
-            rounded-full
-            relative
-          "
+          class="h-10 w-10 bg-gray-300 animate-pulse mx-4 mt-4 mb-4 rounded-full relative"
         ></div>
       </div>
 
@@ -155,15 +72,7 @@
       >
         <div class="px-4 py-2">
           <div
-            class="
-              -ml-4
-              -mt-2
-              flex
-              justify-between
-              items-center
-              flex-wrap
-              sm:flex-nowrap
-            "
+            class="-ml-4 -mt-2 flex justify-between items-center flex-wrap sm:flex-nowrap"
           >
             <div class="ml-4 mt-4">
               <h3 class="text-xl leading-6 font-medium text-gray-900">
@@ -195,13 +104,7 @@
                 <tooltip>
                   <clock-start
                     @click="jumpToStart()"
-                    class="
-                      h-6
-                      w-6
-                      text-gray-400
-                      hover:text-blue-500
-                      cursor-pointer
-                    "
+                    class="h-6 w-6 text-gray-400 hover:text-blue-500 cursor-pointer"
                   />
                   <template #tooltip-content>
                     <div class="text-sm leading-5 text-gray-500 w-20">
@@ -220,13 +123,7 @@
                   <tooltip v-if="!loadingProgress">
                     <check-circle-outline
                       @click="markWatched"
-                      class="
-                        h-6
-                        w-6
-                        text-gray-400
-                        hover:text-blue-500
-                        cursor-pointer
-                      "
+                      class="h-6 w-6 text-gray-400 hover:text-blue-500 cursor-pointer"
                     />
                     <template #tooltip-content>
                       <div class="text-sm leading-5 text-gray-500 w-24">
@@ -239,13 +136,7 @@
                   <tooltip v-if="!loadingProgress">
                     <check-circle-outline
                       @click="markUnwatched"
-                      class="
-                        h-6
-                        w-6
-                        text-green-500
-                        hover:text-blue-500
-                        cursor-pointer
-                      "
+                      class="h-6 w-6 text-green-500 hover:text-blue-500 cursor-pointer"
                     />
                     <template #tooltip-content>
                       <div class="text-sm leading-5 text-gray-500 w-28">
@@ -259,13 +150,7 @@
                 <tooltip>
                   <chat-alert-outline
                     @click="showProblemForm = !showProblemForm"
-                    class="
-                      h-6
-                      w-6
-                      text-gray-400
-                      hover:text-blue-500
-                      cursor-pointer
-                    "
+                    class="h-6 w-6 text-gray-400 hover:text-blue-500 cursor-pointer"
                   />
                   <template #tooltip-content>
                     <div class="text-sm leading-5 text-gray-500 w-28">
@@ -302,11 +187,7 @@
         <nav aria-label="Progress">
           <ol
             role="list"
-            class="
-              divide-y divide-gray-300
-              md:flex md:divide-y-0
-              overflow-hidden
-            "
+            class="divide-y divide-gray-300 md:flex md:divide-y-0 overflow-hidden"
           >
             <li
               v-for="(video, index) in race.videos"
@@ -319,30 +200,12 @@
                   class="px-6 py-4 flex items-center text-sm font-medium group"
                 >
                   <span
-                    class="
-                      flex-shrink-0
-                      w-10
-                      h-10
-                      flex
-                      items-center
-                      justify-center
-                      bg-white
-                      shadow-md
-                      border
-                      rounded-full
-                      group-hover:bg-blue-500
-                    "
+                    class="flex-shrink-0 w-10 h-10 flex items-center justify-center bg-white shadow-md border rounded-full group-hover:bg-blue-500"
                   >
                     <video-progress :video="video" />
                   </span>
                   <span
-                    class="
-                      ml-4
-                      text-sm
-                      font-medium
-                      text-gray-500
-                      group-hover:text-gray-700
-                    "
+                    class="ml-4 text-sm font-medium text-gray-500 group-hover:text-gray-700"
                     >Part {{ index + 1 }}</span
                   >
                 </span>
@@ -376,19 +239,7 @@
 
     <div
       v-if="!loadingRaceData"
-      class="
-        absolute
-        right-0
-        top-0
-        mt-6
-        z-10
-        px-4
-        transform
-        translate-x-full
-        mx-22
-        hidden
-        md:block
-      "
+      class="absolute right-0 top-0 mt-6 z-10 px-4 transform translate-x-full mx-22 hidden md:block"
     >
       <div
         @mouseover="seasonOpen = true"
@@ -452,21 +303,11 @@
                         <play-progress :race="race" />
                       </div>
                       <div
-                        class="
-                          min-w-0
-                          flex-1
-                          pt-1.5
-                          flex
-                          justify-between
-                          space-x-4
-                        "
+                        class="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4"
                       >
                         <div class="ml-1">
                           <div
-                            class="
-                              text-sm text-gray-600
-                              group-hover:text-gray-900
-                            "
+                            class="text-sm text-gray-600 group-hover:text-gray-900"
                             :class="
                               $route.params.id == race.id ? 'font-bold' : ''
                             "
@@ -474,10 +315,7 @@
                             {{ race.name }}
                           </div>
                           <div
-                            class="
-                              text-sm text-gray-400
-                              group-hover:text-gray-700
-                            "
+                            class="text-sm text-gray-400 group-hover:text-gray-700"
                             :class="
                               $route.params.id == race.id ? 'font-bold' : ''
                             "
@@ -577,7 +415,7 @@
 <script>
 // todo move over to setup
 import { mapState } from "pinia";
-import { useAuthStore } from '@/stores/auth.js';
+import { useAuthStore } from "@/stores/auth.js";
 import Race from "@/api/models/races.js";
 import Series from "@/api/models/series.js";
 import PlayProgress from "@/components/playProgress.vue";

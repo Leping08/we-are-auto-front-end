@@ -2,16 +2,7 @@
   <div class="h-screen relative">
     <slot></slot>
     <div
-      class="
-        w-1/5
-        p-2
-        absolute
-        top-0
-        left-0
-        bg-white
-        border-b-4 border-r-4 border-primary
-        rounded-br-lg
-      "
+      class="w-1/5 p-2 absolute top-0 left-0 bg-white border-b-4 border-r-4 border-primary rounded-br-lg"
     >
       <div class="flex items-center">
         <div>
@@ -32,14 +23,7 @@
     </div>
     <div class="w-full absolute bottom-0">
       <div
-        class="
-          w-1/2
-          bg-white
-          p-2
-          mx-auto
-          border-r-4 border-l-4 border-t-4 border-primary
-          rounded-t-lg
-        "
+        class="w-1/2 bg-white p-2 mx-auto border-r-4 border-l-4 border-t-4 border-primary rounded-t-lg"
       >
         <div class="flex items-center justify-around text-gray-600">
           <div class="flex items-center">

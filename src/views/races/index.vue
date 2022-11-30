@@ -5,21 +5,11 @@
       <div aria-hidden="true" class="absolute inset-x-0 top-0 h-48" />
       <div class="relative">
         <div
-          class="
-            lg:mx-auto lg:px-8
-            py-20
-            lg:grid lg:grid-cols-2 lg:grid-flow-col-dense lg:gap-24
-          "
+          class="lg:mx-auto lg:px-8 py-20 lg:grid lg:grid-cols-2 lg:grid-flow-col-dense lg:gap-24"
         >
           <div class="relative max-w-xl mx-auto p-6 lg:p-0">
             <h3
-              class="
-                text-2xl
-                font-extrabold
-                text-gray-900
-                tracking-tight
-                sm:text-4xl
-              "
+              class="text-2xl font-extrabold text-gray-900 tracking-tight sm:text-4xl"
             >
               It's like Netflix for gearheads
             </h3>
@@ -32,19 +22,7 @@
               <div v-for="item in features" :key="item.id" class="relative">
                 <dt>
                   <div
-                    class="
-                      absolute
-                      flex
-                      items-center
-                      justify-center
-                      h-12
-                      w-12
-                      rounded-md
-                      bg-gradient-to-r
-                      from-blue-400
-                      to-blue-600
-                      text-white
-                    "
+                    class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-gradient-to-r from-blue-400 to-blue-600 text-white"
                   >
                     <component
                       :is="item.icon"
@@ -64,22 +42,10 @@
           </div>
           <div class="mt-12 sm:mt-16 lg:mt-0">
             <div
-              class="
-                pl-4
-                -mr-48
-                sm:pl-6
-                md:-mr-16
-                lg:px-0 lg:m-0 lg:relative lg:h-full
-              "
+              class="pl-4 -mr-48 sm:pl-6 md:-mr-16 lg:px-0 lg:m-0 lg:relative lg:h-full"
             >
               <img
-                class="
-                  w-full
-                  rounded-xl
-                  shadow-xl
-                  ring-1 ring-black ring-opacity-5
-                  lg:absolute lg:left-0 lg:h-full lg:w-auto lg:max-w-none
-                "
+                class="w-full rounded-xl shadow-xl ring-1 ring-black ring-opacity-5 lg:absolute lg:left-0 lg:h-full lg:w-auto lg:max-w-none"
                 src="@/assets/images/race-cars/mercedes-rolex-24.jpg"
                 alt="IMSA Racing"
               />
@@ -89,16 +55,7 @@
       </div>
 
       <div
-        class="
-          relative
-          px-4
-          py-14
-          sm:px-6
-          lg:py-20 lg:px-8
-          bg-gradient-to-r
-          from-blue-400
-          to-blue-600
-        "
+        class="relative px-4 py-14 sm:px-6 lg:py-20 lg:px-8 bg-gradient-to-r from-blue-400 to-blue-600"
       >
         <div class="absolute inset-0">
           <div class="h-1/3 sm:h-2/3" />
@@ -138,5 +95,4 @@ const features = [
     icon: formatListBulleted,
   },
 ];
-
 </script>

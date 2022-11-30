@@ -11,7 +11,7 @@ import "./style.css"; // tailwind
 
 const app = createApp(App);
 
-app.use(createPinia())
+app.use(createPinia());
 
 app.component("VAccordion", vantageComponents.VAccordion);
 app.component("VAvatar", vantageComponents.VAvatar);
@@ -36,10 +36,14 @@ app.component("VTabs", vantageComponents.VTabs);
 app.component("VTabContent", vantageComponents.VTabContent);
 
 app.use(router);
-app.use(VueGtag, {
-  appName: "We Are Auto",
-  pageTrackerScreenviewEnabled: true,
-  config: { id: import.meta.env.VITE_APP_GOOGLE_ANALYTICS_KEY },
-}, router);
+app.use(
+  VueGtag,
+  {
+    appName: "We Are Auto",
+    pageTrackerScreenviewEnabled: true,
+    config: { id: import.meta.env.VITE_APP_GOOGLE_ANALYTICS_KEY },
+  },
+  router
+);
 
 app.mount("#app");

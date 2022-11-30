@@ -33,15 +33,7 @@
         </router-link>
       </div>
       <router-link
-        class="
-          flex
-          justify-end
-          items-center
-          m-4
-          text-blue-200 text-lg
-          font-bold
-          hover:text-blue-100
-        "
+        class="flex justify-end items-center m-4 text-blue-200 text-lg font-bold hover:text-blue-100"
         tag="div"
         :to="{ name: 'races.filter' }"
       >

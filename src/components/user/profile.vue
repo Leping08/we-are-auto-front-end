@@ -78,7 +78,8 @@ const loading = ref(false);
 
 const eligibleForUpdate = computed(() => {
   return (
-    name.value !== authStore?.user?.name || email.value !== authStore?.user?.email
+    name.value !== authStore?.user?.name ||
+    email.value !== authStore?.user?.email
   );
 });
 

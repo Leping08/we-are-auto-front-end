@@ -1,5 +1,5 @@
 import axios from "@/api/index.js";
-import { useAuthStore } from '@/stores/auth'
+import { useAuthStore } from "@/stores/auth";
 import router from "@/router/index";
 
 // This is used when the login action is run

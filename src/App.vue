@@ -46,16 +46,7 @@
             >
               <div class="absolute top-0 right-0 -mr-12 pt-2">
                 <button
-                  class="
-                    ml-1
-                    flex
-                    items-center
-                    justify-center
-                    h-10
-                    w-10
-                    rounded-full
-                    focus:outline-none
-                  "
+                  class="ml-1 flex items-center justify-center h-10 w-10 rounded-full focus:outline-none"
                   @click="sidebarOpen = false"
                 >
                   <span class="sr-only">Close sidebar</span>
@@ -150,14 +141,11 @@
                   />
                 </div>
                 <div class="ml-3">
-                  <p class="text-sm font-medium text-white">{{ authStore?.user?.name }}</p>
+                  <p class="text-sm font-medium text-white">
+                    {{ authStore?.user?.name }}
+                  </p>
                   <div
-                    class="
-                      text-xs
-                      font-medium
-                      text-gray-300
-                      group-hover:text-gray-200
-                    "
+                    class="text-xs font-medium text-gray-300 group-hover:text-gray-200"
                   >
                     View profile
                   </div>
@@ -178,12 +166,7 @@
                 <div class="ml-3">
                   <!-- <p class="text-sm font-medium text-white">Tom Cook</p> -->
                   <a
-                    class="
-                      text-xs
-                      font-medium
-                      text-gray-300
-                      group-hover:text-gray-200
-                    "
+                    class="text-xs font-medium text-gray-300 group-hover:text-gray-200"
                   >
                     Login / Sign Up
                   </a>
@@ -290,14 +273,11 @@
                   />
                 </div>
                 <div class="ml-3">
-                  <p class="text-sm font-medium text-white">{{ authStore?.user?.name }}</p>
+                  <p class="text-sm font-medium text-white">
+                    {{ authStore?.user?.name }}
+                  </p>
                   <div
-                    class="
-                      text-xs
-                      font-medium
-                      text-gray-300
-                      group-hover:text-gray-200
-                    "
+                    class="text-xs font-medium text-gray-300 group-hover:text-gray-200"
                   >
                     View profile
                   </div>
@@ -318,12 +298,7 @@
                 <div class="ml-3">
                   <!-- <p class="text-sm font-medium text-white">Tom Cook</p> -->
                   <a
-                    class="
-                      text-xs
-                      font-medium
-                      text-gray-300
-                      group-hover:text-gray-200
-                    "
+                    class="text-xs font-medium text-gray-300 group-hover:text-gray-200"
                   >
                     Login / Sign Up
                   </a>
@@ -339,19 +314,7 @@
         <div class="flex items-center justify-between">
           <div class="flex-1">
             <button
-              class="
-                -ml-0.5
-                -mt-0.5
-                h-12
-                w-12
-                inline-flex
-                items-center
-                justify-center
-                rounded-md
-                text-gray-200
-                hover:text-gray-400
-                focus:outline-none
-              "
+              class="-ml-0.5 -mt-0.5 h-12 w-12 inline-flex items-center justify-center rounded-md text-gray-200 hover:text-gray-400 focus:outline-none"
               @click="sidebarOpen = true"
             >
               <span class="sr-only">Open sidebar</span>
@@ -382,9 +345,9 @@
 </template>
 
 <script setup>
-import { useAuthStore } from '@/stores/auth.js';
+import { useAuthStore } from "@/stores/auth.js";
 import { mapState } from "pinia";
-import { onMounted, ref } from 'vue';
+import { onMounted, ref } from "vue";
 
 import {
   Dialog,

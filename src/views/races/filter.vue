@@ -4,13 +4,7 @@
     <nav aria-label="Progress" id="progress" class="p-5">
       <ol
         role="list"
-        class="
-          rounded-lg
-          divide-y divide-gray-300
-          md:flex md:divide-y-0
-          overflow-hidden
-          shadow-lg
-        "
+        class="rounded-lg divide-y divide-gray-300 md:flex md:divide-y-0 overflow-hidden shadow-lg"
       >
         <li
           v-for="(step, stepIdx) in steps"
@@ -23,30 +17,11 @@
             class="group flex items-center w-full"
           >
             <div
-              class="
-                px-6
-                py-4
-                flex
-                justify-between
-                w-full
-                items-center
-                text-sm
-                font-medium
-              "
+              class="px-6 py-4 flex justify-between w-full items-center text-sm font-medium"
             >
               <div class="items-center flex">
                 <div
-                  class="
-                    flex-shrink-0
-                    w-10
-                    h-10
-                    flex
-                    items-center
-                    justify-center
-                    bg-blue-600
-                    rounded-full
-                    group-hover:bg-blue-800
-                  "
+                  class="flex-shrink-0 w-10 h-10 flex items-center justify-center bg-blue-600 rounded-full group-hover:bg-blue-800"
                 >
                   <check class="w-6 h-6 text-white" aria-hidden="true" />
                 </div>
@@ -76,16 +51,7 @@
             aria-current="step"
           >
             <span
-              class="
-                flex-shrink-0
-                w-10
-                h-10
-                flex
-                items-center
-                justify-center
-                border-2 border-blue-600
-                rounded-full
-              "
+              class="flex-shrink-0 w-10 h-10 flex items-center justify-center border-2 border-blue-600 rounded-full"
             >
               <span class="text-blue-600">{{ step.id }}</span>
             </span>
@@ -96,30 +62,14 @@
           <a v-else class="group flex items-center">
             <span class="px-6 py-4 flex items-center text-sm font-medium">
               <span
-                class="
-                  flex-shrink-0
-                  w-10
-                  h-10
-                  flex
-                  items-center
-                  justify-center
-                  border-2 border-gray-300
-                  rounded-full
-                  group-hover:border-gray-400
-                "
+                class="flex-shrink-0 w-10 h-10 flex items-center justify-center border-2 border-gray-300 rounded-full group-hover:border-gray-400"
               >
                 <span class="text-gray-500 group-hover:text-gray-900">{{
                   step.id
                 }}</span>
               </span>
               <span
-                class="
-                  ml-4
-                  text-sm
-                  font-medium
-                  text-gray-500
-                  group-hover:text-gray-900
-                "
+                class="ml-4 text-sm font-medium text-gray-500 group-hover:text-gray-900"
                 >{{ step.name }}</span
               >
             </span>
@@ -152,15 +102,7 @@
     <div v-if="currentStep.id === 1" class="flex">
       <div
         v-if="loadingSeries"
-        class="
-          w-full
-          grid grid-cols-1
-          md:grid-cols-2
-          lg:grid-cols-3
-          gap-5
-          pb-5
-          px-5
-        "
+        class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 pb-5 px-5"
       >
         <div v-for="index in numOfSeries" :key="index">
           <loading-race-card />
@@ -169,15 +111,7 @@
 
       <div
         v-if="!loadingSeries"
-        class="
-          w-full
-          grid grid-cols-1
-          md:grid-cols-2
-          lg:grid-cols-3
-          gap-5
-          pb-5
-          px-5
-        "
+        class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 pb-5 px-5"
       >
         <div
           v-for="currentSeries in series"
@@ -187,15 +121,7 @@
         >
           <div class="w-full relative">
             <img
-              class="
-                h-64
-                w-full
-                object-cover
-                transform
-                hover:scale-110
-                duration-100
-                ease-in-out
-              "
+              class="h-64 w-full object-cover transform hover:scale-110 duration-100 ease-in-out"
               :src="currentSeries.image_url"
               :alt="currentSeries.full_name"
             />
@@ -219,31 +145,13 @@
     </div>
 
     <div
-      class="
-        relative
-        rounded-xl
-        overflow-auto
-        px-5
-        w-full
-        md:w-2/3
-        lg:w-1/2
-        xl:w-1/3
-        mx-auto
-      "
+      class="relative rounded-xl overflow-auto px-5 w-full md:w-2/3 lg:w-1/2 xl:w-1/3 mx-auto"
       v-if="currentStep.id === 2"
     >
       <div class="rounded-lg shadow-lg overflow-hidden bg-white">
         <div class="w-full relative">
           <img
-            class="
-              h-64
-              w-full
-              object-cover
-              transform
-              hover:scale-110
-              duration-100
-              ease-in-out
-            "
+            class="h-64 w-full object-cover transform hover:scale-110 duration-100 ease-in-out"
             :src="selectedSeries.image_url"
             :alt="selectedSeries.full_name"
           />
@@ -263,19 +171,7 @@
                   <a
                     :href="selectedSeries.website"
                     target="_blank"
-                    class="
-                      cursor-pointer
-                      inline-flex
-                      items-center
-                      text-sm
-                      font-medium
-                      rounded-full
-                      shadow
-                      bg-white
-                      hover:bg-blue-50
-                      active:bg-blue-100
-                      focus:ring-0
-                    "
+                    class="cursor-pointer inline-flex items-center text-sm font-medium rounded-full shadow bg-white hover:bg-blue-50 active:bg-blue-100 focus:ring-0"
                   >
                     <open-in-new
                       class="w-6 h-6 text-gray-500 hover:text-blue-500 m-2"
@@ -303,18 +199,7 @@
                   <button
                     v-if="isAuthenticated"
                     @click="updateSeriesFollowStatus()"
-                    class="
-                      inline-flex
-                      items-center
-                      text-sm
-                      font-medium
-                      rounded-full
-                      shadow
-                      bg-white
-                      hover:bg-blue-50
-                      active:bg-blue-100
-                      focus:ring-0
-                    "
+                    class="inline-flex items-center text-sm font-medium rounded-full shadow bg-white hover:bg-blue-50 active:bg-blue-100 focus:ring-0"
                   >
                     <v-progress-spinner
                       v-if="seriesFollowStatusLoading"
@@ -366,16 +251,7 @@
                   @click="selectSeason(season)"
                 >
                   <div
-                    class="
-                      py-4
-                      cursor-pointer
-                      px-3
-                      flex
-                      justify-between
-                      w-full
-                      items-center
-                      hover:bg-gray-200
-                    "
+                    class="py-4 cursor-pointer px-3 flex justify-between w-full items-center hover:bg-gray-200"
                   >
                     <div>
                       <p class="font-medium text-gray-900">{{ season.name }}</p>
@@ -398,15 +274,7 @@
     <div class="flex w-full" v-if="currentStep.id === 3">
       <div
         v-if="loadingSeriesSeasonRaces"
-        class="
-          w-full
-          grid grid-cols-1
-          md:grid-cols-2
-          lg:grid-cols-4
-          gap-5
-          pb-5
-          px-5
-        "
+        class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 pb-5 px-5"
       >
         <div v-for="index in numOfRaces" :key="index">
           <loading-race-card />

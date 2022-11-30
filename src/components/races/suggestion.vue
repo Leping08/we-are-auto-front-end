@@ -73,7 +73,7 @@ import authenticated from "@/components/auth/authenticated.vue";
 export default {
   components: {
     guest,
-    authenticated
+    authenticated,
   },
   data() {
     return {

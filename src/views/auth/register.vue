@@ -163,7 +163,6 @@ const attemptSignUp = async () => {
       terms_and_conditions: termsAndConditions.value,
     });
 
-
     if (data?.access_token) {
       await authStore.setToken(data.access_token);
       await authStore.setUser();

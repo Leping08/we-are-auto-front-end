@@ -3942,10 +3942,7 @@
                           <bdt data-type="body">
                             the State of
                             <bdt
-                              class="
-                                block-container
-                                question question-in-editor
-                              "
+                              class="block-container question question-in-editor"
                               data-id="b61250bd-6b61-32ea-a9e7-4a02690297c3"
                               data-type="question"
                               >Florida</bdt
@@ -4191,10 +4188,7 @@
                                       the arbitration will take place in
                                       <bdt class="block-component"></bdt>
                                       <bdt
-                                        class="
-                                          block-container
-                                          question question-in-editor
-                                        "
+                                        class="block-container question question-in-editor"
                                         data-id="e0454973-d288-7862-452e-772c9f275b5c"
                                         data-type="question"
                                         >Sarasota</bdt
@@ -4222,9 +4216,7 @@
                                                     "
                                                   >
                                                     <bdt
-                                                      class="
-                                                        statement-end-if-in-editor
-                                                      "
+                                                      class="statement-end-if-in-editor"
                                                     ></bdt>
                                                   </span>
                                                 </bdt>
@@ -4256,11 +4248,7 @@
                                                     "
                                                   >
                                                     <bdt
-                                                      class="
-                                                        block-container
-                                                        question
-                                                        question-in-editor
-                                                      "
+                                                      class="block-container question question-in-editor"
                                                       data-id="632c5ff4-8ec5-86c3-d282-b9e06cf62215"
                                                       data-type="question"
                                                       >Florida</bdt
@@ -4409,10 +4397,7 @@
                               Party related in any way to the Site be commenced
                               more than
                               <bdt
-                                class="
-                                  block-container
-                                  question question-in-editor
-                                "
+                                class="block-container question question-in-editor"
                                 data-id="33e1829d-7496-9076-0a25-17a95cea677b"
                                 data-type="question"
                                 >one (1)</bdt
@@ -4869,10 +4854,7 @@
                                 ></bdt>
                                 OR
                                 <bdt
-                                  class="
-                                    block-container
-                                    question question-in-editor
-                                  "
+                                  class="block-container question question-in-editor"
                                   data-id="243ad246-9e92-b24d-beee-940be6aa7854"
                                   data-type="question"
                                   >$100.00 USD</bdt

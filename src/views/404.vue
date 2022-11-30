@@ -3,13 +3,7 @@
     <div class="w-1/2">
       <div class="p-4">
         <div
-          class="
-            text-2xl
-            font-extrabold
-            text-gray-900
-            tracking-tight
-            sm:text-4xl
-          "
+          class="text-2xl font-extrabold text-gray-900 tracking-tight sm:text-4xl"
         >
           Seems like you are lost.
         </div>
@@ -30,11 +24,7 @@
         </h2>
         <ul
           role="list"
-          class="
-            mt-4
-            border-t border-b border-gray-200
-            divide-y divide-gray-200
-          "
+          class="mt-4 border-t border-b border-gray-200 divide-y divide-gray-200"
         >
           <li v-for="(link, linkIdx) in links" :key="linkIdx" class="">
             <router-link
@@ -44,17 +34,7 @@
             >
               <div class="flex-shrink-0">
                 <span
-                  class="
-                    flex
-                    items-center
-                    justify-center
-                    h-12
-                    w-12
-                    rounded-lg
-                    bg-gradient-to-r
-                    from-blue-400
-                    to-blue-600
-                  "
+                  class="flex items-center justify-center h-12 w-12 rounded-lg bg-gradient-to-r from-blue-400 to-blue-600"
                 >
                   <component
                     :is="link.icon"
@@ -66,12 +46,7 @@
               <div class="min-w-0 flex-1">
                 <h3 class="text-base font-medium text-gray-900">
                   <span
-                    class="
-                      rounded-sm
-                      focus-within:ring-2
-                      focus-within:ring-offset-2
-                      focus-within:ring-blue-600
-                    "
+                    class="rounded-sm focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-blue-600"
                   >
                     <a href="#" class="focus:outline-none">
                       <span class="absolute inset-0" aria-hidden="true" />

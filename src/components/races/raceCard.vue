@@ -5,15 +5,7 @@
         <v-badge v-if="showNewBadge" color="blue">New</v-badge>
       </div>
       <img
-        class="
-          h-64
-          w-full
-          object-cover
-          transform
-          hover:scale-110
-          duration-100
-          ease-in-out
-        "
+        class="h-64 w-full object-cover transform hover:scale-110 duration-100 ease-in-out"
         :src="thumbnailUrl"
         :alt="race.name"
       />
