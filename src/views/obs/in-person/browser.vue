@@ -1,6 +1,6 @@
 <template>
   <div class="h-screen relative">
-    <!-- <div
+    <div
       class="
         absolute
         bottom-0
@@ -11,7 +11,7 @@
         m-10
       "
     >
-      <div class="aspect-video"></div>
-    </div> -->
+      <div class="aspect-h-9 aspect-w-16"></div>
+    </div>
   </div>
 </template>

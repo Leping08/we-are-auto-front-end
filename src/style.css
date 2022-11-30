@@ -3,18 +3,31 @@
 @tailwind utilities;
 
 .bg-primary {
-    background-color: #0CA5E9;
-  }
-  
-  .text-primary {
-    color: #0CA5E9;
-  }
-  
-  .border-primary {
-    border-color: #0CA5E9;
-  }
-  
-  .-mt-48 {
-    margin-top: -48px;
-  }
+  background-color: #0CA5E9;
+}
+
+.text-primary {
+  color: #0CA5E9;
+}
+
+.border-primary {
+  border-color: #0CA5E9;
+}
+
+.-mt-48 {
+  margin-top: -48px;
+}
+
+.aspect-h-9 {
+  --tw-aspect-h: 9;
+}
+
+.aspect-w-16 {
+  --tw-aspect-w: 16;
+}
+
+.aspect-w-1, .aspect-w-2, .aspect-w-3, .aspect-w-4, .aspect-w-5, .aspect-w-6, .aspect-w-7, .aspect-w-8, .aspect-w-9, .aspect-w-10, .aspect-w-11, .aspect-w-12, .aspect-w-13, .aspect-w-14, .aspect-w-15, .aspect-w-16 {
+  position: relative;
+  padding-bottom: calc(var(--tw-aspect-h) / var(--tw-aspect-w) * 100%);
+}
   

@@ -238,7 +238,7 @@ const routes = [
   },
   {
     path: "/obs",
-    name: "obs.one-person",
+    name: "obs.one-frame",
     meta: {
       disable_nav: true,
     },
