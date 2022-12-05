@@ -106,65 +106,50 @@
   </div>
 </template>
 
-<script>
-// todo move this to setup
-import { mapState } from "pinia";
+<script setup>
+import { ref, computed, onMounted } from "vue";
 import { useAuthStore } from "@/stores/auth.js";
 import api from "@/api/auth/index.js";
 import eyeOff from "@/assets/icons/eye-off-outline.vue";
 import eye from "@/assets/icons/eye-outline.vue";
-export default {
-  name: "PasswordChange",
-  components: {
-    eyeOff,
-    eye,
-  },
-  data() {
-    return {
-      user: {},
-      oldPassword: "",
-      showOldPassword: false,
-      newPassword: "",
-      confirmNewPassword: "",
-      showNewPasswords: false,
-      loading: false,
-    };
-  },
-  computed: {
-    ...mapState(useAuthStore, {
-      user: (store) => store.user,
-    }),
-    eligibleForUpdate() {
-      return (
-        this.oldPassword &&
-        this.newPassword &&
-        this.confirmNewPassword &&
-        this.newPassword === this.confirmNewPassword
-      );
-    },
-  },
-  methods: {
-    async save() {
-      this.loading = true;
-      // todo handel error
-      await api.post(`/user/${this.user.id}`, {
-        old_password: this.oldPassword,
-        password: this.newPassword,
-        password_confirmation: this.confirmNewPassword,
-      });
-      this.loading = false;
-      await this.getFreshUserData();
-    },
-    async getFreshUserData() {
-      this.loading = true;
-      const response = await api.get("/user/me");
-      // todo write the user data back to the store
-      this.user = response?.data;
-      this.loading = false;
-    },
-  },
-  mounted() {
-    this.getFreshUserData();
-  },
+
+const authStore = useAuthStore();
+
+const newPassword = ref("");
+const confirmNewPassword = ref("");
+const showNewPasswords = ref(false);
+const oldPassword = ref("");
+const showOldPassword = ref(false);
+const loading = ref(false);
+
+onMounted(() => {
+  getFreshUserData();
+});
+
+const eligibleForUpdate = computed(() => {
+  return (
+    Boolean(newPassword.value.length) &&
+    Boolean(confirmNewPassword.value.length) &&
+    Boolean(oldPassword.value.length)
+  );
+});
+
+const save = async () => {
+  loading.value = true;
+  // todo handel error
+  await api.post(`/user/${authStore.user.id}`, {
+    old_password: oldPassword.value,
+    password: newPassword.value,
+    password_confirmation: confirmNewPassword.value,
+  });
+  loading.value = false;
+  await getFreshUserData();
+};
+
+const getFreshUserData = async () => {
+  loading.value = true;
+  // check for api call errors here
+  await authStore.setUser();
+  loading.value = false;
 };
 </script>

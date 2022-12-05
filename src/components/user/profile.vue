@@ -104,15 +104,10 @@ const save = async () => {
 
 const getFreshUserData = async () => {
   loading.value = true;
-  const response = await api.get("/user/me");
-  if (response.status === 200) {
-    authStore.setUser(response.data);
-    name.value = response.data.name;
-    email.value = response.data.email;
-  } else {
-    // todo handle error
-    console.log(response);
-  }
+  // check for api call errors here
+  await authStore.setUser();
+  name.value = authStore.user.name;
+  email.value = authStore.user.email;
   loading.value = false;
 };
 </script>
