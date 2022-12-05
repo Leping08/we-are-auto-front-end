@@ -438,7 +438,6 @@ export default {
       this.filterDownByQueryParams();
     },
     scrollToTop() {
-      console.log("here");
       document
         .getElementById("progress")
         .scrollIntoView({ behavior: "smooth" });
