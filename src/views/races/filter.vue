@@ -469,9 +469,9 @@ export default {
     },
   },
   computed: {
-    // ...mapGetters("user", ["user", "isAuthenticated"]),
     ...mapState(useAuthStore, {
       user: (store) => store.user,
+      isAuthenticated: (store) => store.isAuthenticated,
     }),
     currentStep() {
       return this.steps.filter((step) => step.status === "current")[0];
