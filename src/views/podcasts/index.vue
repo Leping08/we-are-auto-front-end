@@ -241,14 +241,15 @@
           />
         </a>
       </div>
-      <div class="bg-white p-2 rounded-full m-4">
+      <!-- This is broken for some reason and its on Pandoras end -->
+      <!-- <div class="bg-white p-2 rounded-full m-4">
         <a
           href="https://www.pandora.com/podcast/we-are-auto/PC:1001025983"
           target="_blank"
         >
           <pandora class="h-12 w-12" />
         </a>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
