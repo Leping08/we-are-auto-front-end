@@ -67,7 +67,7 @@
       </div>
 
       <div
-        v-if="!loadingRaceData"
+        v-show="!loadingRaceData"
         class="bg-white shadow-md rounded-lg row-span-2 col-span-3"
       >
         <div class="px-4 py-2">
