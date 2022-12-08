@@ -4,7 +4,8 @@
       <div class="md:col-span-1">
         <h3 class="text-lg font-medium leading-6 text-gray-900">Password</h3>
         <p class="mt-1 text-sm text-gray-500">
-          Simply enter your current password and your desired new password to make the necessary changes.
+          Simply enter your current password and your desired new password to
+          make the necessary changes.
         </p>
       </div>
       <div class="mt-5 md:mt-0 md:col-span-2">

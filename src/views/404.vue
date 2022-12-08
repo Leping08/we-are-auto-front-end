@@ -64,7 +64,7 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import waveform from "@/assets/icons/waveform.vue";
 import garage from "@/assets/icons/garage.vue";
 import flag from "@/assets/icons/flag-checkered.vue";

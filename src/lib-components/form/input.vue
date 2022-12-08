@@ -44,7 +44,7 @@
 //TODO Fix the aria-invalid="true" and aria-desscribedby="email-error" lines
 import theme from "./../theme";
 export default {
-  name: "Input",
+  name: "VInput",
   data() {
     return {
       validationObjects: [],

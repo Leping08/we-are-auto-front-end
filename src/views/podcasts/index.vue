@@ -268,7 +268,6 @@ import shift from "@/assets/icons/car-shift-pattern.vue";
 import applePodcast from "@/assets/icons/apple-podcast.vue";
 import googlePodcast from "@/assets/icons/google-podcast.vue";
 import spotify from "@/assets/icons/spotify.vue";
-import pandora from "@/assets/icons/pandora.vue";
 
 const features = [
   {

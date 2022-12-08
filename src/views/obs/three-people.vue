@@ -34,6 +34,7 @@
 </template>
 
 <script setup>
+import { ref } from "vue";
 import { useRoute } from "vue-router";
 import { onMounted } from "vue";
 import outline from "@/views/obs/outline.vue";

@@ -4,7 +4,9 @@
       <div class="md:col-span-1">
         <h3 class="text-lg font-medium leading-6 text-gray-900">Profile</h3>
         <p class="mt-1 text-sm text-gray-500">
-          Easily update your account settings to keep your personal information current and accurate. Simply enter your new user name and/or email and save the changes.
+          Easily update your account settings to keep your personal information
+          current and accurate. Simply enter your new user name and/or email and
+          save the changes.
         </p>
       </div>
       <div class="mt-5 md:mt-0 md:col-span-2">

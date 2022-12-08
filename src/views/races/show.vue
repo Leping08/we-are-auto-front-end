@@ -196,9 +196,7 @@
               @click="selectVideoPart(partIndex)"
             >
               <div class="flex items-center w-full cursor-pointer">
-                <span
-                  class="px-6 py-4 flex items-center text-sm font-medium"
-                >
+                <span class="px-6 py-4 flex items-center text-sm font-medium">
                   <span
                     class="flex-shrink-0 w-10 h-10 flex items-center justify-center bg-white shadow-md border rounded-full"
                   >
@@ -206,7 +204,11 @@
                   </span>
                   <span
                     class="ml-4 text-sm font-medium"
-                    :class="[partIndex === index ? 'text-blue-500 group-hover:text-blue-600' : 'text-gray-500 group-hover:text-gray-800']"
+                    :class="[
+                      partIndex === index
+                        ? 'text-blue-500 group-hover:text-blue-600'
+                        : 'text-gray-500 group-hover:text-gray-800',
+                    ]"
                     >Part {{ partIndex + 1 }}</span
                   >
                 </span>

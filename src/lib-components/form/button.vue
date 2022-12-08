@@ -20,7 +20,7 @@
 <script>
 import theme from "./../theme";
 export default {
-  name: "Button",
+  name: "VButton",
   props: {
     color: {
       type: String,

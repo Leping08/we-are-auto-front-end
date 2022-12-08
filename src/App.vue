@@ -346,7 +346,6 @@
 
 <script setup>
 import { useAuthStore } from "@/stores/auth.js";
-import { mapState } from "pinia";
 import { onMounted, ref } from "vue";
 
 import {

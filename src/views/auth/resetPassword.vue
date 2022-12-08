@@ -103,11 +103,9 @@ import closeCircleOutline from "@/assets/icons/close-circle-outline.vue";
 import eyeOff from "@/assets/icons/eye-off-outline.vue";
 import eye from "@/assets/icons/eye-outline.vue";
 import accountLock from "@/assets/icons/account-lock.vue";
-import { useAuthStore } from "@/stores/auth.js";
 import { useRouter } from "vue-router";
 import { ref } from "vue";
 
-const authStore = useAuthStore();
 const router = useRouter();
 const showPasswords = ref(false);
 const newPassword = ref("");
