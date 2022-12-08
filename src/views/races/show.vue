@@ -190,27 +190,28 @@
             class="divide-y divide-gray-300 md:flex md:divide-y-0 overflow-hidden"
           >
             <li
-              v-for="(video, index) in race.videos"
+              v-for="(video, partIndex) in race.videos"
               :key="video.id"
-              class="relative md:flex-1 md:flex"
-              @click="selectVideoPart(index)"
+              class="relative md:flex-1 md:flex group"
+              @click="selectVideoPart(partIndex)"
             >
-              <div class="group flex items-center w-full cursor-pointer">
+              <div class="flex items-center w-full cursor-pointer">
                 <span
-                  class="px-6 py-4 flex items-center text-sm font-medium group"
+                  class="px-6 py-4 flex items-center text-sm font-medium"
                 >
                   <span
-                    class="flex-shrink-0 w-10 h-10 flex items-center justify-center bg-white shadow-md border rounded-full group-hover:bg-blue-500"
+                    class="flex-shrink-0 w-10 h-10 flex items-center justify-center bg-white shadow-md border rounded-full"
                   >
                     <video-progress :video="video" />
                   </span>
                   <span
-                    class="ml-4 text-sm font-medium text-gray-500 group-hover:text-gray-700"
-                    >Part {{ index + 1 }}</span
+                    class="ml-4 text-sm font-medium"
+                    :class="[partIndex === index ? 'text-blue-500 group-hover:text-blue-600' : 'text-gray-500 group-hover:text-gray-800']"
+                    >Part {{ partIndex + 1 }}</span
                   >
                 </span>
               </div>
-              <template v-if="index !== race.videos.length - 1">
+              <template v-if="partIndex !== race.videos.length - 1">
                 <!-- Arrow separator for lg screens and up -->
                 <div
                   class="hidden md:block absolute top-0 right-0 h-full w-5"

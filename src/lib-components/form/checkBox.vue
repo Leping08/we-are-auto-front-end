@@ -11,7 +11,7 @@
           `h-4 w-4 border border-gray-300 text-${checkBoxColor}-600 rounded focus:outline-none`,
           ring
             ? `focus:ring-${checkBoxColor}-600 focus:ring-2`
-            : 'focus:ring-0',
+            : 'focus:ring-offset-0 focus:ring-0',
         ]"
       />
     </div>
