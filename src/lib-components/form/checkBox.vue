@@ -1,6 +1,6 @@
 <template>
   <div class="flex items-center">
-    <div class="flex items-center">
+    <div v-if="!loading" class="flex items-center">
       <input
         :value="value"
         v-model="radioValue"
@@ -14,6 +14,9 @@
             : 'focus:ring-offset-0 focus:ring-0',
         ]"
       />
+    </div>
+    <div class="flex items-center">
+      <v-progress-spinner v-if="loading" :size="progressSpinnerSize" />
     </div>
     <div class="ml-3 text-sm leading-5">
       <label for="comments" class="font-medium text-gray-700">{{
@@ -38,7 +41,7 @@ export default {
       required: false,
     },
     modelValue: {
-      type: Array,
+      type: [String, Number, Boolean, Array, Object, Date, null],
       required: true,
     },
     value: {
@@ -53,6 +56,16 @@ export default {
       type: Boolean,
       required: false,
       default: false,
+    },
+    loading: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+    progressSpinnerSize: {
+      type: Number,
+      required: false,
+      default: 4,
     },
   },
   computed: {
