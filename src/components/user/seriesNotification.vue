@@ -41,7 +41,7 @@ let changeFollowSeries = async () => {
       user_id: authStore.user.id,
     });
   } catch (error) {
-    errorMessage.value = error.response.data.message; // todo test this
+    errorMessage.value = error.response.data.message;
   }
   loading.value = false;
 };
