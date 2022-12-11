@@ -33,7 +33,7 @@
               >
                 We Are Auto is a community of car enthusiasts built for
                 enthusiasts by enthusiasts. Weekly shows where we go deep into
-                car news, culture, and interviews with fellow enthusiasts. Test
+                car news, culture, and interviews with fellow enthusiasts.
               </p>
             </div>
           </div>
