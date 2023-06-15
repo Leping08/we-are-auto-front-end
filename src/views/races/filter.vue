@@ -99,7 +99,7 @@
       </ol>
     </nav>
 
-    <div v-if="currentStep.id === 1" class="flex">
+    <div v-if="currentStep.id === 1" class="">
       <div
         v-if="loadingSeries"
         class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 pb-5 px-5"
@@ -109,12 +109,103 @@
         </div>
       </div>
 
+      <div v-if="!loadingSeries" class="bg-white rounded-lg p-5 mx-5 mb-5">
+        <div class="flex items-center">
+          <div class="w-full">
+            <v-input
+              v-model="searchText"
+              color="cyan"
+              placeholder="Search for a series"
+              type="text"
+            />
+          </div>
+          <div class="ml-4">
+            <tooltip>
+              <filter-icon
+                @click="showFilters = !showFilters"
+                :class="showFilters ? 'text-blue-500' : 'text-gray-400'"
+                class="h-8 w-8 hover:text-blue-500 cursor-pointer rounded-full p-1"
+              />
+              <template #tooltip-content>
+                <div class="text-sm leading-5 text-gray-500 w-52">
+                  More filters coming soon!
+                </div>
+              </template>
+            </tooltip>
+          </div>
+        </div>
+
+        <!-- <div class="mt-4" v-if="showFilters">
+          <div>
+            <label class="text-base font-semibold text-gray-900"
+              >Notifications</label
+            >
+            <p class="text-sm text-gray-500">
+              How do you prefer to receive notifications?
+            </p>
+            <fieldset class="mt-4">
+              <legend class="sr-only">Notification method</legend>
+              <div class="space-y-4">
+                <div class="flex items-center">
+                  <input
+                    id="all"
+                    name="notification-method"
+                    type="radio"
+                    class="h-4 w-4 border-gray-300 text-blue-600 focus:ring-blue-600"
+                    value="all"
+                    v-model="testingRadioValue"
+                  />
+                  <label
+                    for="all"
+                    class="ml-3 block text-sm font-medium leading-6 text-gray-900"
+                  >
+                    All
+                  </label>
+                </div>
+                <div class="flex items-center">
+                  <input
+                    id="one"
+                    name="notification-method"
+                    type="radio"
+                    class="h-4 w-4 border-gray-300 text-blue-600 focus:ring-blue-600"
+                    value="one"
+                    v-model="testingRadioValue"
+                  />
+                  <label
+                    for="one"
+                    class="ml-3 block text-sm font-medium leading-6 text-gray-900"
+                  >
+                    One
+                  </label>
+                </div>
+                <div class="flex items-center">
+                  <input
+                    id="two"
+                    name="notification-method"
+                    type="radio"
+                    class="h-4 w-4 border-gray-300 text-blue-600 focus:ring-blue-600"
+                    value="two"
+                    v-model="testingRadioValue"
+                  />
+                  <label
+                    for="two"
+                    class="ml-3 block text-sm font-medium leading-6 text-gray-900"
+                  >
+                    Two
+                  </label>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+        </div> -->
+      </div>
+
       <div
         v-if="!loadingSeries"
         class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 pb-5 px-5"
       >
         <div
-          v-for="currentSeries in series"
+          v-for="currentSeries in filteredSeries"
           :key="currentSeries"
           @click="selectSeries(currentSeries)"
           class="rounded-lg shadow-lg overflow-hidden bg-white cursor-pointer"
@@ -317,6 +408,7 @@ import FollowSeriesApi from "@/api/models/follow-series.js";
 import Tooltip from "@/components/tooltip.vue";
 import { mapState } from "pinia";
 import { useAuthStore } from "@/stores/auth.js";
+import FilterIcon from "@/assets/icons/filter.vue";
 
 export default {
   components: {
@@ -328,6 +420,7 @@ export default {
     SeriesPill,
     OpenInNew,
     Tooltip,
+    FilterIcon,
   },
   data() {
     return {
@@ -347,6 +440,9 @@ export default {
         { id: 2, name: "Season", status: "upcoming" },
         { id: 3, name: "Race", status: "upcoming" },
       ],
+      searchText: "",
+      showFilters: false,
+      testingRadioValue: null,
     };
   },
   methods: {
@@ -474,6 +570,11 @@ export default {
     }),
     currentStep() {
       return this.steps.filter((step) => step.status === "current")[0];
+    },
+    filteredSeries() {
+      return this.series.filter((series) =>
+        series.full_name.toLowerCase().includes(this.searchText.toLowerCase())
+      );
     },
   },
 };
