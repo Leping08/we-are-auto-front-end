@@ -127,77 +127,48 @@
                 class="h-8 w-8 hover:text-blue-500 cursor-pointer rounded-full p-1"
               />
               <template #tooltip-content>
-                <div class="text-sm leading-5 text-gray-500 w-52">
-                  More filters coming soon!
-                </div>
+                <div class="text-sm leading-5 text-gray-500 w-20">Filters</div>
               </template>
             </tooltip>
           </div>
         </div>
 
-        <!-- <div class="mt-4" v-if="showFilters">
-          <div>
-            <label class="text-base font-semibold text-gray-900"
-              >Notifications</label
+        <!-- @todo make this work better on small screens -->
+        <div class="mx-2" v-if="showFilters">
+          <div class="flex justify-between">
+            <div
+              v-for="(filterGroup, groupIndex) in FilterGroups"
+              :key="groupIndex"
             >
-            <p class="text-sm text-gray-500">
-              How do you prefer to receive notifications?
-            </p>
-            <fieldset class="mt-4">
-              <legend class="sr-only">Notification method</legend>
-              <div class="space-y-4">
-                <div class="flex items-center">
-                  <input
-                    id="all"
-                    name="notification-method"
-                    type="radio"
-                    class="h-4 w-4 border-gray-300 text-blue-600 focus:ring-blue-600"
-                    value="all"
-                    v-model="testingRadioValue"
-                  />
-                  <label
-                    for="all"
-                    class="ml-3 block text-sm font-medium leading-6 text-gray-900"
-                  >
-                    All
-                  </label>
-                </div>
-                <div class="flex items-center">
-                  <input
-                    id="one"
-                    name="notification-method"
-                    type="radio"
-                    class="h-4 w-4 border-gray-300 text-blue-600 focus:ring-blue-600"
-                    value="one"
-                    v-model="testingRadioValue"
-                  />
-                  <label
-                    for="one"
-                    class="ml-3 block text-sm font-medium leading-6 text-gray-900"
-                  >
-                    One
-                  </label>
-                </div>
-                <div class="flex items-center">
-                  <input
-                    id="two"
-                    name="notification-method"
-                    type="radio"
-                    class="h-4 w-4 border-gray-300 text-blue-600 focus:ring-blue-600"
-                    value="two"
-                    v-model="testingRadioValue"
-                  />
-                  <label
-                    for="two"
-                    class="ml-3 block text-sm font-medium leading-6 text-gray-900"
-                  >
-                    Two
-                  </label>
+              <div class="mt-4">
+                <legend class="sr-only">{{ filterGroup.name }}</legend>
+                <label class="text-base font-semibold text-gray-900">{{
+                  filterGroup.name
+                }}</label>
+                <div class="mb-2" />
+                <div v-for="(tag, index) in filterGroup.tags" :key="index">
+                  <div class="space-y-4">
+                    <div class="flex items-center">
+                      <input
+                        :id="tag.id"
+                        type="checkbox"
+                        class="h-4 w-4 border-gray-300 text-blue-600 focus:ring-blue-600"
+                        :value="tag.id"
+                        v-model="filterValue"
+                      />
+                      <label
+                        :for="tag.id"
+                        class="ml-3 text-sm font-medium text-gray-600"
+                      >
+                        {{ tag.name }}
+                      </label>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </fieldset>
+            </div>
           </div>
-        </div> -->
+        </div>
       </div>
 
       <div
@@ -409,6 +380,7 @@ import Tooltip from "@/components/tooltip.vue";
 import { mapState } from "pinia";
 import { useAuthStore } from "@/stores/auth.js";
 import FilterIcon from "@/assets/icons/filter.vue";
+import FilterGroups from "@/views/races/filterGroups.js";
 
 export default {
   components: {
@@ -442,7 +414,8 @@ export default {
       ],
       searchText: "",
       showFilters: false,
-      testingRadioValue: null,
+      FilterGroups,
+      filterValue: [],
     };
   },
   methods: {
@@ -572,9 +545,28 @@ export default {
       return this.steps.filter((step) => step.status === "current")[0];
     },
     filteredSeries() {
-      return this.series.filter((series) =>
-        series.full_name.toLowerCase().includes(this.searchText.toLowerCase())
-      );
+      return this.series
+        .filter((series) => {
+          return (
+            series.name.toLowerCase().includes(this.searchText.toLowerCase()) ||
+            series.full_name
+              .toLowerCase()
+              .includes(this.searchText.toLowerCase())
+          );
+        })
+        .filter((series) => {
+          // Use case where no filters are selected
+          if (!this.filterValue.length) {
+            return true;
+          }
+
+          // Filter the series by the tag ids
+          return series.tags.some((tag) => {
+            return this.filterValue.length
+              ? this.filterValue.includes(tag.id)
+              : true;
+          });
+        });
     },
   },
 };

@@ -379,7 +379,7 @@ const navigation = [
   },
   {
     name: "Races",
-    route: "races.index",
+    route: "races.filter",
     icon: flag,
     coming_soon: false,
   },
