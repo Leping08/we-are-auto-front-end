@@ -149,19 +149,12 @@
                 <div v-for="(tag, index) in filterGroup.tags" :key="index">
                   <div class="space-y-4">
                     <div class="flex items-center">
-                      <input
+                      <v-check-box
                         :id="tag.id"
-                        type="checkbox"
-                        class="h-4 w-4 border-gray-300 text-blue-600 focus:ring-blue-600"
-                        :value="tag.id"
                         v-model="filterValue"
+                        :value="tag.id"
+                        :label="tag.name"
                       />
-                      <label
-                        :for="tag.id"
-                        class="ml-3 text-sm font-medium text-gray-600"
-                      >
-                        {{ tag.name }}
-                      </label>
                     </div>
                   </div>
                 </div>
