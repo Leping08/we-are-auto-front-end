@@ -13,4 +13,8 @@ export default class Race extends Model {
   async suggestion(data) {
     return await authApi.post(`/${this.model}/suggestion`, data);
   }
+
+  async random(count) {
+    return await this.axios.get(`/${this.model}/random/${count}`);
+  }
 }

@@ -131,6 +131,19 @@
               </template>
             </tooltip>
           </div>
+          <div class="ml-4">
+            <tooltip>
+              <shuffle
+                @click="selectRandomRace"
+                class="h-8 w-8 hover:text-blue-500 text-gray-400 cursor-pointer rounded-full p-1"
+              />
+              <template #tooltip-content>
+                <div class="text-sm leading-5 text-gray-500 w-40">
+                  Watch a random race
+                </div>
+              </template>
+            </tooltip>
+          </div>
         </div>
 
         <!-- @todo make this work better on small screens -->
@@ -360,7 +373,9 @@
 
 <script>
 // todo move over to setup
+import { useRouter } from "vue-router";
 import Series from "@/api/models/series.js";
+import Race from "@/api/models/races.js";
 import Check from "@/assets/icons/check.vue";
 import BellPlusOutline from "@/assets/icons/bell-plus-outline.vue";
 import BellCheckOutline from "@/assets/icons/bell-check-outline.vue";
@@ -373,6 +388,7 @@ import Tooltip from "@/components/tooltip.vue";
 import { mapState } from "pinia";
 import { useAuthStore } from "@/stores/auth.js";
 import FilterIcon from "@/assets/icons/filter.vue";
+import Shuffle from "@/assets/icons/shuffle.vue";
 import FilterGroups from "@/views/races/filterGroups.js";
 
 export default {
@@ -386,6 +402,7 @@ export default {
     OpenInNew,
     Tooltip,
     FilterIcon,
+    Shuffle,
   },
   data() {
     return {
@@ -503,6 +520,23 @@ export default {
       document
         .getElementById("progress")
         .scrollIntoView({ behavior: "smooth" });
+    },
+    async selectRandomRace() {
+      try {
+        let response = null;
+        ({ data: response } = await new Race().random(1));
+        const race = response[0];
+
+        if (race.id) {
+          // Redirect to races.show with id and name as params
+          this.$router.push({
+            name: "races.show",
+            params: { id: race.id, text: race.name },
+          });
+        }
+      } catch (error) {
+        console.error(error);
+      }
     },
   },
   async mounted() {
