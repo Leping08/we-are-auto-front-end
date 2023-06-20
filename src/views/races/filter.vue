@@ -372,7 +372,6 @@
 
 <script>
 // todo move over to setup
-import { useRouter } from "vue-router";
 import Series from "@/api/models/series.js";
 import Race from "@/api/models/races.js";
 import Check from "@/assets/icons/check.vue";
