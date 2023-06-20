@@ -100,16 +100,7 @@
     </nav>
 
     <div v-if="currentStep.id === 1" class="">
-      <div
-        v-if="loadingSeries"
-        class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 pb-5 px-5"
-      >
-        <div v-for="index in numOfSeries" :key="index">
-          <loading-race-card />
-        </div>
-      </div>
-
-      <div v-if="!loadingSeries" class="bg-white rounded-lg p-5 mx-5 mb-5">
+      <div class="bg-white rounded-lg p-5 mx-5 mb-5">
         <div class="flex items-center">
           <div class="w-full">
             <v-input
@@ -146,7 +137,6 @@
           </div>
         </div>
 
-        <!-- @todo make this work better on small screens -->
         <div class="mx-2" v-if="showFilters">
           <div class="flex justify-between">
             <div
@@ -174,6 +164,15 @@
               </div>
             </div>
           </div>
+        </div>
+      </div>
+
+      <div
+        v-if="loadingSeries"
+        class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 pb-5 px-5"
+      >
+        <div v-for="index in numOfSeries" :key="index">
+          <loading-race-card />
         </div>
       </div>
 
