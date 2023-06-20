@@ -466,6 +466,22 @@ export default {
       });
     },
     selectStep(index) {
+      // Check if step one has been completed yet
+      if (this.currentStep.id === 1) {
+        // Check if a series has been selected and if not then return
+        if (!this.selectedSeries) {
+          return;
+        }
+      }
+
+      // Check if step two has been completed yet
+      if (this.currentStep.id === 2) {
+        // Check if a season has been selected and if not then return
+        if (!this.selectedSeason) {
+          return;
+        }
+      }
+
       this.steps.forEach((step, idx) => {
         if (index < idx + 1) {
           step.status = "upcoming";
