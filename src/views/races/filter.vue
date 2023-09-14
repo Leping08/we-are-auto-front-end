@@ -169,7 +169,7 @@
 
       <div
         v-if="loadingSeries"
-        class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 pb-5 px-5"
+        class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 pb-5 px-5"
       >
         <div v-for="index in numOfSeries" :key="index">
           <loading-race-card />
@@ -178,7 +178,7 @@
 
       <div
         v-if="!loadingSeries"
-        class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 pb-5 px-5"
+        class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 pb-5 px-5"
       >
         <div
           v-for="currentSeries in filteredSeries"
@@ -341,7 +341,7 @@
     <div class="flex w-full" v-if="currentStep.id === 3">
       <div
         v-if="loadingSeriesSeasonRaces"
-        class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 pb-5 px-5"
+        class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-5 pb-5 px-5"
       >
         <div v-for="index in numOfRaces" :key="index">
           <loading-race-card />
@@ -350,7 +350,7 @@
 
       <div
         v-if="!loadingSeriesSeasonRaces"
-        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 pb-5 px-5"
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-5 pb-5 px-5"
       >
         <div v-for="race in seriesSeasonRaces" :key="race.id" class="h-full">
           <div class="h-full">
