@@ -350,7 +350,7 @@
 
       <div
         v-if="!loadingSeriesSeasonRaces"
-        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-5 pb-5 px-5"
+        class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-5 pb-5 px-5"
       >
         <div v-for="race in seriesSeasonRaces" :key="race.id" class="h-full">
           <div class="h-full">
