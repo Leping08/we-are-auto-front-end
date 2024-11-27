@@ -333,7 +333,7 @@
       </div>
 
       <main class="flex-1 relative z-0 overflow-y-auto focus:outline-none">
-        <div class="relative overflow-hidden">
+        <div class="relative">
           <router-view />
         </div>
       </main>

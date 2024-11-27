@@ -111,7 +111,7 @@ export default {
       element.message = `${this.label} must be ${element.args} characters or less`;
     },
     required(element) {
-      element.valid = this.modelValue.length >= 1;
+      element.valid = this.modelValue !== "" && this.modelValue !== null;
       element.message = `${this.label} is required`;
     },
     email(element) {

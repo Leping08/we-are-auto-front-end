@@ -57,7 +57,7 @@
   <div class="2xl:p-24 xl:p-18 lg:p-12 md:p-10 sm:p-4 bg-gray-100">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 items-center">
       <div class="m-4 sm:m-0">
-        <div class="videoWrapper">
+        <div class="aspect-video shadow-lg">
           <iframe
             width="100%"
             height="349"
@@ -133,7 +133,7 @@
         </dl>
       </div>
       <div class="m-4 sm:m-0">
-        <div class="videoWrapper">
+        <div class="aspect-video shadow-lg">
           <iframe
             width="100%"
             height="349"
@@ -151,7 +151,7 @@
   <div class="2xl:p-24 xl:p-18 lg:p-12 md:p-10 sm:p-4 bg-gray-100">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 items-center">
       <div class="m-4 sm:m-0">
-        <div class="videoWrapper">
+        <div class="aspect-video shadow-lg">
           <iframe
             width="100%"
             height="349"

@@ -51,7 +51,7 @@
   <div class="2xl:m-24 xl:m-18 lg:m-12 md:m-10 sm:m-4">
     <div class="grid sm:grid-cols-2 grid-cols-1 gap-4 items-center">
       <div class="m-4 sm:m-0">
-        <div class="videoWrapper">
+        <div class="aspect-video">
           <iframe
             width="100%"
             height="349"
@@ -137,18 +137,3 @@ const podcastFeatures = [
   },
 ];
 </script>
-
-<style scoped>
-.videoWrapper {
-  position: relative;
-  padding-bottom: 56.25%;
-  height: 0;
-}
-.videoWrapper iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-</style>
