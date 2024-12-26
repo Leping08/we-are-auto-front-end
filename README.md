@@ -78,5 +78,6 @@ npm run lint
 - [ ] race details - page background color stopps at the end of the screen height (need example)
 - [ ] forgot password - fix the disabled button color
 - [ ] termly.io - check on the terms and privacy policy
+- [ ] lint the full application
 
 <!-- Add tailwind css dark mode classes and only the classes. Keek any commented out code. -->

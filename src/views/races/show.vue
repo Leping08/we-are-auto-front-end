@@ -240,7 +240,7 @@
     <!-- Desktop slideout for the list of races -->
     <div
       v-if="!loadingRaceData && race.length && races.length"
-      class="mx-2 z-10 hidden md:block w-10"
+      class="mx-4 z-10 hidden md:block w-10"
     >
       <div
         @mouseover="seasonOpen = true"

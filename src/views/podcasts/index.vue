@@ -232,7 +232,6 @@
           <spotify class="h-14 w-14" />
         </a>
       </div>
-      <!-- todo find svg logo -->
       <div class="bg-white p-0 rounded-full m-4">
         <a href="https://www.stitcher.com/show/we-are-auto" target="_blank">
           <img
