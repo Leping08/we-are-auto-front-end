@@ -1,12 +1,12 @@
 <template>
-  <div class="flex bg-gradient-to-r from-blue-400 to-blue-600 h-screen">
+  <div class="flex bg-gradient-to-br from-blue-400 to-blue-600 dark:from-gray-700 dark:to-blue-900 h-screen">
     <div class="m-auto w-5/6 md:w-2/3 lg:w-1/2 xl:w-1/3">
-      <div class="p-8 bg-white rounded-lg shadow-lg relative">
+      <div class="p-8 bg-white dark:bg-gray-800 rounded-lg shadow-lg relative">
         <div class="w-full flex justify-center absolute -top-14 left-0">
-          <div class="bg-white rounded-full p-2">
-            <div class="rounded-full shadow-lg border">
+          <div class="bg-white dark:bg-gray-800 rounded-full p-2">
+            <div class="rounded-full shadow-lg border dark:border-gray-700">
               <img
-                class="h-24 w-auto"
+                class="size-24 bg-white rounded-full"
                 src="@/assets/logos/waa-logo-dark.svg"
                 alt="We Are Auto"
               />
@@ -45,7 +45,7 @@
                 :type="showPassword ? 'text' : 'password'"
               />
               <div
-                class="text-gray-500 pt-5 ml-2 cursor-pointer"
+                class="text-gray-500 dark:text-gray-400 pt-5 ml-2 cursor-pointer"
                 @click="showPassword = !showPassword"
               >
                 <eye v-if="!showPassword" class="h-6" />
@@ -64,7 +64,7 @@
                 :type="showPassword ? 'text' : 'password'"
               />
               <div
-                class="text-gray-500 pt-5 ml-2 cursor-pointer"
+                class="text-gray-500 dark:text-gray-400 pt-5 ml-2 cursor-pointer"
                 @click="showPassword = !showPassword"
               >
                 <eye v-if="!showPassword" class="h-6" />
@@ -81,7 +81,7 @@
                 label=""
                 sub-title=""
               />
-              <div class="text-gray-500 text-xs">
+              <div class="text-gray-500 dark:text-gray-400 text-xs">
                 I agree to the
                 <a
                   class="text-blue-500"
@@ -112,7 +112,7 @@
             <v-progress-spinner v-if="signUpLoading" :size="6" color="blue" />
             <div
               v-if="errorMessage && !signUpLoading"
-              class="mt-2 text-sm text-red-600"
+              class="mt-2 text-sm text-red-600 dark:text-red-400"
             >
               {{ errorMessage }}
             </div>

@@ -17,7 +17,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, defineProps, watch } from "vue";
+import { ref, onMounted, watch } from "vue";
 import FollowSeries from "@/api/models/follow-series.js";
 import { useAuthStore } from "@/stores/auth.js";
 const props = defineProps({

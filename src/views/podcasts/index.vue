@@ -60,7 +60,7 @@
         <div class="aspect-video shadow-lg">
           <iframe
             width="100%"
-            height="349"
+            height="100%"
             src="https://www.youtube.com/embed/videoseries?list=PLraZMoJiSzQwM_SUHOZ7aBm-F4cSSmlJp"
             title="YouTube video player"
             frameborder="0"
@@ -136,7 +136,7 @@
         <div class="aspect-video shadow-lg">
           <iframe
             width="100%"
-            height="349"
+            height="100%"
             src="https://www.youtube.com/embed/videoseries?list=PLraZMoJiSzQwMliZS3Sk1UOizSgKw_nyD"
             title="YouTube video player"
             frameborder="0"
@@ -154,7 +154,7 @@
         <div class="aspect-video shadow-lg">
           <iframe
             width="100%"
-            height="349"
+            height="100%"
             src="https://www.youtube.com/embed/videoseries?list=PLraZMoJiSzQzTgQZN6yPra35sjOY_4D9i"
             title="YouTube video player"
             frameborder="0"

@@ -1,9 +1,9 @@
 <template>
-  <div class="bg-white shadow px-4 py-5 rounded-lg sm:p-6">
+  <div class="bg-white dark:bg-gray-800 shadow rounded-lg p-4">
     <div class="md:grid md:grid-cols-3 md:gap-6">
       <div class="md:col-span-1">
-        <h3 class="text-lg font-medium leading-6 text-gray-900">Profile</h3>
-        <p class="mt-1 text-sm text-gray-500">
+        <h3 class="text-lg font-medium leading-6 text-gray-900 dark:text-gray-100">Profile</h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
           Easily update your account settings to keep your personal information
           current and accurate. Simply enter your new user name and/or email and
           save the changes.

@@ -1,397 +1,208 @@
-<!-- This example requires Tailwind CSS v2.0+ -->
 <template>
-  <div
-    class="h-screen flex overflow-hidden bg-gray-100"
-    v-if="!$route.meta.disable_nav"
-  >
-    <TransitionRoot as="template" :show="sidebarOpen">
-      <Dialog
-        as="div"
-        static
-        class="fixed inset-0 flex z-40 md:hidden"
-        @close="sidebarOpen = false"
-        :open="sidebarOpen"
-      >
-        <TransitionChild
-          as="template"
-          enter="transition-opacity ease-linear duration-300"
-          enter-from="opacity-0"
-          enter-to="opacity-100"
-          leave="transition-opacity ease-linear duration-300"
-          leave-from="opacity-100"
-          leave-to="opacity-0"
-        >
-          <DialogOverlay class="fixed inset-0 bg-gray-600 bg-opacity-75" />
-        </TransitionChild>
-        <TransitionChild
-          as="template"
-          enter="transition ease-in-out duration-300 transform"
-          enter-from="-translate-x-full"
-          enter-to="translate-x-0"
-          leave="transition ease-in-out duration-300 transform"
-          leave-from="translate-x-0"
-          leave-to="-translate-x-full"
-        >
-          <div
-            class="relative flex-1 flex flex-col max-w-xs w-full bg-gray-800"
-          >
-            <TransitionChild
-              as="template"
-              enter="ease-in-out duration-300"
-              enter-from="opacity-0"
-              enter-to="opacity-100"
-              leave="ease-in-out duration-300"
-              leave-from="opacity-100"
-              leave-to="opacity-0"
-            >
-              <div class="absolute top-0 right-0 -mr-12 pt-2">
-                <button
-                  class="ml-1 flex items-center justify-center h-10 w-10 rounded-full focus:outline-none"
-                  @click="sidebarOpen = false"
-                >
-                  <span class="sr-only">Close sidebar</span>
-                  <close class="h-6 w-6 text-white" aria-hidden="true" />
-                </button>
-              </div>
-            </TransitionChild>
-            <div class="flex-1 h-0 overflow-y-auto">
-              <div class="flex-shrink-0 flex items-center px-4 bg-gray-900">
-                <img
-                  class="h-14 w-auto m-1 rounded-full bg-white"
-                  src="@/assets/logos/waa-logo-dark.svg"
-                  alt="We Are Auto"
-                />
-                <div class="text-gray-100 tracking-tight text-xl px-2">
-                  We Are Auto
-                </div>
-              </div>
-              <nav class="mt-2 px-2 space-y-1">
-                <template v-for="item in navigation" :key="item.name">
-                  <router-link
-                    v-if="!item.coming_soon"
-                    tag="a"
-                    :to="{ name: item.route }"
-                    @click="sidebarOpen = false"
-                    :class="[
-                      $route.matched.some(({ name }) =>
-                        name.includes(item.name.toLowerCase())
-                      )
-                        ? 'bg-gray-900 text-white'
-                        : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                      'group flex items-center px-2 py-2 text-sm font-medium rounded-md',
-                    ]"
-                  >
-                    <component
-                      :is="item.icon"
-                      :class="[
-                        $route.matched.some(({ name }) =>
-                          name.includes(item.name.toLowerCase())
-                        )
-                          ? 'text-gray-300'
-                          : 'text-gray-400 group-hover:text-gray-300',
-                        'mr-4 flex-shrink-0 h-6 w-6',
-                      ]"
-                      aria-hidden="true"
-                    />
-                    {{ item.name }}
-                  </router-link>
-
-                  <div
-                    v-if="item.coming_soon"
-                    :class="[
-                      $route.matched.some(({ name }) =>
-                        name.includes(item.name.toLowerCase())
-                      )
-                        ? 'bg-gray-900 text-white'
-                        : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                      'group flex items-center px-2 py-2 text-sm font-medium rounded-md',
-                    ]"
-                  >
-                    <component
-                      :is="item.icon"
-                      :class="[
-                        $route.matched.some(({ name }) =>
-                          name.includes(item.name.toLowerCase())
-                        )
-                          ? 'text-gray-300'
-                          : 'text-gray-400 group-hover:text-gray-300',
-                        'mr-4 flex-shrink-0 h-6 w-6',
-                      ]"
-                      aria-hidden="true"
-                    />
-                    <div class="pr-4">
-                      {{ item.name }}
+  <div class="">
+    <div class="h-full bg-gray-100 dark:bg-gray-900">
+      <div class="h-full">
+        <div class="min-h-full">
+          <Disclosure as="nav"
+            class="bg-white bg-gradient-to-r dark:bg-gray-800 border-b border-gray-200 dark:border-gray-800"
+            v-slot="{ close, open }">
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+              <div class="flex h-16 items-center justify-between">
+                <div class="flex items-center">
+                  <div class="shrink-0 flex items-center">
+                    <img class="size-12 w-auto mx-auto m-1 rounded-full bg-white" src="@/assets/logos/waa-logo-dark.svg"
+                      alt="We Are Auto" />
+                  </div>
+                  <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                      <router-link v-for="item in navigation" :key="item.name" :to="{ name: item.route }"
+                        class="text-gray-600 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white rounded-md px-3 py-2 text-sm font-medium flex items-center"
+                        :aria-current="item.name">
+                        <component :is="item.icon" class="mr-2 size-5" aria-hidden="true" />{{ item.name }}
+                      </router-link>
                     </div>
-                    <v-badge> Coming Soon </v-badge>
-                  </div>
-                </template>
-              </nav>
-            </div>
-            <div class="flex-shrink-0 flex bg-gray-700 p-4">
-              <router-link
-                :to="{ name: 'users.profile' }"
-                class="flex items-center"
-                v-if="authStore.isAuthenticated"
-              >
-                <div>
-                  <img
-                    class="inline-block h-10 w-10 rounded-full"
-                    src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png"
-                    alt="profile image"
-                  />
-                </div>
-                <div class="ml-3">
-                  <p class="text-sm font-medium text-white">
-                    {{ authStore?.user?.name }}
-                  </p>
-                  <div
-                    class="text-xs font-medium text-gray-300 group-hover:text-gray-200"
-                  >
-                    View profile
                   </div>
                 </div>
-              </router-link>
-              <router-link
-                :to="{ name: 'auth.login' }"
-                class="flex items-center"
-                v-else
-              >
-                <div>
-                  <img
-                    class="inline-block h-10 w-10 rounded-full"
-                    src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png"
-                    alt="profile image"
-                  />
-                </div>
-                <div class="ml-3">
-                  <!-- <p class="text-sm font-medium text-white">Tom Cook</p> -->
-                  <a
-                    class="text-xs font-medium text-gray-300 group-hover:text-gray-200"
-                  >
-                    Login / Sign Up
-                  </a>
-                </div>
-              </router-link>
-            </div>
-          </div>
-        </TransitionChild>
-        <div class="flex-shrink-0 w-14">
-          <!-- Force sidebar to shrink to fit close icon -->
-        </div>
-      </Dialog>
-    </TransitionRoot>
+                <div class="hidden md:block">
+                  <div class="ml-4 flex items-center md:ml-6">
+                    <div class="flex items-center">
+                      <sun class="size-6 text-gray-400 mr-4" />
+                      <dark-mode-toggle />
+                      <moon class="size-6 text-gray-400 ml-4" />
+                    </div>
 
-    <!-- Static sidebar for desktop -->
-    <div class="hidden md:flex md:flex-shrink-0">
-      <div class="flex flex-col w-64">
-        <!-- Sidebar component, swap this element with another sidebar if you like -->
-        <div class="flex flex-col h-0 flex-1 bg-gray-800">
-          <div class="flex-1 flex flex-col overflow-y-auto bg-gray-900">
-            <div class="flex items-center flex-shrink-0 p-1">
-              <img
-                class="h-14 w-auto m-1 rounded-full bg-white"
-                src="@/assets/logos/waa-logo-dark.svg"
-                alt="We Are Auto"
-              />
-              <div class="text-gray-100 tracking-tight text-xl px-2">
-                We Are Auto
+                    <!-- <button type="button"
+                      class="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 dark:bg-gray-700 dark:text-gray-300 dark:hover:text-white dark:focus:ring-offset-gray-900">
+                      <span class="absolute -inset-1.5" />
+                      <span class="sr-only">View notifications</span>
+                      <BellIcon class="size-6" aria-hidden="true" />
+                    </button> -->
+
+                    <!-- Profile dropdown -->
+                    <Menu as="div" class="relative ml-3">
+                      <div>
+                        <MenuButton
+                          class="relative flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 dark:bg-gray-700 dark:focus:ring-offset-gray-900">
+                          <span class="absolute -inset-1.5" />
+                          <span class="sr-only">Open user menu</span>
+                          <profileIcon aria-hidden="true" />
+                        </MenuButton>
+                      </div>
+                      <transition enter-active-class="transition ease-out duration-100"
+                        enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100"
+                        leave-active-class="transition ease-in duration-75"
+                        leave-from-class="transform opacity-100 scale-100"
+                        leave-to-class="transform opacity-0 scale-95">
+                        <MenuItems
+                          class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5 focus:outline-none dark:bg-gray-800 dark:ring-white/10">
+                          <MenuItem v-for="item in userNavigation" :key="item.name" v-slot="{ active }">
+                          <router-link :to="{ name: item.route }"
+                            :class="[active ? 'bg-gray-100 outline-none dark:bg-gray-700' : '', 'block px-4 py-2 text-sm text-gray-700 dark:text-gray-200']">{{
+                              item.name }}</router-link>
+                          </MenuItem>
+                        </MenuItems>
+                      </transition>
+                    </Menu>
+                  </div>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                  <!-- Mobile menu button -->
+                  <DisclosureButton
+                    class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 dark:text-gray-400 bg-white focus:bg-gray-200 dark:bg-gray-800 dark:focus:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 dark:ring-offset-gray-800">
+                    <span class="absolute -inset-0.5" />
+                    <span class="sr-only">Open main menu</span>
+                    <menuIcon v-if="!open" class="block size-6" aria-hidden="true" />
+                    <close v-else class="block size-6" aria-hidden="true" />
+                  </DisclosureButton>
+                </div>
               </div>
             </div>
-            <nav class="flex-1 px-2 bg-gray-800 space-y-1 py-2">
-              <template v-for="item in navigation" :key="item.name">
-                <router-link
-                  v-if="!item.coming_soon"
-                  tag="a"
-                  :to="{ name: item.route }"
-                  :class="[
-                    $route.matched.some(({ name }) =>
-                      name.includes(item.name.toLowerCase())
-                    )
-                      ? 'bg-gray-900 text-white'
-                      : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                    'group flex items-center px-2 py-2 text-sm font-medium rounded-md',
-                  ]"
-                >
-                  <component
-                    :is="item.icon"
-                    :class="[
-                      $route.matched.some(({ name }) =>
-                        name.includes(item.name.toLowerCase())
-                      )
-                        ? 'text-gray-300'
-                        : 'text-gray-400 group-hover:text-gray-300',
-                      'mr-3 flex-shrink-0 h-6 w-6',
-                    ]"
-                    aria-hidden="true"
-                  />
-                  {{ item.name }}
+
+            <DisclosurePanel class="md:hidden">
+              <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
+                <router-link v-for="item in navigation" :key="item.name" :to="{ name: item.route }"
+                  @click="closeMenu(close)"
+                  class="rounded-md px-3 py-2 text-base font-medium text-gray-600 hover:bg-gray-700 hover:text-white dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white flex items-center"
+                  :aria-current="item.name">
+                  <component :is="item.icon" class="mr-2 size-5" aria-hidden="true" />{{ item.name }}
                 </router-link>
+              </div>
+              <div class="px-4 pb-4 sm:px-3">
+                <div class="flex items-center">
+                  <sun class="size-6  text-gray-600 dark:text-gray-400 mr-4" />
+                  <dark-mode-toggle />
+                  <moon class="size-6 text-gray-600 dark:text-gray-300 ml-4" />
+                </div>
+              </div>
+              <div class="border-t border-gray-700 pb-3 pt-4 dark:border-gray-600">
+                <div class="flex items-center px-5">
+                  <profileIcon class="size-10" />
+                  <div class="ml-3">
+                    <div class="text-base/5 font-medium text-gray-600 dark:text-gray-300">{{ authStore?.user?.name }}
+                    </div>
+                    <div class="text-sm font-medium text-gray-600 dark:text-gray-300">{{ authStore?.user?.email }}</div>
+                  </div>
+                  <!-- <button type="button"
+                    class="relative ml-auto shrink-0 rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 dark:bg-gray-700 dark:text-gray-300 dark:hover:text-white dark:focus:ring-offset-gray-900">
+                    <span class="absolute -inset-1.5" />
+                    <span class="sr-only">View notifications</span>
+                    <BellIcon class="size-6" aria-hidden="true" />
+                  </button> -->
+                </div>
+                <div class="mt-3 space-y-1 px-2">
+                  <router-link v-for="item in userNavigation" :key="item.name" :to="{ name: item.route }"
+                    @click="closeMenu(close)"
+                    class="block rounded-md px-3 py-2 text-base font-medium text-gray-600 hover:bg-gray-700 hover:text-white dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white">
+                    {{ item.name }}</router-link>
+                </div>
+              </div>
+            </DisclosurePanel>
+          </Disclosure>
 
-                <div
-                  v-if="item.coming_soon"
-                  :class="[
-                    $route.matched.some(({ name }) =>
-                      name.includes(item.name.toLowerCase())
-                    )
-                      ? 'bg-gray-900 text-white'
-                      : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                    'group flex items-center px-2 py-2 text-sm font-medium rounded-md',
-                  ]"
-                >
-                  <component
-                    :is="item.icon"
-                    :class="[
-                      $route.matched.some(({ name }) =>
-                        name.includes(item.name.toLowerCase())
-                      )
-                        ? 'text-gray-300'
-                        : 'text-gray-400 group-hover:text-gray-300',
-                      'mr-3 flex-shrink-0 h-6 w-6',
-                    ]"
-                    aria-hidden="true"
-                  />
-                  <div class="pr-4">
-                    {{ item.name }}
-                  </div>
-                  <v-badge> Coming Soon </v-badge>
-                </div>
-              </template>
-            </nav>
-          </div>
-          <div class="flex-shrink-0 flex bg-gray-700 p-4">
-            <div class="flex-shrink-0 w-full group block">
-              <router-link
-                :to="{ name: 'users.profile' }"
-                class="flex items-center"
-                v-if="authStore.isAuthenticated"
-              >
-                <div>
-                  <img
-                    class="inline-block h-10 w-10 rounded-full"
-                    src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png"
-                    alt="profile image"
-                  />
-                </div>
-                <div class="ml-3">
-                  <p class="text-sm font-medium text-white">
-                    {{ authStore?.user?.name }}
-                  </p>
-                  <div
-                    class="text-xs font-medium text-gray-300 group-hover:text-gray-200"
-                  >
-                    View profile
-                  </div>
-                </div>
-              </router-link>
-              <router-link
-                :to="{ name: 'auth.login' }"
-                class="flex items-center"
-                v-else
-              >
-                <div>
-                  <img
-                    class="inline-block h-10 w-10 rounded-full"
-                    src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png"
-                    alt="profile image"
-                  />
-                </div>
-                <div class="ml-3">
-                  <!-- <p class="text-sm font-medium text-white">Tom Cook</p> -->
-                  <a
-                    class="text-xs font-medium text-gray-300 group-hover:text-gray-200"
-                  >
-                    Login / Sign Up
-                  </a>
-                </div>
-              </router-link>
+          <main>
+            <div class="mx-full">
+              <router-view />
             </div>
-          </div>
+          </main>
         </div>
       </div>
     </div>
-    <div class="flex flex-col w-0 flex-1 overflow-hidden">
-      <div class="md:hidden pl-1 py-1 bg-gray-800">
-        <div class="flex items-center justify-between">
-          <div class="flex-1">
-            <button
-              class="-ml-0.5 -mt-0.5 h-12 w-12 inline-flex items-center justify-center rounded-md text-gray-200 hover:text-gray-400 focus:outline-none"
-              @click="sidebarOpen = true"
-            >
-              <span class="sr-only">Open sidebar</span>
-              <menuIcon class="h-6 w-6" aria-hidden="true" />
-            </button>
-          </div>
-          <div class="flex-1 w-full">
-            <img
-              class="h-12 w-auto mx-auto m-1 rounded-full bg-white"
-              src="@/assets/logos/waa-logo-dark.svg"
-              alt="We Are Auto"
-            />
-          </div>
-          <div class="flex-1 text-center"></div>
-        </div>
-      </div>
-
-      <main class="flex-1 relative z-0 overflow-y-auto focus:outline-none">
-        <div class="relative">
-          <router-view />
-        </div>
-      </main>
-    </div>
-  </div>
-  <div class="overflow-hidden" v-if="$route.meta.disable_nav">
-    <router-view />
   </div>
 </template>
 
 <script setup>
 import { useAuthStore } from "@/stores/auth.js";
-import { onMounted, ref } from "vue";
-
+import { onMounted, computed, ref } from "vue";
 import {
-  Dialog,
-  DialogOverlay,
-  TransitionChild,
-  TransitionRoot,
-} from "@headlessui/vue";
+  Disclosure,
+  DisclosureButton,
+  DisclosurePanel,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuItems,
+} from '@headlessui/vue'
+// import Guest from "@/components/auth/guest.vue";
+// import Authenticated from "@/components/auth/authenticated.vue";
 import close from "@/assets/icons/close.vue";
 import menuIcon from "@/assets/icons/menu.vue";
-import waveform from "@/assets/icons/waveform.vue";
-import trophy from "@/assets/icons/trophy.vue";
 import garage from "@/assets/icons/garage.vue";
 import flag from "@/assets/icons/flag-checkered.vue";
+import shuffle from "@/assets/icons/shuffle.vue";
+import sun from "@/assets/icons/sun.vue";
+import moon from "@/assets/icons/moon.vue";
+import darkModeToggle from "@/components/themeToggle.vue";
+import profileIcon from "./components/auth/profileIcon.vue";
+
+const closeMenu = (close) => {
+  close();
+};
 
 const authStore = useAuthStore();
-const sidebarOpen = ref(false);
+onMounted(async () => {
+  await authStore.setUser();
+});
+
+const isAuthenticated = computed(() => authStore.isAuthenticated);
+const userNavigation = computed(() => isAuthenticated.value ? authenticatedRoutes : guestRoutes);
 
 const navigation = [
   {
     name: "Home",
     route: "home.index",
     icon: garage,
-    coming_soon: false,
   },
   {
-    name: "Podcast",
-    route: "podcasts.index",
-    icon: waveform,
-    coming_soon: false,
-  },
-  {
-    name: "Races",
+    name: "Watch",
     route: "races.filter",
     icon: flag,
-    coming_soon: false,
   },
   {
-    name: "Fantasy",
-    route: "fantasy.index",
-    icon: trophy,
-    coming_soon: true,
+    name: "Random Race",
+    route: "races.random",
+    icon: shuffle,
   },
 ];
 
-onMounted(() => {
-  authStore.setUser();
-});
+const authenticatedRoutes = [
+  {
+    name: "Profile",
+    route: "users.profile",
+  },
+  {
+    name: "Logout",
+    route: "auth.logout",
+  },
+];
+
+const guestRoutes = [
+  {
+    name: "Sign Up",
+    route: "auth.register",
+  },
+  {
+    name: "Login",
+    route: "auth.login",
+  },
+];
 </script>

@@ -1,12 +1,10 @@
 <template>
-  <div>
-    <div class="space-y-6 m-4">
-      <profile />
+  <div class="grid gap-4 p-4">
+    <profile />
 
-      <password-change />
+    <password-change />
 
-      <notifications />
-    </div>
+    <notifications />
   </div>
 </template>
 

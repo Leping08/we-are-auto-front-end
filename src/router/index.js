@@ -37,23 +37,6 @@ const routes = [
     },
   },
   {
-    path: "/fantasy",
-    name: "fantasy.index",
-    component: () =>
-      import(
-        /* webpackChunkName: "fantasy.index" */ "@/views/fantasy/index.vue"
-      ),
-    meta: {
-      title: "We Are Auto | Fantasy Sports Car Racing",
-      metaTags: [
-        {
-          name: "description",
-          content: "Fantasy sports car racing.",
-        },
-      ],
-    },
-  },
-  {
     path: "/races/filter",
     name: "races.filter",
     component: () =>
@@ -96,6 +79,22 @@ const routes = [
         {
           name: "description",
           content: "Watch sports car racing from around the world.", // this will get overridden in the show.vue component
+        },
+      ],
+    },
+  },
+  {
+    path: "/races/random",
+    name: "races.random",
+    component: () =>
+      import(/* webpackChunkName: "races.random" */ "@/views/races/random.vue"),
+    meta: {
+      title: "We Are Auto | Random Race | Watch Full Length Racing Videos",
+      metaTags: [
+        {
+          name: "description",
+          content:
+            "Watch a random full length automotive race online for free.",
         },
       ],
     },

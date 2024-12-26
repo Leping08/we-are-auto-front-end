@@ -10,8 +10,9 @@
       ring
         ? `focus:ring-2 focus:ring-offset-2 focus:ring-${buttonColor}-600`
         : `focus:ring-0`,
-      disabled ? 'cursor-not-allowed' : '',
+      disabled ? 'cursor-not-allowed bg-gray-400 dark:bg-gray-700' : '',
     ]"
+    :disabled="disabled"
   >
     <slot>Button</slot>
   </button>

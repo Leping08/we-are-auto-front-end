@@ -3,19 +3,19 @@
     <label
       v-if="label"
       :for="label"
-      class="block text-sm font-medium leading-5 text-gray-700"
+      class="block text-sm font-medium leading-5 text-gray-700 dark:text-gray-300"
       >{{ label }}</label
     >
     <div :class="`mt-1 relative ${rounded} shadow-none`">
       <input
         :id="label"
         :class="[
-          'appearance-none block px-3 py-2 shadow-sm border border-gray-300 placeholder-gray-400 focus:outline-none sm:text-sm w-full',
+          'appearance-none block px-3 py-2 shadow-sm border border-gray-300 placeholder-gray-400 focus:outline-none sm:text-sm w-full dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600 dark:placeholder-gray-500',
           `${rounded} focus:ring-${themeColor}-500 focus:border-${themeColor}-500`,
           Object.values(validationObjects).filter((e) => e.valid === true)
             .length === 1
-            ? 'text-red-900 border-red-500'
-            : 'text-gray-700',
+            ? 'text-red-900 border-red-500 dark:text-red-500 dark:border-red-400'
+            : 'text-gray-700 dark:text-gray-300',
         ]"
         :placeholder="placeholder"
         :aria-placeholder="placeholder"
@@ -29,11 +29,11 @@
         "
       />
     </div>
-    <p v-if="helpText" class="mt-2 text-sm text-gray-500">
+    <p v-if="helpText" class="mt-2 text-sm text-gray-500 dark:text-gray-400">
       {{ helpText }}
     </p>
     <div v-for="error in validationObjects" :key="error">
-      <div v-if="!error.valid" class="mt-2 text-sm text-red-600">
+      <div v-if="!error.valid" class="mt-2 text-sm text-red-600 dark:text-red-400">
         {{ error.message }}
       </div>
     </div>

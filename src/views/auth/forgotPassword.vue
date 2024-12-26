@@ -1,15 +1,15 @@
 <template>
-  <div class="flex bg-gradient-to-r from-blue-400 to-blue-600 h-screen">
+  <div class="flex bg-gradient-to-br from-blue-400 to-blue-600 dark:from-gray-700 dark:to-blue-900 h-screen">
     <div class="m-auto w-5/6 md:w-2/3 lg:w-1/2 xl:w-1/3">
-      <div class="p-8 bg-white rounded-lg relative">
+      <div class="p-8 bg-white dark:bg-gray-800 rounded-lg relative">
         <div class="w-full flex justify-center absolute -top-14 left-0">
-          <div class="bg-white rounded-full p-2">
+          <div class="bg-white dark:bg-gray-800 rounded-full p-2">
             <div class="rounded-full">
-              <account-lock class="w-24 text-blue-500 p-2" />
+              <account-lock class="size-24 text-blue-500 p-2" />
             </div>
           </div>
         </div>
-        <div class="flex justify-around mt-6 text-gray-600 text-sm">
+        <div class="flex justify-around mt-6 text-gray-600 dark:text-gray-300 text-sm">
           Enter the email address associated with your account. We'll send you
           an email with a link to reset your password.
         </div>
@@ -41,9 +41,9 @@
             <div v-if="!loading && successMessage" class="mx-2 mt-4">
               <div class="flex items-center">
                 <div>
-                  <check-circle-outline class="text-green-500 h-6 w-6" />
+                  <check-circle-outline class="text-green-500 dark:text-green-300 h-6 w-6" />
                 </div>
-                <div class="text-green-500 ml-2">
+                <div class="text-green-500 dark:text-green-300 ml-2">
                   {{ successMessage }}
                 </div>
               </div>
@@ -51,9 +51,9 @@
             <div v-if="!loading && errorMessage" class="mx-2 mt-4">
               <div class="flex items-center">
                 <div>
-                  <close-circle-outline class="text-red-500 h-6 w-6" />
+                  <close-circle-outline class="text-red-500 dark:text-red-300 h-6 w-6" />
                 </div>
-                <div class="text-red-500 ml-2">
+                <div class="text-red-500 dark:text-red-300 ml-2">
                   {{ errorMessage }}
                 </div>
               </div>

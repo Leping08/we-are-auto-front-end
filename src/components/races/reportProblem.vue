@@ -4,7 +4,7 @@
       <textarea
         v-model="problemText"
         placeholder="Describe the problem..."
-        class="block w-full h-40 px-4 py-2 text-gray-900 border-gray-300 border-2 rounded-lg focus:outline-none focus:border-blue-500"
+        class="block w-full h-40 px-4 py-2 text-gray-900 border-gray-300 border-2 rounded-lg focus:outline-none focus:border-blue-500 dark:text-gray-100 dark:bg-gray-800 dark:border-gray-600 dark:focus:border-blue-300"
       ></textarea>
     </div>
     <div class="flex items-center mt-4">
@@ -16,15 +16,15 @@
       <div v-if="loading">
         <v-progress-spinner size="6" color="blue" />
       </div>
-      <div v-if="!loading && errorMessage" class="text-sm text-red-500 mx-2">
+      <div v-if="!loading && errorMessage" class="text-sm text-red-500 mx-2 dark:text-red-400">
         {{ errorMessage }}
       </div>
       <div v-if="!loading && successCheckmark" class="mx-2">
         <div class="flex items-center">
           <div>
-            <check-circle-outline class="text-green-500 h-6 w-6" />
+            <check-circle-outline class="text-green-500 h-6 w-6 dark:text-green-400" />
           </div>
-          <div class="text-green-500 ml-2">
+          <div class="text-green-500 ml-2 dark:text-green-400">
             Thanks for reporting the problem. We'll look into it shortly.
           </div>
         </div>

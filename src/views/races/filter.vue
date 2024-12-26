@@ -1,16 +1,16 @@
 <template>
-  <div class="bg-gradient-to-r from-blue-400 to-blue-600 min-h-screen">
+  <div class="bg-gradient-to-br from-blue-400 to-blue-600 dark:from-gray-700 dark:to-blue-900 min-h-screen">
     <!-- This example requires Tailwind CSS v2.0+ -->
     <nav aria-label="Progress" id="progress" class="p-5">
       <ol
         role="list"
-        class="rounded-lg divide-y divide-gray-300 md:flex md:divide-y-0 overflow-hidden shadow-lg"
+        class="rounded-lg divide-y divide-gray-300 dark:divide-gray-700 md:flex md:divide-y-0 overflow-hidden shadow-lg"
       >
         <li
           v-for="(step, stepIdx) in steps"
           :key="step.name"
           @click="selectStep(stepIdx + 1)"
-          class="relative md:flex-1 md:flex bg-white cursor-pointer"
+          class="relative md:flex-1 md:flex bg-white dark:bg-gray-800 cursor-pointer"
         >
           <a
             v-if="step.status === 'complete'"
@@ -25,19 +25,19 @@
                 >
                   <check class="w-6 h-6 text-white" aria-hidden="true" />
                 </div>
-                <div class="ml-4 text-sm font-medium text-gray-900">
+                <div class="ml-4 text-sm font-medium text-gray-900 dark:text-gray-100">
                   {{ step.name }}
                 </div>
               </div>
               <div>
                 <div
-                  class="text-sm font-medium text-gray-500"
+                  class="text-sm font-medium text-gray-500 dark:text-gray-400"
                   v-if="selectedSeries && stepIdx === 0"
                 >
                   {{ selectedSeries.name }}
                 </div>
                 <div
-                  class="text-sm font-medium text-gray-500"
+                  class="text-sm font-medium text-gray-500 dark:text-gray-400"
                   v-if="selectedSeries && stepIdx === 1"
                 >
                   {{ selectedSeason.name }}
@@ -62,14 +62,14 @@
           <a v-else class="group flex items-center">
             <span class="px-6 py-4 flex items-center text-sm font-medium">
               <span
-                class="flex-shrink-0 w-10 h-10 flex items-center justify-center border-2 border-gray-300 rounded-full group-hover:border-gray-400"
+                class="flex-shrink-0 w-10 h-10 flex items-center justify-center border-2 border-gray-300 dark:border-gray-600 rounded-full group-hover:border-gray-400 dark:group-hover:border-gray-500"
               >
-                <span class="text-gray-500 group-hover:text-gray-900">{{
+                <span class="text-gray-500 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-gray-100">{{
                   step.id
                 }}</span>
               </span>
               <span
-                class="ml-4 text-sm font-medium text-gray-500 group-hover:text-gray-900"
+                class="ml-4 text-sm font-medium text-gray-500 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-gray-100"
                 >{{ step.name }}</span
               >
             </span>
@@ -81,7 +81,7 @@
               aria-hidden="true"
             >
               <svg
-                class="h-full w-full text-gray-300"
+                class="h-full w-full text-gray-300 dark:text-gray-600"
                 viewBox="0 0 22 80"
                 fill="none"
                 preserveAspectRatio="none"
@@ -100,7 +100,7 @@
     </nav>
 
     <div v-if="currentStep.id === 1" class="">
-      <div class="bg-white rounded-lg p-5 mx-5 mb-5">
+      <div class="bg-white dark:bg-gray-800 rounded-lg p-5 mx-5 mb-5">
         <div class="flex items-center">
           <div class="w-full">
             <v-input
@@ -108,17 +108,18 @@
               color="cyan"
               placeholder="Search for a series"
               type="text"
+              class="dark:text-gray-100"
             />
           </div>
           <div class="ml-4">
             <tooltip>
               <filter-icon
                 @click="showFilters = !showFilters"
-                :class="showFilters ? 'text-blue-500' : 'text-gray-400'"
+                :class="showFilters ? 'text-blue-500' : 'text-gray-400 dark:text-gray-500'"
                 class="h-8 w-8 hover:text-blue-500 cursor-pointer rounded-full p-1"
               />
               <template #tooltip-content>
-                <div class="text-sm leading-5 text-gray-500 w-20">Filters</div>
+                <div class="text-sm leading-5 text-gray-500 dark:text-gray-400 w-20">Filters</div>
               </template>
             </tooltip>
           </div>
@@ -126,10 +127,10 @@
             <tooltip>
               <shuffle
                 @click="selectRandomRace"
-                class="h-8 w-8 hover:text-blue-500 text-gray-400 cursor-pointer rounded-full p-1"
+                class="h-8 w-8 hover:text-blue-500 text-gray-400 dark:text-gray-500 cursor-pointer rounded-full p-1"
               />
               <template #tooltip-content>
-                <div class="text-sm leading-5 text-gray-500 w-40">
+                <div class="text-sm leading-5 text-gray-500 dark:text-gray-400 w-40">
                   Watch a random race
                 </div>
               </template>
@@ -145,7 +146,7 @@
             >
               <div class="mt-4">
                 <legend class="sr-only">{{ filterGroup.name }}</legend>
-                <label class="text-base font-semibold text-gray-900">{{
+                <label class="text-base font-semibold text-gray-900 dark:text-gray-100">{{
                   filterGroup.name
                 }}</label>
                 <div class="mb-2" />
@@ -157,6 +158,7 @@
                         v-model="filterValue"
                         :value="tag.id"
                         :label="tag.name"
+                        class="dark:text-gray-100"
                       />
                     </div>
                   </div>
@@ -184,7 +186,7 @@
           v-for="currentSeries in filteredSeries"
           :key="currentSeries"
           @click="selectSeries(currentSeries)"
-          class="rounded-lg shadow-lg overflow-hidden bg-white cursor-pointer"
+          class="rounded-lg shadow-lg overflow-hidden bg-white dark:bg-gray-800 cursor-pointer"
         >
           <div class="w-full relative">
             <img
@@ -197,12 +199,12 @@
               :series="currentSeries"
             />
           </div>
-          <div class="flex-1 bg-white p-6 flex flex-col justify-between">
+          <div class="flex-1 bg-white dark:bg-gray-800 p-6 flex flex-col justify-between">
             <div class="pt-2">
-              <div class="text-xl font-semibold text-gray-900 py-2">
+              <div class="text-xl font-semibold text-gray-900 dark:text-gray-100 py-2">
                 {{ currentSeries.full_name }}
               </div>
-              <div class="text-sm text-gray-500">
+              <div class="text-sm text-gray-500 dark:text-gray-400">
                 {{ currentSeries.description }}
               </div>
             </div>
@@ -215,7 +217,7 @@
       class="relative rounded-xl overflow-auto px-5 w-full md:w-2/3 lg:w-1/2 xl:w-1/3 mx-auto"
       v-if="currentStep.id === 2"
     >
-      <div class="rounded-lg shadow-lg overflow-hidden bg-white">
+      <div class="rounded-lg shadow-lg overflow-hidden bg-white dark:bg-gray-800">
         <div class="w-full relative">
           <img
             class="h-64 w-full object-cover transform hover:scale-110 duration-100 ease-in-out"
@@ -230,7 +232,7 @@
             <div v-if="selectedSeries.website" class="flex">
               <tooltip position="left" margin="mr-20">
                 <template #tooltip-content>
-                  <div class="w-60 text-sm text-gray-600 mr-4">
+                  <div class="w-60 text-sm text-gray-600 dark:text-gray-400 mr-4">
                     <div>Check out the {{ selectedSeries.name }} website.</div>
                   </div>
                 </template>
@@ -238,10 +240,10 @@
                   <a
                     :href="selectedSeries.website"
                     target="_blank"
-                    class="cursor-pointer inline-flex items-center text-sm font-medium rounded-full shadow bg-white hover:bg-blue-50 active:bg-blue-100 focus:ring-0"
+                    class="cursor-pointer inline-flex items-center text-sm font-medium rounded-full shadow bg-white dark:bg-gray-800 hover:bg-blue-50 dark:hover:bg-gray-700 active:bg-blue-100 dark:active:bg-gray-600 focus:ring-0"
                   >
                     <open-in-new
-                      class="w-6 h-6 text-gray-500 hover:text-blue-500 m-2"
+                      class="w-6 h-6 text-gray-500 dark:text-gray-400 hover:text-blue-500 dark:hover:text-gray-100 m-2"
                     />
                   </a>
                 </div>
@@ -250,7 +252,7 @@
             <div v-if="isAuthenticated" class="flex">
               <tooltip position="left" margin="mr-20">
                 <template #tooltip-content>
-                  <div class="w-60 text-sm text-gray-600 mr-4">
+                  <div class="w-60 text-sm text-gray-600 dark:text-gray-400 mr-4">
                     <div v-if="selectedSeriesFollowStatus">
                       You are currently subscribed to
                       {{ selectedSeries.name }} and will receive weekly updates
@@ -266,7 +268,7 @@
                   <button
                     v-if="isAuthenticated"
                     @click="updateSeriesFollowStatus()"
-                    class="inline-flex items-center text-sm font-medium rounded-full shadow bg-white hover:bg-blue-50 active:bg-blue-100 focus:ring-0"
+                    class="inline-flex items-center text-sm font-medium rounded-full shadow bg-white dark:bg-gray-800 hover:bg-blue-50 dark:hover:bg-gray-700 active:bg-blue-100 dark:active:bg-gray-600 focus:ring-0"
                   >
                     <v-progress-spinner
                       v-if="seriesFollowStatusLoading"
@@ -279,13 +281,13 @@
                         !selectedSeriesFollowStatus &&
                         !seriesFollowStatusLoading
                       "
-                      class="w-6 h-6 text-gray-500 hover:text-blue-500 m-2"
+                      class="w-6 h-6 text-gray-500 dark:text-gray-400 hover:text-blue-500 dark:hover:text-gray-100 m-2"
                     />
                     <bell-check-outline
                       v-if="
                         selectedSeriesFollowStatus && !seriesFollowStatusLoading
                       "
-                      class="w-6 h-6 text-blue-500 hover:text-gray-500 m-2"
+                      class="w-6 h-6 text-blue-500 dark:text-gray-100 hover:text-gray-500 dark:hover:text-gray-400 m-2"
                     />
                   </button>
                 </div>
@@ -293,24 +295,24 @@
             </div>
           </div>
         </div>
-        <div class="flex-1 bg-white p-6 flex flex-col justify-between">
+        <div class="flex-1 bg-white dark:bg-gray-800 p-6 flex flex-col justify-between">
           <div class="pt-2">
-            <div class="text-xl font-semibold text-gray-900 py-2">
+            <div class="text-xl font-semibold text-gray-900 dark:text-gray-100 py-2">
               {{ selectedSeries.full_name }}
             </div>
             <div
               v-if="!selectedSeries.seasons.length"
-              class="text-md text-gray-600"
+              class="text-md text-gray-600 dark:text-gray-400"
             >
               Sorry it looks like the {{ selectedSeries.name }} has no races
               yet.
             </div>
             <div v-if="selectedSeries.seasons.length">
-              <div class="text-md text-gray-600">
+              <div class="text-md text-gray-600 dark:text-gray-400">
                 Please select a season of {{ selectedSeries.name }} racing to
                 watch.
               </div>
-              <ul role="list" class="divide-y divide-gray-200">
+              <ul role="list" class="divide-y divide-gray-200 dark:divide-gray-700">
                 <li
                   class="flex"
                   v-for="season in selectedSeries.seasons"
@@ -318,10 +320,10 @@
                   @click="selectSeason(season)"
                 >
                   <div
-                    class="py-4 cursor-pointer px-3 flex justify-between w-full items-center hover:bg-gray-200"
+                    class="py-4 cursor-pointer px-3 flex justify-between w-full items-center hover:bg-gray-200 dark:hover:bg-gray-700"
                   >
                     <div>
-                      <p class="font-medium text-gray-900">{{ season.name }}</p>
+                      <p class="font-medium text-gray-900 dark:text-gray-100">{{ season.name }}</p>
                     </div>
                     <div>
                       <v-badge color="blue">

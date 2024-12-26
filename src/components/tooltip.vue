@@ -4,7 +4,7 @@
     <slot></slot>
     <!-- tooltip its self that can be shown by hovering -->
     <div v-if="show" class="absolute bottom-0 right-0 z-10" :class="[margin]">
-      <div class="bg-white shadow-md rounded-lg p-4">
+      <div class="bg-white dark:bg-gray-900 shadow-md rounded-lg p-4">
         <slot name="tooltip-content"></slot>
       </div>
     </div>

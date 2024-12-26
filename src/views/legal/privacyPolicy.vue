@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="bg-white">
     <div class="p-4 md:p-20">
       <div>
         <div data-custom-class="body">

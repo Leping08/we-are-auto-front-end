@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: 'class',
   safelist: [
     // Safelist only colors used by vantage components in production
     ...require("./src/lib-components/utils/safelist").vantageSafelist([

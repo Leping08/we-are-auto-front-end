@@ -9,11 +9,11 @@
         >
           <div class="relative max-w-xl mx-auto p-6 lg:p-0">
             <h3
-              class="text-2xl font-extrabold text-gray-900 tracking-tight sm:text-4xl"
+              class="text-2xl font-extrabold text-gray-900 dark:text-gray-100 tracking-tight sm:text-4xl"
             >
               It's like Netflix for gearheads
             </h3>
-            <p class="mt-3 text-lg text-gray-500">
+            <p class="mt-3 text-lg text-gray-500 dark:text-gray-400">
               Races from a variety of series around the world available anytime
               anywhere.
             </p>
@@ -30,11 +30,11 @@
                       aria-hidden="true"
                     />
                   </div>
-                  <p class="ml-16 text-lg leading-6 font-medium text-gray-900">
+                  <p class="ml-16 text-lg leading-6 font-medium text-gray-900 dark:text-gray-100">
                     {{ item.name }}
                   </p>
                 </dt>
-                <dd class="mt-2 ml-16 text-base text-gray-500">
+                <dd class="mt-2 ml-16 text-base text-gray-500 dark:text-gray-400">
                   {{ item.description }}
                 </dd>
               </div>
@@ -55,7 +55,7 @@
       </div>
 
       <div
-        class="relative px-4 py-14 sm:px-6 lg:py-20 lg:px-8 bg-gradient-to-r from-blue-400 to-blue-600"
+        class="relative px-4 py-14 sm:px-6 lg:py-20 lg:px-8 bg-gradient-to-r from-blue-400 to-blue-600 dark:from-blue-700 dark:to-blue-900"
       >
         <div class="absolute inset-0">
           <div class="h-1/3 sm:h-2/3" />

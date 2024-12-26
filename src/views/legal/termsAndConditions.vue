@@ -1,5 +1,5 @@
 <template>
-  <div class="p-4 md:p-20">
+  <div class="p-4 md:p-20 bg-white">
     <div data-custom-class="body">
       <div align="center" style="text-align: left; line-height: 1">
         <div
@@ -5494,7 +5494,7 @@
                   </strong>
                 </strong>
               </div>
-              <div
+              <!-- <div
                 class="MsoNormal"
                 data-custom-class="body_text"
                 style="line-height: 1.5"
@@ -5518,7 +5518,7 @@
                     </strong>
                   </span>
                 </strong>
-              </div>
+              </div> -->
               <div
                 class="MsoNormal"
                 data-custom-class="body_text"

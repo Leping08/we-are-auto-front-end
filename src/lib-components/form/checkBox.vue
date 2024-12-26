@@ -8,9 +8,9 @@
         :name="label"
         type="checkbox"
         :class="[
-          `h-4 w-4 border border-gray-300 text-${checkBoxColor}-600 rounded focus:outline-none`,
+          `h-4 w-4 border border-gray-300 text-${checkBoxColor}-600 rounded focus:outline-none dark:border-gray-600 dark:text-${checkBoxColor}-400`,
           ring
-            ? `focus:ring-${checkBoxColor}-600 focus:ring-2`
+            ? `focus:ring-${checkBoxColor}-600 focus:ring-2 dark:focus:ring-${checkBoxColor}-400`
             : 'focus:ring-offset-0 focus:ring-0',
         ]"
       />
@@ -19,10 +19,10 @@
       <v-progress-spinner v-if="loading" :size="progressSpinnerSize" />
     </div>
     <div class="ml-3 text-sm leading-5">
-      <label for="comments" class="font-medium text-gray-700">{{
+      <label for="comments" class="font-medium text-gray-700 dark:text-gray-300">{{
         label
       }}</label>
-      <p v-if="subTitle" class="text-gray-500">{{ subTitle }}</p>
+      <p v-if="subTitle" class="text-gray-500 dark:text-gray-400">{{ subTitle }}</p>
     </div>
   </div>
 </template>

@@ -22,31 +22,31 @@
       <check class="text-white h-6 w-6" />
     </div>
     <div
-      v-if="icon == 'calendar-lock'"
+      v-if="icon == 'calendar-check'"
       class="h-10 w-10 rounded-full bg-white relative flex items-center justify-around shadow-md"
     >
-      <calendar-lock class="text-gray-500 h-6 w-6" />
+      <calendar-check class="text-gray-500 h-6 w-6" />
     </div>
     <div
-      v-if="icon == 'calendar-plus'"
+      v-if="icon == 'calendar-clock'"
       class="h-10 w-10 rounded-full bg-white relative flex items-center justify-around shadow-md"
     >
-      <calendar-edit class="text-gray-500 h-6 w-6" />
+      <calendar-clock class="text-gray-500 h-6 w-6" />
     </div>
   </div>
 </template>
 
 <script>
 import play from "@/assets/icons/play.vue";
-import calendarLock from "@/assets/icons/calendar-lock.vue";
-import calendarEdit from "@/assets/icons/calendar-edit.vue";
+import calendarCheck from "@/assets/icons/calendar-check.vue";
+import calendarClock from "@/assets/icons/calendar-clock.vue";
 import check from "@/assets/icons/check.vue";
 export default {
   components: {
     play,
     check,
-    calendarLock,
-    calendarEdit,
+    calendarCheck,
+    calendarClock,
   },
   props: {
     race: {
@@ -74,20 +74,14 @@ export default {
         }
       }
 
-      const today = new Date().getTime();
-      const race_starts_at = isNaN(Date.parse(this.race?.starts_at))
-        ? 0
-        : Date.parse(this.race?.starts_at);
+      const now = new Date().getTime();
+      const raceTime = new Date(this.race?.starts_at).getTime();
 
-      if (today < race_starts_at) {
-        return "calendar-lock";
+      if (now > raceTime) {
+        return "calendar-check";
       }
 
-      if (!(this.race?.videos?.length >= 1)) {
-        return "calendar-plus";
-      }
-
-      return null;
+      return "calendar-clock";
     },
     watchedProgress() {
       const race_total_in_seconds = this.race?.videos
