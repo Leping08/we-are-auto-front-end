@@ -10,8 +10,10 @@
               <div class="flex h-16 items-center justify-between">
                 <div class="flex items-center">
                   <div class="shrink-0 flex items-center">
-                    <img class="size-12 w-auto mx-auto m-1 rounded-full bg-white" src="@/assets/logos/waa-logo-dark.svg"
-                      alt="We Are Auto" />
+                    <router-link :to="{ name: 'home.index' }">
+                      <img class="size-12 w-auto mx-auto m-1 rounded-full bg-white" src="@/assets/logos/waa-logo-dark.svg"
+                        alt="We Are Auto" />
+                    </router-link>
                   </div>
                   <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-4">
