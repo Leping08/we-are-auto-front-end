@@ -68,6 +68,7 @@
                 <div class="-mr-2 flex md:hidden">
                   <!-- Mobile menu button -->
                   <DisclosureButton
+                    as="button"
                     class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 dark:text-gray-400 bg-white focus:bg-gray-200 dark:bg-gray-800 dark:focus:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 dark:ring-offset-gray-800">
                     <span class="absolute -inset-0.5" />
                     <span class="sr-only">Open main menu</span>
