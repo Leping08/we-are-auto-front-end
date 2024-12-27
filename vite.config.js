@@ -11,4 +11,8 @@ export default defineConfig({
       "@": fileURLToPath(new URL("./src", import.meta.url)),
     },
   },
+  server: {
+    host: true, // Expose to all network interfaces
+    port: 5173  // Optional: specify port explicitly
+  }
 });
