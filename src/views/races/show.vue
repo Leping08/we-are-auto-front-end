@@ -240,7 +240,7 @@
     <!-- Desktop slideout for the list of races -->
     <div
       v-if="!loadingRaceData && race.length && races.length"
-      class="mx-4 z-10 hidden md:block w-10"
+      class="mr-2 ml-4 z-10 hidden md:block w-10"
     >
       <div
         @mouseover="seasonOpen = true"
@@ -343,7 +343,7 @@
             name: 'races.filter',
             query: { series: race.series.name },
           }"
-          class="flex items-center p-2"
+          class="flex items-center p-2 border-b border-gray-200 dark:border-gray-700"
         >
           <div class="flex-shrink-0">
             <div class="px-2">
