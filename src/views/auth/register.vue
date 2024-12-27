@@ -138,6 +138,7 @@ const termsAndConditions = ref(false);
 const showPassword = ref(false);
 const signUpLoading = ref(false);
 const errorMessage = ref("");
+const router = useRouter();
 
 const inputsAreValid = computed(() => {
   return (
@@ -166,7 +167,6 @@ const attemptSignUp = async () => {
     if (data?.access_token) {
       await authStore.setToken(data.access_token);
       await authStore.setUser();
-      const router = useRouter();
       router.push({
         name: "races.index",
       });

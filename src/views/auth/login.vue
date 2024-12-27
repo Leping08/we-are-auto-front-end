@@ -80,12 +80,14 @@
 </template>
 
 <script setup>
-import { computed, onMounted, ref } from "vue";
+import { computed, ref } from "vue";
 import { useRouter } from "vue-router";
 import { useAuthStore } from "@/stores/auth.js";
 import eyeOff from "@/assets/icons/eye-off-outline.vue";
 import eye from "@/assets/icons/eye-outline.vue";
 
+const authStore = useAuthStore();
+const router = useRouter();
 const loginLoading = ref(false);
 const errorMessage = ref("");
 const email = ref("");
@@ -94,11 +96,11 @@ const showPassword = ref(false);
 const passwordValidated = ref(true);
 const emailValidated = ref(true);
 
-async function attemptLogin() {
+const attemptLogin = async () => {
+  if (!inputsAreValid.value) return;
+  
   loginLoading.value = true;
   errorMessage.value = "";
-  const authStore = useAuthStore();
-  const router = useRouter();
 
   try {
     const { data } = await authStore.login({
@@ -106,33 +108,21 @@ async function attemptLogin() {
       password: password.value,
     });
 
-    if (data?.access_token) {
-      await authStore.setToken(data?.access_token);
-      await authStore.setUser();
-      router.push({
-        name: "races.index",
-      });
-    } else {
-      errorMessage.value = data?.message || "Oh no, an error occurred";
-    }
+    await Promise.all([
+      authStore.setToken(data.token),
+      authStore.setUser()
+    ]);
+
+    router.push({ name: "races.index" });
   } catch (error) {
-    console.error(error);
-    if (error?.response?.data?.message) {
-      errorMessage.value = error?.response?.data?.message;
-    }
+    console.error("Login error:", error);
+    errorMessage.value = error?.response?.data?.message || error.message || "An error occurred during login";
+  } finally {
+    loginLoading.value = false;
   }
-  loginLoading.value = false;
-}
+};
 
 const inputsAreValid = computed(() => {
   return emailValidated.value && passwordValidated.value;
-});
-
-onMounted(() => {
-  const authStore = useAuthStore();
-  if (authStore.isLoggedIn) {
-    const router = useRouter();
-    router.push({ name: "obs.outline" });
-  }
 });
 </script>
