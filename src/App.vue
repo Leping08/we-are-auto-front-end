@@ -70,13 +70,8 @@
                 <div class="-mr-2 flex md:hidden">
                   <!-- Mobile menu button -->
                   <DisclosureButton
-                    type="button"
-                    as="button"
                     class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 dark:text-gray-400 bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-600"
                     :aria-expanded="open"
-                    role="button"
-                    tabindex="0"
-                    @click="open = !open"
                   >
                     <span class="sr-only">Open main menu</span>
                     <menuIcon v-if="!open" class="block size-6" aria-hidden="true" />
