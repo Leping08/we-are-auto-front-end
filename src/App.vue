@@ -3,9 +3,7 @@
     <div class="h-full bg-gray-100 dark:bg-gray-900">
       <div class="h-full">
         <div class="min-h-full">
-          <Disclosure as="nav"
-            class="bg-white bg-gradient-to-r dark:bg-gray-800 border-b border-gray-200 dark:border-gray-800"
-            v-slot="{ close, open }">
+          <div as="nav" class="bg-white bg-gradient-to-r dark:bg-gray-800 border-b border-gray-200 dark:border-gray-800">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
               <div class="flex h-16 items-center justify-between">
                 <div class="flex items-center">
@@ -69,22 +67,22 @@
                 </div>
                 <div class="-mr-2 flex md:hidden">
                   <!-- Mobile menu button -->
-                  <DisclosureButton
+                  <button @click="open = !open" type="button"
                     class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 dark:text-gray-400 bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-600"
                     :aria-expanded="open"
                   >
                     <span class="sr-only">Open main menu</span>
                     <menuIcon v-if="!open" class="block size-6" aria-hidden="true" />
                     <close v-else class="block size-6" aria-hidden="true" />
-                  </DisclosureButton>
+                  </button>
                 </div>
               </div>
             </div>
 
-            <DisclosurePanel class="md:hidden">
+            <div v-show="open" class="md:hidden">
               <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
                 <router-link v-for="item in navigation" :key="item.name" :to="{ name: item.route }"
-                  @click="closeMenu(close)"
+                  @click="open = false"
                   class="rounded-md px-3 py-2 text-base font-medium text-gray-600 hover:bg-gray-700 hover:text-white dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white flex items-center"
                   :aria-current="item.name">
                   <component :is="item.icon" class="mr-2 size-5" aria-hidden="true" />{{ item.name }}
@@ -114,13 +112,13 @@
                 </div>
                 <div class="mt-3 space-y-1 px-2">
                   <router-link v-for="item in userNavigation" :key="item.name" :to="{ name: item.route }"
-                    @click="closeMenu(close)"
+                    @click="open = false"
                     class="block rounded-md px-3 py-2 text-base font-medium text-gray-600 hover:bg-gray-700 hover:text-white dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white">
                     {{ item.name }}</router-link>
                 </div>
               </div>
-            </DisclosurePanel>
-          </Disclosure>
+            </div>
+          </div>
 
           <main>
             <div class="mx-full">
@@ -137,9 +135,6 @@
 import { useAuthStore } from "@/stores/auth.js";
 import { onMounted, computed, ref } from "vue";
 import {
-  Disclosure,
-  DisclosureButton,
-  DisclosurePanel,
   Menu,
   MenuButton,
   MenuItem,
@@ -157,9 +152,7 @@ import moon from "@/assets/icons/moon.vue";
 import darkModeToggle from "@/components/themeToggle.vue";
 import profileIcon from "./components/auth/profileIcon.vue";
 
-const closeMenu = (close) => {
-  close();
-};
+const open = ref(false);
 
 const authStore = useAuthStore();
 onMounted(async () => {
