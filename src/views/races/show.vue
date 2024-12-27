@@ -158,7 +158,7 @@
           </div>
         </div>
       </div>
-      <div v-if="showProblemForm" class="p-4 border-t">
+      <div v-if="showProblemForm" class="p-4 border-gray-200 dark:border-gray-700 border-t-2">
         <report-problem :race="race" />
       </div>
       <div

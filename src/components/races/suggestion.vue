@@ -1,6 +1,6 @@
 <template>
   <div class="overflow-hidden">
-    <div class="border"></div>
+    <div class="border dark:border-gray-700"></div>
     <div class="flex items-center justify-center aspect-video relative">
       <!-- <div class="absolute">
         <CalendarCheck class="text-blue-500 h-96 -z-10 top-1/2 opacity-10" />
@@ -10,21 +10,21 @@
           class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2 ">
           <div class="lg:pr-8 lg:pt-4">
             <div class="lg:max-w-lg">
-              <h2 class="font-semibold text-blue-600">Community Driven</h2>
-              <p class="mt-2 text-pretty text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl">We need your
+              <h2 class="font-semibold text-blue-600 dark:text-blue-400">Community Driven</h2>
+              <p class="mt-2 text-pretty text-4xl font-semibold tracking-tight text-gray-900 dark:text-white sm:text-5xl">We need your
                 help!</p>
-              <p class="mt-6 text-lg text-gray-500">The {{ race.name }} has completed but we have not located the video
+              <p class="mt-6 text-lg text-gray-500 dark:text-gray-400">The {{ race.name }} has completed but we have not located the video
                 yet. <span v-if="race?.series?.settings?.youtube?.channel_id">It might be on the
-                  <a class="text-blue-500" target="_blank"
+                  <a class="text-blue-500 dark:text-blue-400" target="_blank"
                     :href="`https://youtube.com/${race.series.settings.youtube.channel_id}/videos`">{{ race.series.name
                     }}
                     youtube channel</a>
-                  <open-in-new class="w-4 inline text-blue-500 mb-1 ml-1" />.</span>
+                  <open-in-new class="w-4 inline text-blue-500 dark:text-blue-400 mb-1 ml-1" />.</span>
               </p>
-              <dl class="mt-10 max-w-xl space-y-8 text-gray-500 lg:max-w-none">
+              <dl class="mt-10 max-w-xl space-y-8 text-gray-500 dark:text-gray-400 lg:max-w-none">
                 <div v-for="feature in features" :key="feature.name" class="relative pl-12">
-                  <dt class="font-semibold text-gray-900">
-                    <component :is="feature.icon" class="absolute left-1 top-1 size-8 text-blue-600"
+                  <dt class="font-semibold text-gray-900 dark:text-white">
+                    <component :is="feature.icon" class="absolute left-1 top-1 size-8 text-blue-600 dark:text-blue-400"
                       aria-hidden="true" />
                     {{ feature.name }}
                   </dt>
@@ -50,7 +50,7 @@
         </div>
 
 
-        <div class="mt-4 text-gray-500 mx-auto">
+        <div class="mt-4 text-gray-500 dark:text-gray-400 mx-auto">
           <!-- <guest>
             The {{ race.name }} has completed but we have not located the video
             yet.
@@ -90,9 +90,9 @@
           <authenticated>
             <div v-for="(suggestion, index) in suggestions" :key="suggestion">
               <!-- Check if even and odd -->
-              <div class="grid grid-cols-5 gap-4 items-center border p-4"
-                :class="index % 2 == 0 ? 'bg-gray-100' : 'bg-white'">
-                <div class="text-center text-gray-500">
+              <div class="grid grid-cols-5 gap-4 items-center border dark:border-gray-700 p-4"
+                :class="index % 2 == 0 ? 'bg-gray-100 dark:bg-gray-800' : 'bg-white dark:bg-gray-900'">
+                <div class="text-center text-gray-500 dark:text-gray-400">
                   Part {{ suggestion.part }}
                 </div>
                 <div class="w-full">
@@ -119,7 +119,7 @@
               </div>
             </div>
 
-            <div class="m-4 text-gray-500">
+            <div class="m-4 text-gray-500 dark:text-gray-400">
               Does the race have more than one part? Add multiple parts.
               <v-button color="blue" outline size="sm" @click="addPart">
                 +
