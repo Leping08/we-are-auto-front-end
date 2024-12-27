@@ -1,5 +1,5 @@
 <template>
-  <div class="flex-none md:flex p-2 md:p-4 overflow-visible bg-gradient-to-br from-blue-400 to-blue-600 dark:from-gray-700 dark:to-blue-900 min-h-screen">
+  <div class="flex-none md:flex p-5 overflow-visible bg-gradient-to-br from-blue-400 to-blue-600 dark:from-gray-700 dark:to-blue-900 min-h-screen">
     <div
       v-if="loadingRaceData"
       class="bg-white dark:bg-gray-800 shadow-md rounded-lg w-full"
@@ -336,7 +336,7 @@
     </div>
 
     <!-- Phone list of races for the season -->
-    <v-card v-if="race.length && races.length" class="block md:hidden mt-2 dark:bg-gray-800">
+    <v-card v-if="race.length && races.length" class="block md:hidden mt-5 dark:bg-gray-800">
       <template v-slot:header>
         <router-link
           :to="{
