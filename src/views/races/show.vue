@@ -307,21 +307,24 @@
                         class="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4"
                       >
                         <div class="ml-1">
-                          <div
-                            class="text-sm text-gray-600 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-gray-100"
-                            :class="
-                              $route.params.id == race.id ? 'font-bold' : ''
-                            "
-                          >
-                            {{ race.name }}
+                          <div class="text-sm text-gray-600 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-gray-100">
+                            <div
+                              :class="
+                                $route.params.id == race.id ? 'font-bold dark:text-gray-300' : ''
+                              "
+                            >
+                              {{ race.name }}
+                            </div>
                           </div>
-                          <div
-                            class="text-sm text-gray-400 dark:text-gray-500 group-hover:text-gray-700 dark:group-hover:text-gray-300"
-                            :class="
-                              $route.params.id == race.id ? 'font-bold' : ''
-                            "
-                          >
-                            {{ race.track.name }}
+                          <div class="text-sm text-gray-400 dark:text-gray-500 group-hover:text-gray-700 dark:group-hover:text-gray-300">
+                            <div
+                              :class="
+                                $route.params.id == race.id ? 'font-bold dark:text-gray-400' : ''
+                              "
+                            >
+                              {{ race.track.name }}
+                            </div>
+
                           </div>
                         </div>
                       </div>

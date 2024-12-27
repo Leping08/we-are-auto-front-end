@@ -56,25 +56,9 @@ npm run test:e2e
 npm run lint
 ```
 
-# Todos before 2.0 launch
-- [x] fix slideout on the race details page not closing when selecting a different race
-- [x] make sure all the routes have the same theme colors across the navigation
-- [x] login - dark mode
-- [x] register - dark mode
-- [x] reset password - dark mode
-- [x] forgot password - dark mode
-- [x] privacy policy
-- [x] terms of service
-- [x] 404 page - dark mode
-- [x] when you click a link on the mobile menu, it should close the menu
-- [x] add logic for the random race in the main menu
-- [x] Add darkmode support to tooltips
-- [x] race details - fix race list in mobile view
-- [x] profile - dark mode
-
 # Future Todos
-- [ ] race details - in dark mode highlight which race is being watched in the slideout
 - [ ] add more features talking points to the homepage
+- [ ] on medium screen size the parts on the botto of the race details page are not really large to keep the screen from showing the white at the bottom
 - [ ] race details - page background color stopps at the end of the screen height (need example)
 - [ ] forgot password - fix the disabled button color
 - [ ] termly.io - check on the terms and privacy policy
