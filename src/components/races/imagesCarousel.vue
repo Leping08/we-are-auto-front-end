@@ -5,19 +5,13 @@
 </template>
 
 <script>
+// Imports all the iamges in the race cars folder
+const images = Object.values(import.meta.glob('@/assets/images/race-cars/*.jpg', { eager: true, import: 'default' }))
+
 export default {
   data() {
     return {
-      images: [
-        '/src/assets/images/race-cars/porsche-gtp.jpg',
-        '/src/assets/images/race-cars/glickenhaus.jpg',
-        '/src/assets/images/race-cars/proton.jpg',
-        '/src/assets/images/race-cars/mercedes-rolex-24.jpg',
-        '/src/assets/images/race-cars/turn-7.jpg',
-        '/src/assets/images/race-cars/mustang.jpg',
-        '/src/assets/images/race-cars/mclaren.jpg',
-        '/src/assets/images/race-cars/pfaff.jpg',
-      ],
+      images,
       currentImageIndex: 0,
     }
   },
