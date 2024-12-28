@@ -56,12 +56,20 @@ npm run test:e2e
 npm run lint
 ```
 
-# Future Todos
-- [ ] add more features talking points to the homepage
-- [ ] on medium screen size the parts on the botto of the race details page are not really large to keep the screen from showing the white at the bottom
-- [ ] race details - page background color stopps at the end of the screen height (need example)
-- [ ] forgot password - fix the disabled button color
+# Big fix list
+- [ ] On medium screen size the parts on the bottom of the race details page are not really large to keep the screen from showing the white at the bottom
+- [ ] Only show race start if we have a race and are not looking for the race to be added
+- [ ] Fix the validation when trying to add the link to a race that has already happened but not yet been added
+- [ ] Forgot password - fix the disabled button color
+- [ ] Lint the full application
 - [ ] termly.io - check on the terms and privacy policy
-- [ ] lint the full application
+
+# New features to add
+- [ ] Add more features talking points to the homepage
+  - [ ] Subscribe to be notified when new races are added to the site
+  - [ ] Get a weekly email with with the races upcoming in the weekend
+  - [ ] Help keep the information up to date
+- [ ] Notifications
+- [ ] Race ratings
 
 <!-- Add tailwind css dark mode classes and only the classes. Keek any commented out code. -->

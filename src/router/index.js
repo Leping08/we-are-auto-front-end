@@ -55,18 +55,7 @@ const routes = [
   {
     path: "/races",
     name: "races.index",
-    component: () =>
-      import(/* webpackChunkName: "races.index" */ "@/views/races/index.vue"),
-    meta: {
-      title: "We Are Auto | Watch Full Length Automotive Races Online for Free",
-      metaTags: [
-        {
-          name: "description",
-          content:
-            "Watch full length sports car races online for free including MX-5 Cup, 24H, Trans Am",
-        },
-      ],
-    },
+    redirect: { name: 'races.filter' }
   },
   {
     path: "/races/:id(\\d+)/:text(.*)*",

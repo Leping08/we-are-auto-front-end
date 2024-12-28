@@ -36,46 +36,51 @@
         src="@/assets/images/race-cars/ferrari-rolex-24.jpg" alt="We Are Auto" />
     </div>
   </div>
-  <div class="bg-white dark:bg-gray-800">
-    <div class="2xl:p-24 xl:p-18 lg:p-12 md:p-10 sm:p-4">
-      <div class="grid sm:grid-cols-2 grid-cols-1 gap-4 items-center">
-        <div class="m-4 sm:m-0">
-          <div class="aspect-video">
-            <iframe width="100%" height="100%"
-              src="https://www.youtube.com/embed/videoseries?list=PLraZMoJiSzQwsE1md-537OkILuQAcI1Px"
-              title="YouTube video player" frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen></iframe>
-          </div>
-        </div>
-        <div class="m-10 sm:p-10">
-          <div class="tracking-tight font-bold text-gray-900 dark:text-gray-100 text-3xl md:text-4xl">
-            The <span class="text-blue-500 dark:text-blue-400">We Are Auto Show</span>
-          </div>
-          <div class="text-base text-gray-500 dark:text-gray-300">
-            A weekly show where we go deep into car news, culture, and interviews
-            with fellow enthusiasts.
-          </div>
-          <dl class="mt-8 space-y-8">
-            <div v-for="item in podcastFeatures" :key="item.id" class="relative">
-              <dt>
-                <div
-                  class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-gradient-to-r from-blue-400 to-blue-600 text-white">
-                  <component :is="item.icon" class="h-6 w-6" aria-hidden="true" />
-                </div>
-                <p class="mb-1 ml-16 text-lg font-semibold leading-6 text-gray-900 dark:text-gray-100">
-                  {{ item.name }}
-                </p>
-              </dt>
-              <dd class="ml-16 text-base text-gray-500 dark:text-gray-300">
-                {{ item.description }}
-              </dd>
-            </div>
-          </dl>
+
+  <div class="relative dark:bg-gray-800 bg-gray-100">
+    <div class="lg:mx-auto lg:px-8 py-8 md:py-20 lg:grid lg:grid-cols-2 lg:grid-flow-col-dense lg:gap-24">
+      <div class="mt-12 sm:mt-16 lg:mt-0 items-center hidden sm:block ">
+        <div class="pl-4 -mr-48 sm:pl-6 md:-mr-16 lg:px-0 lg:m-0 lg:relative lg:h-full">
+          <images-carousel />
         </div>
       </div>
+      <div class="relative max-w-xl mx-auto p-6 lg:p-0">
+        <h3 class="text-2xl font-extrabold text-gray-900 dark:text-gray-100 tracking-tight sm:text-4xl">
+          It's like Netflix for gearheads
+        </h3>
+        <p class="mt-3 text-lg text-gray-500 dark:text-gray-400">
+          Races from a variety of series around the world available anytime
+          anywhere.
+        </p>
+
+        <dl class="mt-10 space-y-10">
+          <div v-for="item in features" :key="item.id" class="relative">
+            <dt>
+              <div
+                class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-gradient-to-r from-blue-400 to-blue-600 text-white">
+                <component :is="item.icon" class="h-6 w-6" aria-hidden="true" />
+              </div>
+              <p class="ml-16 text-lg leading-6 font-medium text-gray-900 dark:text-gray-100">
+                {{ item.name }}
+              </p>
+            </dt>
+            <dd class="mt-2 ml-16 text-base text-gray-500 dark:text-gray-400">
+              {{ item.description }}
+            </dd>
+          </div>
+        </dl>
+      </div>
+      <router-link
+        class="flex justify-end items-center m-4 text-blue-200 text-lg font-bold hover:text-blue-100"
+        tag="div"
+        :to="{ name: 'races.filter' }"
+      >
+        <div class="">Start watching</div>
+        <arrow class="h-8 ml-2" />
+      </router-link>
     </div>
   </div>
+
   <div
     class="relative px-4 py-14 sm:px-6 lg:py-20 lg:px-8 bg-gradient-to-br from-blue-400 to-blue-600 dark:from-gray-700 dark:to-blue-900">
     <latest-races />
@@ -84,30 +89,33 @@
 
 <script setup>
 import latestRaces from "@/components/races/latestRaces.vue";
-import news from "@/assets/icons/news.vue";
-import people from "@/assets/icons/people.vue";
-import shift from "@/assets/icons/car-shift-pattern.vue";
+import clockStart from "@/assets/icons/clock-start.vue";
+import arrow from "@/assets/icons/arrow-right.vue";
+import checkboxMarkedCircleOutline from "@/assets/icons/checkbox-marked-circle-outline.vue";
+import formatListBulleted from "@/assets/icons/format-list-bulleted.vue";
+import ImagesCarousel from "@/components/races/imagesCarousel.vue";
 
-const podcastFeatures = [
+const features = [
   {
     id: 1,
-    name: "News",
+    name: "Jump to start",
     description:
-      "The latest auto industry news as well as whats going on in the racing world.",
-    icon: news,
+      "Jump directly to the start of the race skipping all of the pre race ceremonies.",
+    icon: clockStart,
   },
   {
     id: 2,
-    name: "Guests",
+    name: "Progress",
     description:
-      "Conversations with a verity of guests from all corners of the automotive industry.",
-    icon: people,
+      "Done watching a race? Check it off to keep track all the races you have watched for a season.",
+    icon: checkboxMarkedCircleOutline,
   },
   {
     id: 3,
-    name: "Car Banter",
-    description: "Simply car enthusiasts talking about car stuff.",
-    icon: shift,
+    name: "Seasons",
+    description:
+      "Watch the races through a full season just like it happened live.",
+    icon: formatListBulleted,
   },
 ];
 </script>
