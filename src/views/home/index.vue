@@ -73,7 +73,7 @@
           </dl>
         </div>
         <router-link
-          class="flex justify-end items-center m-4 text-gray-200 text-lg font-bold hover:text-white"
+          class="flex justify-end items-center m-4 text-gray-700 hover:text-gray-900 dark:text-gray-200 dark:hover:text-white text-lg font-bold"
           tag="div"
           :to="{ name: 'races.filter' }"
           >
