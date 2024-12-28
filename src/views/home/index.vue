@@ -33,12 +33,12 @@
     </div>
     <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 hidden sm:block">
       <img class="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full lg:ml-16 sm:ml-0"
-        src="@/assets/images/race-cars/ferrari-rolex-24.jpg" alt="We Are Auto" />
+        src="@/assets/images/ferrari-rolex-24.jpg" alt="We Are Auto" />
     </div>
   </div>
 
   <div class="relative dark:bg-gray-800 bg-gray-100">
-    <div class="lg:mx-auto lg:px-8 py-8 md:py-20 lg:grid lg:grid-cols-2 lg:grid-flow-col-dense lg:gap-24">
+    <div class="lg:mx-auto lg:px-8 py-8 md:py-20 lg:grid lg:grid-cols-2 lg:grid-flow-col-dense lg:gap-12">
       <div class="mt-12 sm:mt-16 lg:mt-0 items-center hidden sm:block ">
         <div class="pl-4 -mr-48 sm:pl-6 md:-mr-16 lg:px-0 lg:m-0 lg:relative lg:h-full">
           <images-carousel />

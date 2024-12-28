@@ -1,7 +1,7 @@
 <template>
   <!-- @todo add nice transition or fade when the image changes -->
   <img :src="images[currentImageIndex]" @click="nextImage"
-    class="hidden sm:block cursor-pointer w-[48rem] max-w-none rounded-xl shadow-xl ring-1 ring-gray-400/10 sm:w-[40rem] md:-ml-4 lg:-ml-0" />
+    class="hidden sm:block cursor-pointer w-full max-w-none rounded-xl shadow-xl ring-1 ring-gray-400/10 md:-ml-4 lg:-ml-0" />
 </template>
 
 <script>
