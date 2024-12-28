@@ -96,7 +96,7 @@
                 </template>
               </tooltip>
             </div> -->
-            <div class="ml-4">
+            <div v-if="race?.videos?.length >= 1" class="ml-4">
               <tooltip>
                 <clock-start
                   @click="jumpToStart()"
@@ -109,7 +109,7 @@
                 </template>
               </tooltip>
             </div>
-            <div v-if="user" class="ml-4">
+            <div v-if="user && race?.videos?.length >= 1" class="ml-4">
               <v-progress-spinner
                 v-if="loadingProgress"
                 :size="5"

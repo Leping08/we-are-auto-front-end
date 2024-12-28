@@ -58,7 +58,6 @@ npm run lint
 
 # Big fix list
 - [ ] On medium screen size the parts on the bottom of the race details page are not really large to keep the screen from showing the white at the bottom
-- [ ] Only show race start if we have a race and are not looking for the race to be added
 - [ ] Fix the validation when trying to add the link to a race that has already happened but not yet been added
 - [ ] Forgot password - fix the disabled button color
 - [ ] Lint the full application
