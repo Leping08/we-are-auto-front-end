@@ -17,7 +17,7 @@
 
     <div
       v-if="loadingRaceData"
-      class="bg-white dark:bg-gray-800 shadow-md rounded-lg z-10 ml-2 w-20"
+      class="bg-white dark:bg-gray-800 shadow-md rounded-lg z-10 ml-0 md:ml-8 w-full md:w-20 pt-2 md:pt-0 mt-4 md:mt-0"
     >
       <div
         class="h-10 w-10 bg-gray-300 dark:bg-gray-600 animate-pulse mx-4 mt-4 mb-6 rounded-full relative"
@@ -96,6 +96,13 @@
                 </template>
               </tooltip>
             </div> -->
+            <div class="flex items-center ml-4">
+              <star-rating 
+                v-model="raceRating" 
+                :can-rate="!!user" 
+                @update:model-value="rateRace" 
+              />
+            </div>
             <div v-if="race?.videos?.length >= 1" class="ml-4">
               <tooltip>
                 <clock-start
@@ -111,12 +118,12 @@
             </div>
             <div v-if="user && race?.videos?.length >= 1" class="ml-4">
               <v-progress-spinner
-                v-if="loadingProgress"
+                v-if="loadingMarkWatched"
                 :size="5"
                 color="blue"
               />
               <div v-if="watchedProgress < 99">
-                <tooltip v-if="!loadingProgress">
+                <tooltip v-if="!loadingMarkWatched">
                   <check-circle-outline
                     @click="markWatched"
                     class="h-6 w-6 text-gray-400 dark:text-gray-300 hover:text-blue-500 cursor-pointer"
@@ -129,7 +136,7 @@
                 </tooltip>
               </div>
               <div v-else>
-                <tooltip v-if="!loadingProgress">
+                <tooltip v-if="!loadingMarkWatched">
                   <check-circle-outline
                     @click="markUnwatched"
                     class="h-6 w-6 text-green-500 dark:text-green-400 hover:text-blue-500 cursor-pointer"
@@ -432,6 +439,8 @@ import CheckCircleOutline from "@/assets/icons/check-circle-outline.vue";
 import ChatAlertOutline from "@/assets/icons/chat-alert-outline.vue";
 import VideoProgressApi from "@/api/models/video-progress.js";
 import Tooltip from "@/components/tooltip.vue";
+import StarRating from '@/lib-components/starRating.vue';
+import Rating from '@/api/models/rating.js';
 export default {
   components: {
     PlayProgress,
@@ -442,6 +451,7 @@ export default {
     CheckCircleOutline,
     ChatAlertOutline,
     Tooltip,
+    StarRating,
   },
   data() {
     return {
@@ -453,8 +463,10 @@ export default {
       validated: false,
       index: 0,
       loadingProgress: false,
+      loadingMarkWatched: false,
       showProblemForm: false,
       loadingRaceData: true,
+      raceRating: 0,
     };
   },
   computed: {
@@ -584,7 +596,7 @@ export default {
         return;
       }
 
-      this.loadingProgress = true;
+      this.loadingMarkWatched = true;
       await Promise.all(
         this.race?.videos.map(async (video) => {
           await new VideoProgressApi().store({
@@ -594,14 +606,14 @@ export default {
         })
       );
       await this.getRaceData();
-      this.loadingProgress = false;
+      this.loadingMarkWatched = false;
     },
     async markUnwatched() {
       if (!this.user) {
         return;
       }
 
-      this.loadingProgress = true;
+      this.loadingMarkWatched = true;
       await Promise.all(
         this.race?.videos.map(async (video) => {
           await new VideoProgressApi().store({
@@ -611,7 +623,7 @@ export default {
         })
       );
       await this.getRaceData();
-      this.loadingProgress = false;
+      this.loadingMarkWatched = false;
     },
     setPlayer() {
       /* eslint-disable-next-line */
@@ -645,6 +657,7 @@ export default {
       ));
       this.loadingRaceData = false;
       this.updateSEO();
+      this.raceRating = this.race.average_rating || 0;
     },
     updateSEO() {
       document.title = `Watch ${this.race?.season?.name} ${this.race.name} | We Are Auto`;
@@ -690,6 +703,17 @@ export default {
     },
     jumpToStart() {
       this.player.seekTo(this.race?.videos[this.index]?.start_time);
+    },
+    async rateRace(value) {
+      try {
+        await new Rating().store({
+          race_id: this.race.id,
+          rating: value
+        });
+        this.raceRating = value;
+      } catch (error) {
+        console.error('Failed to rate race:', error);
+      }
     },
   },
   watch: {

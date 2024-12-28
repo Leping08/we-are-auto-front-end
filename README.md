@@ -57,6 +57,7 @@ npm run lint
 ```
 
 # Big fix list
+- [ ] Mark watched is breaking the iframe player
 - [ ] On medium screen size the parts on the bottom of the race details page are not really large to keep the screen from showing the white at the bottom
 - [ ] Fix the validation when trying to add the link to a race that has already happened but not yet been added
 - [ ] Forgot password - fix the disabled button color
@@ -65,10 +66,9 @@ npm run lint
 
 # New features to add
 - [ ] Add more features talking points to the homepage
-  - [ ] Subscribe to be notified when new races are added to the site
-  - [ ] Get a weekly email with with the races upcoming in the weekend
+  - [ ] Race ratings
   - [ ] Help keep the information up to date
-- [ ] Notifications
-- [ ] Race ratings
+  - [ ] Subscribe to be notified when new races are added to the site
+- [ ] Get a weekly email with with the races that were added in the last week and the upcoming races for the weekend
 
 <!-- Add tailwind css dark mode classes and only the classes. Keek any commented out code. -->
