@@ -39,8 +39,8 @@
 
   <div class="relative dark:bg-gray-800 bg-gray-100">
     <div class="lg:mx-auto lg:px-8 py-8 md:py-20 lg:grid lg:grid-cols-2 lg:grid-flow-col-dense lg:gap-12">
-      <div class="mt-12 sm:mt-16 lg:mt-0 items-center hidden sm:block ">
-        <div class="pl-4 -mr-48 sm:pl-6 md:-mr-16 lg:px-0 lg:m-0 lg:relative lg:h-full">
+      <div class="mt-12 sm:mt-16 lg:mt-0 hidden sm:flex items-center justify-center">
+        <div class="w-[300px] sm:w-[400px] md:w-[500px] lg:w-[600px] h-[200px] sm:h-[250px] md:h-[300px] lg:h-[350px]">
           <images-carousel />
         </div>
       </div>
