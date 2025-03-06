@@ -53,6 +53,10 @@ npm run test:e2e
 ### Lint with [ESLint](https://eslint.org/)
 
 ```sh
+# Check for linting issues
+npm run lint:check
+
+# Fix linting issues
 npm run lint
 ```
 
