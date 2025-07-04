@@ -128,6 +128,9 @@
         </div>
       </div>
     </div>
+    
+    <!-- Cookie Banner -->
+    <CookieBanner />
   </div>
 </template>
 
@@ -151,6 +154,7 @@ import sun from "@/assets/icons/sun.vue";
 import moon from "@/assets/icons/moon.vue";
 import darkModeToggle from "@/components/themeToggle.vue";
 import profileIcon from "./components/auth/profileIcon.vue";
+import CookieBanner from "@/components/CookieBanner.vue";
 
 const open = ref(false);
 
